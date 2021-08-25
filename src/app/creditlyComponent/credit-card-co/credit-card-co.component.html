@@ -1,0 +1,511 @@
+<section id="cards-list-page">
+    <div>
+        <div>
+
+        </div>
+        <div class="sky_background">
+            <div class="container">
+                <div class="layout-container">
+                    <div class="tab-content" id="pills-tabContent p-3">
+                        <!-- 1st card -->
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                            aria-labelledby="pills-home-tab">
+                            <div class="content">
+                                <p>Find the right Credit Card for you</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="monthly_income">
+                                        <p class="text">Your Monthly Income</p>
+                                        <p class="amount">SAR {{value}}</p>
+                                    </div>
+                                    <div class="slider-margin">
+                                        <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="are_you_from">
+                                        <p>Are you Saudi?</p>
+                                        <div class="custom_radio_button">
+                                            <label class="container">Yes
+                                                <input name="from" type="radio" (change)="radio(1)"
+                                                    [checked]="NationalityID==1">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="container">No
+                                                <input name="from" type="radio" (change)="radio(2)"
+                                                    [checked]="NationalityID==2">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <!-- <span><input type="radio" name="from" id="yes" checked> Yes</span>
+                                            <span class="no_radio"><input type="radio" name="from" id="no"> No</span> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <div class="find_cards_section">
+                                    <button class="btn btn-md find_cards_btn" [disabled]="submit" (click)="search()">SEE
+                                        CREDIT CARDS</button>
+                                    <!-- <div class="find_cards_content"> -->
+                                    <p>One click to see all credit cards from all Saudi banks</p>
+                                    <p class="more_text">e.g. Alrajhi Bank, Riyad Bank, Alinma bank, Albilad Bank,
+                                        Aljazirah bank,
+                                        NCB,
+                                        ANB and more…</p>
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cards-compare-list" *ngIf="compareCard.length">
+        <div class="card custom-card">
+            <div class="card-body">
+                <div class="list-items">
+                    <div *ngFor="let card of compareCard;let i= index;" class="cancel">
+                        <img (click)="removeCard(i)" class="i" src="../../../assets/images/icons/cancel.png" alt="">
+                        <img class="cardImage" src="{{card?.image}}" alt="">
+                    </div>
+
+                    <div>
+                        <button class="btn btn-md compare-cards-btn" (click)="navigateToCardsCompare()">Compare
+                            cards<span>{{compareCard.length}}</span></button>
+                    </div>
+                    <div (click)="reset()">
+                        Reset
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="cardListShow">
+        <div class="cards_list">
+            <div class="container">
+                <!-- layout-container -->
+                <div class="">
+                    <div class="filter_part">
+                        <p>Filter</p>
+                        <p>Sort</p>
+                    </div>
+                    <div class="no_fees_and_add_filter">
+                        <div class="dropdown add-filter-dropdown">
+                            <div class="add_filter dropdown-toggle" data-toggle="dropdown">Add filter +</div>
+                            <ul class="dropdown-menu">
+                                <li (click)="setValues(true,1,'IsCashBack',0,'Cash back')"><a>Cash back</a></li>
+                                <!-- <li (click)="filterForList(2,true,0)"><a>Rewards</a></li> -->
+                                <li (click)="setValues(true,3,'Shariah_Compliant',0,'Shariah compliance')"><a>Shariah
+                                        compliance</a></li>
+                                <li (click)="setValues(true,4,'IsLoungeAccess',0,'Lounge access')"><a>Lounge access</a>
+                                </li>
+                                <li (click)="setValues(true,5,'IsNoAnualFee',0,'No annual fees')"><a>No annual fees</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="no_fees" *ngFor="let com of complainFilter;let i=index;"
+                            (click)="setValues(false,com.id,com.element,i,'')">
+                            <p><span>X</span> {{com.name}}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card custom-card" *ngFor="let val of product;let i =index;">
+                            <div class="card-body">
+                                <div class="visa_main_part">
+                                    <div>
+                                        <h1>{{val?.name}}</h1>
+                                    </div>
+                                    <div class="share_and_compare">
+                                        <div class="user_option">
+                                            <img src="../../../assets/images/main_images/np_share.svg" alt="">
+                                            <span>Share</span>
+                                        </div>
+                                        <span class="material-icons added" *ngIf="isCard(val?.id)">
+                                            check_box
+                                        </span>
+                                        <div class="user_option" (click)="addToCampare(val)">
+                                            <img *ngIf="!isCard(val?.id)"
+                                                src="../../../assets/images/main_images/np_add.svg" alt="">
+
+                                            <span *ngIf="!isCard(val?.id)">Add to compare</span>
+                                            <span *ngIf="isCard(val?.id)">Added to compare</span>
+                                        </div>
+                                    </div>
+                                    <div class="mobile_flight_text">
+                                        <div class="row text-center ">
+                                            <div class="col-md-4 col-6 refund_not">
+                                                <!-- <img src="../../../assets/images/icons/cashback-icon.png" alt=""> -->
+                                                <svg id="np_cashback_1727163_000000" xmlns="http://www.w3.org/2000/svg"
+                                                    width="37.318" height="30.388" viewBox="0 0 37.318 30.388">
+                                                    <g id="Group_3523" data-name="Group 3523">
+                                                        <path id="Path_4417" data-name="Path 4417"
+                                                            d="M48.065,24.717a.852.852,0,0,0-1.205,0l-2,2h0A15.263,15.263,0,0,0,15.767,21.58a.846.846,0,1,0,1.544.695A13.568,13.568,0,0,1,43.156,26.6l-1.874-1.882a.852.852,0,0,0-1.2,1.205l3.391,3.391a.846.846,0,0,0,1.2,0l3.391-3.391h0a.852.852,0,0,0,0-1.205Z"
+                                                            transform="translate(-10.997 -12.669)" fill="#916df6" />
+                                                        <path id="Path_4418" data-name="Path 4418"
+                                                            d="M36.281,52.686a.848.848,0,0,0-1.119.425A13.568,13.568,0,0,1,9.316,48.786l1.874,1.882a.852.852,0,1,0,1.2-1.205L9,46.072a.846.846,0,0,0-1.2,0L4.408,49.463h0a.852.852,0,0,0,1.205,1.205l2-2h0A15.263,15.263,0,0,0,36.7,53.8a.848.848,0,0,0-.425-1.119Z"
+                                                            transform="translate(-4.157 -32.328)" fill="#916df6" />
+                                                        <path id="np_coins_3762907_000000"
+                                                            d="M15.149,15.7a9.19,9.19,0,0,0-.85-3.288c-1.129-2.533-2.82-4.07-3.928-3.575l-.644.286V7.6c0-1.214-2.09-2.128-4.863-2.128S0,6.385,0,7.6v2.734a.261.261,0,0,0,0,.043.29.29,0,0,0,0,.045c0,.024,0,.05,0,.073a.184.184,0,0,0,0,.038v2.734a.194.194,0,0,1,0,.085c0,.031,0,.062,0,.092a.353.353,0,0,0,0,.05v2.734a.261.261,0,0,0,0,.043.235.235,0,0,0,0,.043c0,1.214,2.09,2.128,4.863,2.128a7.55,7.55,0,0,0,4.207-1.035,3.323,3.323,0,0,0,2.249,1.555,1.075,1.075,0,0,0,.443-.092l2.573-1.151c.563-.246.85-.964.814-2.017ZM4.862,6.006c2.55,0,4.328.84,4.328,1.593S7.412,9.193,4.862,9.193.535,8.352.535,7.6,2.313,6.006,4.862,6.006ZM.535,10.334V8.6A7.051,7.051,0,0,0,4.862,9.728,7.046,7.046,0,0,0,9.19,8.6v.765l-1.4.623c-.537.239-.807.9-.819,1.8a9.959,9.959,0,0,1-2.114.218c-2.55,0-4.328-.84-4.328-1.593a.261.261,0,0,0,0-.043.111.111,0,0,0,.007-.04Zm0,2.933V11.42a7.051,7.051,0,0,0,4.328,1.127A10.631,10.631,0,0,0,7,12.339a8.967,8.967,0,0,0,.533,2.218,8.69,8.69,0,0,1-2.67.386c-2.55,0-4.328-.84-4.328-1.593a.261.261,0,0,0,0-.043.208.208,0,0,0,0-.04ZM4.862,17.9c-2.55,0-4.328-.84-4.328-1.593a.194.194,0,0,1,0-.085V14.351a7.051,7.051,0,0,0,4.328,1.127,9.209,9.209,0,0,0,2.867-.424c.033.08.069.161.1.241a11.025,11.025,0,0,0,.923,1.676,7.067,7.067,0,0,1-3.894.933Zm6.681.476c-.689.308-2.18-.973-3.22-3.3s-1-4.295-.31-4.6l1.664-.743a3.581,3.581,0,0,0-.118,1.125,9.214,9.214,0,0,0,.85,3.291,7.03,7.03,0,0,0,2.8,3.492Zm2.576-1.148c-.687.305-2.178-.973-3.22-3.3a8.7,8.7,0,0,1-.8-3.09c-.028-.807.152-1.359.495-1.513a.538.538,0,0,1,.225-.045c.753,0,2.057,1.248,2.995,3.348a8.7,8.7,0,0,1,.8,3.09c.028.807-.154,1.359-.495,1.513Z"
+                                                            transform="translate(11.872 2.98)" fill="#916df6"
+                                                            stroke="#916df7" stroke-width="0.5" />
+                                                    </g>
+                                                </svg>
+                                                <span>Cash-back</span>
+                                            </div>
+                                            <div class="col-md-4 col-6 refund_not">
+                                                <img src="../../../assets/images/main_images/np_airplane.svg" alt="">
+                                                <span>{{val.id}} lounge access</span>
+                                            </div>
+                                            <div class="col-md-4 col-6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row mt-3 align-items-center">
+                                        <div class="col-md-4">
+                                            <div class="visa_image">
+                                                <img [src]="val?.image?val?.image:'../../../assets/images/main_images/Group_card_compare.svg'"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row amount_types">
+                                                <div class="col-md-4 col-6">
+                                                    <div class="amount">
+                                                        <h1>{{val?.annualFee}}</h1> <span>SAR</span>
+                                                    </div>
+                                                    <div class="amount_text">
+                                                        <p>Annual fee for the first year</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-6">
+                                                    <div class="amount">
+                                                        <h1>{{val?.apr}}</h1> <span>%</span>
+                                                    </div>
+                                                    <div class="amount_text">
+                                                        <p>Annual Percentage Rate</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-6">
+                                                    <div class="amount">
+                                                        <h1>{{val?.monthly_Fees}}</h1> <span>SAR</span>
+                                                    </div>
+                                                    <div class="amount_text">
+                                                        <p>Monthly Minimum Payment</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3 align-items-center">
+                                        <div class="col-md-4">
+                                            <div>
+                                                <button class="btn btn-md btn-block apply-btn"
+                                                    (click)="applyForCreditCard(val)">Apply Now</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row text-center web_flight_text">
+                                                <div class="col-md-4 refund_not" *ngIf="val?.isCashBack">
+                                                    <!-- <img src="../../../assets/images/icons/cashback-icon.png" alt=""> -->
+                                                    <svg id="np_cashback_1727163_000000"
+                                                        xmlns="http://www.w3.org/2000/svg" width="37.318"
+                                                        height="30.388" viewBox="0 0 37.318 30.388">
+                                                        <g id="Group_3523" data-name="Group 3523">
+                                                            <path id="Path_4417" data-name="Path 4417"
+                                                                d="M48.065,24.717a.852.852,0,0,0-1.205,0l-2,2h0A15.263,15.263,0,0,0,15.767,21.58a.846.846,0,1,0,1.544.695A13.568,13.568,0,0,1,43.156,26.6l-1.874-1.882a.852.852,0,0,0-1.2,1.205l3.391,3.391a.846.846,0,0,0,1.2,0l3.391-3.391h0a.852.852,0,0,0,0-1.205Z"
+                                                                transform="translate(-10.997 -12.669)" fill="#916df6" />
+                                                            <path id="Path_4418" data-name="Path 4418"
+                                                                d="M36.281,52.686a.848.848,0,0,0-1.119.425A13.568,13.568,0,0,1,9.316,48.786l1.874,1.882a.852.852,0,1,0,1.2-1.205L9,46.072a.846.846,0,0,0-1.2,0L4.408,49.463h0a.852.852,0,0,0,1.205,1.205l2-2h0A15.263,15.263,0,0,0,36.7,53.8a.848.848,0,0,0-.425-1.119Z"
+                                                                transform="translate(-4.157 -32.328)" fill="#916df6" />
+                                                            <path id="np_coins_3762907_000000"
+                                                                d="M15.149,15.7a9.19,9.19,0,0,0-.85-3.288c-1.129-2.533-2.82-4.07-3.928-3.575l-.644.286V7.6c0-1.214-2.09-2.128-4.863-2.128S0,6.385,0,7.6v2.734a.261.261,0,0,0,0,.043.29.29,0,0,0,0,.045c0,.024,0,.05,0,.073a.184.184,0,0,0,0,.038v2.734a.194.194,0,0,1,0,.085c0,.031,0,.062,0,.092a.353.353,0,0,0,0,.05v2.734a.261.261,0,0,0,0,.043.235.235,0,0,0,0,.043c0,1.214,2.09,2.128,4.863,2.128a7.55,7.55,0,0,0,4.207-1.035,3.323,3.323,0,0,0,2.249,1.555,1.075,1.075,0,0,0,.443-.092l2.573-1.151c.563-.246.85-.964.814-2.017ZM4.862,6.006c2.55,0,4.328.84,4.328,1.593S7.412,9.193,4.862,9.193.535,8.352.535,7.6,2.313,6.006,4.862,6.006ZM.535,10.334V8.6A7.051,7.051,0,0,0,4.862,9.728,7.046,7.046,0,0,0,9.19,8.6v.765l-1.4.623c-.537.239-.807.9-.819,1.8a9.959,9.959,0,0,1-2.114.218c-2.55,0-4.328-.84-4.328-1.593a.261.261,0,0,0,0-.043.111.111,0,0,0,.007-.04Zm0,2.933V11.42a7.051,7.051,0,0,0,4.328,1.127A10.631,10.631,0,0,0,7,12.339a8.967,8.967,0,0,0,.533,2.218,8.69,8.69,0,0,1-2.67.386c-2.55,0-4.328-.84-4.328-1.593a.261.261,0,0,0,0-.043.208.208,0,0,0,0-.04ZM4.862,17.9c-2.55,0-4.328-.84-4.328-1.593a.194.194,0,0,1,0-.085V14.351a7.051,7.051,0,0,0,4.328,1.127,9.209,9.209,0,0,0,2.867-.424c.033.08.069.161.1.241a11.025,11.025,0,0,0,.923,1.676,7.067,7.067,0,0,1-3.894.933Zm6.681.476c-.689.308-2.18-.973-3.22-3.3s-1-4.295-.31-4.6l1.664-.743a3.581,3.581,0,0,0-.118,1.125,9.214,9.214,0,0,0,.85,3.291,7.03,7.03,0,0,0,2.8,3.492Zm2.576-1.148c-.687.305-2.178-.973-3.22-3.3a8.7,8.7,0,0,1-.8-3.09c-.028-.807.152-1.359.495-1.513a.538.538,0,0,1,.225-.045c.753,0,2.057,1.248,2.995,3.348a8.7,8.7,0,0,1,.8,3.09c.028.807-.154,1.359-.495,1.513Z"
+                                                                transform="translate(11.872 2.98)" fill="#916df6"
+                                                                stroke="#916df7" stroke-width="0.5" />
+                                                        </g>
+                                                    </svg>
+                                                    <span> {{val?.cashBack}} Cash-back</span>
+                                                </div>
+                                                <div class="col-md-4 refund_not" *ngIf="val?.isLoungeAccess">
+                                                    <img src="../../../assets/images/main_images/np_airplane.svg"
+                                                        alt="">
+                                                    <span>{{val?.loungeAccess}} lounge access</span>
+                                                </div>
+                                                <div class="col-md-4"></div>
+                                            </div>
+                                            <div class="share_and_compare_mobile">
+                                                <div class=" row">
+                                                    <div class="user_option">
+                                                        <img src="../../../assets/images/main_images/np_share.svg"
+                                                            alt="">
+                                                        <span>Share</span>
+                                                    </div>
+                                                    <div class="user_option">
+                                                        <img src="../../../assets/images/main_images/np_add.svg"
+                                                            (click)="addToCampare(val)" alt="">
+                                                        <span>Add to compare</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <div class="goto_details">
+                                            <div>
+                                                <div *ngIf="showCardDetailsFlag!=i" (click)="showCardDetails(i+'')">
+                                                    <img src="../../../assets/images/footer-images/up-arrow.svg" alt="">
+                                                    <span>Card Details</span>
+                                                </div>
+                                                <div *ngIf="showCardDetailsFlag==i" (click)="showCardDetails(i+'-')">
+                                                    <img src="../../../assets/images/main_images/Group_downarrow.svg"
+                                                        alt="">
+                                                    <span>Hide Details</span>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="val?.isInstantApproval">
+                                                <img src="../../../assets/images/main_images/Group_instant_approval.svg"
+                                                    alt="">
+                                                <span>Instant approval</span>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="showCardDetailsFlag==i">
+                                            <div class="card_details_starts">
+                                                <div class="row ">
+                                                    <div class="col-md-12 col-12 mt-3">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
+                                                                        alt=""> -->
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="21.727" height="21.72"
+                                                                        viewBox="0 0 21.727 21.72">
+                                                                        <path id="np_free_338463_000000"
+                                                                            d="M21.128,18.12a.944.944,0,1,0-.944-.944A.946.946,0,0,0,21.128,18.12Zm4.451,1.114H20.226l-1.835-2.058,1.835-2.059h5.353Zm.574-5.264H25.77V9.279A.575.575,0,0,0,25.2,8.7H24.1V6.647a.575.575,0,0,0-.574-.574H20.845a.574.574,0,0,0,0,1.149h2.1V8.7H19.736a.574.574,0,0,0,0,1.149h4.886V13.97H19.969a.572.572,0,0,0-.428.191l-2.348,2.632a.575.575,0,0,0,0,.765l2.348,2.632a.572.572,0,0,0,.428.192h4.653V24.5H13.082a.574.574,0,0,0,0,1.149H25.2a.575.575,0,0,0,.574-.574v-4.69h.383a.575.575,0,0,0,.574-.574V14.543a.575.575,0,0,0-.574-.573Zm-6.69-8.925a.574.574,0,0,0-.753.306l-8.666,20.57a.564.564,0,0,0,0,.439.574.574,0,0,0,1.061.007L19.769,5.8a.575.575,0,0,0-.306-.753ZM8.968,24.5h-1a1.82,1.82,0,0,1-1.818-1.818V9.706a1.894,1.894,0,0,0,.731.147h8.742a.574.574,0,1,0,0-1.149H6.878a.73.73,0,0,1-.729-.729V7.952a.731.731,0,0,1,.731-.73h9.852a.574.574,0,0,0,0-1.149H6.88A1.878,1.878,0,0,0,5,7.949V22.68a2.97,2.97,0,0,0,2.967,2.967h1a.574.574,0,0,0,0-1.149Z"
+                                                                            transform="translate(-5 -5)" fill="#96f"
+                                                                            fill-rule="evenodd" />
+                                                                    </svg>
+                                                                    <span>Fees</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-8 col-8">
+                                                                <div class="row">
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Recurring Annual </p>
+                                                                            <span>SAR {{val?.murabahaMargin}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Annual</p>
+                                                                            <span>SAR {{val?.annualFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Supplementary card</p>
+                                                                            <span>SAR
+                                                                                {{val?.supplementaryCardFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Card Replacement</p>
+                                                                            <span>SAR {{val?.cardReplacementFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Cash Withdrawal</p>
+                                                                            <span>SAR {{val?.cashWithdrawalFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Late Payment</p>
+                                                                            <span>SAR {{val?.latePaymentFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Collection</p>
+                                                                            <span>SAR {{val?.collectionFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Foreign Exchange Conversion</p>
+                                                                            <span>{{val?.foreignExchangeConversionFee}}%</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Cheque Returned</p>
+                                                                            <span>SAR {{val?.chequeReturnedFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Statement Request</p>
+                                                                            <span>SAR
+                                                                                {{val?.statementRequestFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Refund Of Credit Balance</p>
+                                                                            <span>SAR
+                                                                                {{val?.refundOfCreditBalanceFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Direct Debit Rejection</p>
+                                                                            <span>SAR
+                                                                                {{val?.directDebitRejectionFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Dispute Handling</p>
+                                                                            <span>SAR {{val?.disputeHandlingFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Overseas Payment </p>
+                                                                            <span>SAR {{val?.overseasPaymentFee}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12 mt-3" *ngIf="val?.protections">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <img src="../../../assets/images/icons/protection-icon.png"
+                                                                        alt="">
+                                                                    <span>Protection</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-8 col-8">
+                                                                <ul class="card-details-list">
+                                                                    <li *ngFor="let point of val?.protections">
+                                                                        <span
+                                                                            class="material-icons custom_check">check</span>
+                                                                        <span>{{point}}</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12 mt-3" *ngIf="val?.travels">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <img src="../../../assets/images/main_images/np_airplane.svg"
+                                                                        alt="">
+                                                                    <span>Travel</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-8 col-8">
+                                                                <ul class="card-details-list">
+                                                                    <li *ngFor="let point of val?.travels">
+                                                                        <span
+                                                                            class="material-icons custom_check">check</span>
+                                                                        <span>{{point}}</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12 mt-3" *ngIf="val?.rewardsPrograms">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
+                                                                        alt=""> -->
+                                                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="21.433" height="27.037" viewBox="0 0 21.433 27.037">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12.671" height="12.197" viewBox="0 0 12.671 12.197">
+                                                                                <path id="Path_4420" data-name="Path 4420" d="M38.978,25.938a2.17,2.17,0,0,0-.266-.533,2.038,2.038,0,0,0-.761-.657,2.137,2.137,0,0,0-.647-.209l-1.618-.219a.184.184,0,0,1-.124-.086l-.723-1.446a2.041,2.041,0,0,0-1.846-1.132A2.063,2.063,0,0,0,31.138,22.8l-.019.048-.466.951-.228.457a.152.152,0,0,1-.124.086l-1.608.238a1.942,1.942,0,0,0-.58.171,2.052,2.052,0,0,0-.818.685,2.112,2.112,0,0,0-.266.552,2.109,2.109,0,0,0,.533,2.1l1.17,1.123a.147.147,0,0,1,.048.124L28.5,30.924a2.022,2.022,0,0,0,.818,2,2.058,2.058,0,0,0,2.179.162l1.446-.761a.21.21,0,0,1,.152,0l1.446.752A2.065,2.065,0,0,0,37.532,30.9l-.285-1.589a.145.145,0,0,1,.048-.133l1.161-1.132a1.9,1.9,0,0,0,.257-.3,2.044,2.044,0,0,0,.266-1.8Zm-1.846.742-1.17,1.132a2.053,2.053,0,0,0-.59,1.817l.285,1.589a.14.14,0,0,1-.067.143.144.144,0,0,1-.171.019l-1.446-.742a2.059,2.059,0,0,0-1.912,0l-1.446.761a.145.145,0,0,1-.171-.019.141.141,0,0,1-.067-.143l.276-1.589a2.031,2.031,0,0,0-.609-1.817l-1.161-1.123a.139.139,0,0,1,.086-.247l1.608-.238A2.075,2.075,0,0,0,32.127,25.1v-.01l.723-1.446a.148.148,0,0,1,.143-.086.142.142,0,0,1,.143.086l.076.152.485.951.171.343A2.057,2.057,0,0,0,35.42,26.2l1.618.228a.145.145,0,0,1,.133.1.185.185,0,0,1-.038.152Z" transform="translate(-26.669 -21.406)" fill="#96f" stroke="#fff" stroke-width="0.5"/>
+                                                                              </svg>
+                                                                              
+                                                                            <path id="Path_4421" data-name="Path 4421" d="M22.967,6.437a10.46,10.46,0,0,0-7.612,17.641v7.935a.948.948,0,0,0,.447.809.987.987,0,0,0,.932.048l2.731-1.37,3.111,1.389a1.009,1.009,0,0,0,.78,0L26.469,31.5,29.2,32.87a.987.987,0,0,0,.932-.048.951.951,0,0,0,.447-.809V24.078A10.46,10.46,0,0,0,22.968,6.437Zm5.709,24.035-1.76-.875a.961.961,0,0,0-.809-.019l-3.14,1.4-3.14-1.4a.912.912,0,0,0-.809.019l-1.76.875v-4.8a10.42,10.42,0,0,0,11.418,0Zm.951-8.2a7.947,7.947,0,0,1-.951,1.009,8.541,8.541,0,0,1-11.418,0,7.947,7.947,0,0,1-.951-1.009,8.11,8.11,0,0,1-.951-1.456A8.448,8.448,0,0,1,14.4,16.9a8.563,8.563,0,0,1,17.127,0,8.448,8.448,0,0,1-.951,3.911,8.108,8.108,0,0,1-.951,1.456Z" transform="translate(-12.251 -6.187)" fill="#96f" stroke="#fff" stroke-width="0.5"/>
+                                                                          </svg> -->
+
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="21.433" height="27.037"
+                                                                        viewBox="0 0 21.433 27.037">
+                                                                        <g id="np_featured_2858532_000000"
+                                                                            transform="translate(0.25 0.25)">
+                                                                            <path id="Path_4420" data-name="Path 4420"
+                                                                                d="M38.978,25.938a2.17,2.17,0,0,0-.266-.533,2.038,2.038,0,0,0-.761-.657,2.137,2.137,0,0,0-.647-.209l-1.618-.219a.184.184,0,0,1-.124-.086l-.723-1.446a2.041,2.041,0,0,0-1.846-1.132A2.063,2.063,0,0,0,31.138,22.8l-.019.048-.466.951-.228.457a.152.152,0,0,1-.124.086l-1.608.238a1.942,1.942,0,0,0-.58.171,2.052,2.052,0,0,0-.818.685,2.112,2.112,0,0,0-.266.552,2.109,2.109,0,0,0,.533,2.1l1.17,1.123a.147.147,0,0,1,.048.124L28.5,30.924a2.022,2.022,0,0,0,.818,2,2.058,2.058,0,0,0,2.179.162l1.446-.761a.21.21,0,0,1,.152,0l1.446.752A2.065,2.065,0,0,0,37.532,30.9l-.285-1.589a.145.145,0,0,1,.048-.133l1.161-1.132a1.9,1.9,0,0,0,.257-.3,2.044,2.044,0,0,0,.266-1.8Zm-1.846.742-1.17,1.132a2.053,2.053,0,0,0-.59,1.817l.285,1.589a.14.14,0,0,1-.067.143.144.144,0,0,1-.171.019l-1.446-.742a2.059,2.059,0,0,0-1.912,0l-1.446.761a.145.145,0,0,1-.171-.019.141.141,0,0,1-.067-.143l.276-1.589a2.031,2.031,0,0,0-.609-1.817l-1.161-1.123a.139.139,0,0,1,.086-.247l1.608-.238A2.075,2.075,0,0,0,32.127,25.1v-.01l.723-1.446a.148.148,0,0,1,.143-.086.142.142,0,0,1,.143.086l.076.152.485.951.171.343A2.057,2.057,0,0,0,35.42,26.2l1.618.228a.145.145,0,0,1,.133.1.185.185,0,0,1-.038.152Z"
+                                                                                transform="translate(-22.537 -17.022)"
+                                                                                fill="#96f" stroke="#fff"
+                                                                                stroke-width="0.5" />
+                                                                            <path id="Path_4421" data-name="Path 4421"
+                                                                                d="M22.967,6.437a10.46,10.46,0,0,0-7.612,17.641v7.935a.948.948,0,0,0,.447.809.987.987,0,0,0,.932.048l2.731-1.37,3.111,1.389a1.009,1.009,0,0,0,.78,0L26.469,31.5,29.2,32.87a.987.987,0,0,0,.932-.048.951.951,0,0,0,.447-.809V24.078A10.46,10.46,0,0,0,22.968,6.437Zm5.709,24.035-1.76-.875a.961.961,0,0,0-.809-.019l-3.14,1.4-3.14-1.4a.912.912,0,0,0-.809.019l-1.76.875v-4.8a10.42,10.42,0,0,0,11.418,0Zm.951-8.2a7.947,7.947,0,0,1-.951,1.009,8.541,8.541,0,0,1-11.418,0,7.947,7.947,0,0,1-.951-1.009,8.11,8.11,0,0,1-.951-1.456A8.448,8.448,0,0,1,14.4,16.9a8.563,8.563,0,0,1,17.127,0,8.448,8.448,0,0,1-.951,3.911,8.108,8.108,0,0,1-.951,1.456Z"
+                                                                                transform="translate(-12.501 -6.437)"
+                                                                                fill="#96f" stroke="#fff"
+                                                                                stroke-width="0.5" />
+                                                                        </g>
+                                                                    </svg>
+
+
+                                                                    <span>Reward Programs</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-8 col-8">
+                                                                <ul class="card-details-list">
+                                                                    <li *ngFor="let point of val?.rewardsPrograms">
+                                                                        <span
+                                                                            class="material-icons custom_check">check</span>
+                                                                        <span>{{point}}</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12 mt-3" *ngIf="val?.listOthers">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <img src="../../../assets/images/icons/Others_stars.png"
+                                                                        alt="">
+                                                                    <span>Others</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-8 col-8">
+                                                                <ul class="card-details-list">
+                                                                    <li *ngFor="let point of val?.listOthers">
+                                                                        <span
+                                                                            class="material-icons custom_check">check</span>
+                                                                        <span>{{point}}</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div *ngIf="product?.length==0" class="noDataFound">
+                        {{finding ? "Searching....": "No Finance Product Found For Given Data"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

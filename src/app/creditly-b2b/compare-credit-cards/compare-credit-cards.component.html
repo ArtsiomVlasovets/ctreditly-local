@@ -1,0 +1,216 @@
+<!-- <p>compare-credit-cards works!</p> -->
+
+<section id="cards_compare">
+    <div class="container">
+        <div class="compare-heading">
+            <h3>Compare</h3>
+        </div>
+        <div class="">
+            <div class="scroll"  #widgetsContent>
+                <div class="inner left" (click)="scrollLeft()"></div>
+                <div class="" *ngFor="let card of cards;let i =index">
+                    <div class="table-responsive table-bordered tableSize">
+                        <table class="table">
+                            <tr class="">
+                                <div class="text-right" (click)="removeCard(i)"> <span class="material-icons">close</span> </div>
+                                <div class="text-center  ">
+                                    <img *ngIf="id==1" [src]="card?.image" class="cardImage" onerror="this.onerror=null;this.src='../../../assets/images/main_images/Group_card_compare.svg'" alt="">
+                                    <img *ngIf="id==2" [src]="card?.bank?.image" class="cardImage" onerror="this.onerror=null;this.src='../../../assets/images/main_images/Group_card_compare.svg'" alt="">
+                                    <img *ngIf="id=='AutoLoan'" [src]="card?.bank.image" class="cardImage" alt="" onerror="this.onerror=null;this.src='../../../assets/images/main_images/Group_card_compare.svg'">
+                                </div>
+                                <div class="text-center card-heading">
+                                    <h4>{{card?.name}}</h4>
+                                </div>
+                                <div class="text-center bank-img">
+                                    <!-- <img src="../../../assets/images/main_images/nyad_bank.png" alt=""> -->
+                                </div>
+                                <div class="card-apply-btn text-center" >
+                                    <button class="btn btn-md apply-now-btn" (click)="applyForCreditCard(card)">Apply Now</button>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="card-content annualFee" *ngIf="id=='1'">
+                                    <h3>Annual fee</h3>
+                                    <p>{{card?.annualFee}} SAR</p>
+                                    <span>for the first year</span>
+                                </div>
+                                <div class="card-content annualFee" *ngIf="id=='2' || id=='AutoLoan'">
+                                    <h3>All Payments Including Fees</h3>
+                                    <p>{{card?.totalPayments}} SAR</p>
+                                    <span>for the first year</span>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="card-content"  *ngIf="id=='1'">
+                                    <h3>Rewards program</h3>
+                                    <ul>
+                                        <li *ngFor="let point of card?.rewardsPrograms">
+                                            <span class="material-icons custom_check">check</span>
+                                            {{point}}
+                                        </li>
+                                        <li *ngIf="!card?.rewardsPrograms?.length">
+                                            -----
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-content"  *ngIf="id=='2' || id=='AutoLoan'">
+                                    <h3>Feature</h3>
+                                    <ul>
+                                        <li *ngFor="let point of card?.featuresList">
+                                            <span class="material-icons custom_check">check</span>
+                                            {{point}}
+                                        </li>
+                                        <li *ngIf="!card?.featuresList?.length">
+                                            -----
+                                        </li>
+                                    </ul>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="card-content"  *ngIf="id=='1'">
+                                    <h3>Others</h3>
+                                    <ul>
+                                        <li  *ngFor="let point of card?.listOthers">
+                                            <span class="material-icons custom_check">check</span>
+                                            {{point}}
+                                        </li>
+                                        <li *ngIf="!card?.listOthers?.length">
+                                            -----
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-content"  *ngIf="id=='2' || id=='AutoLoan'">
+                                    <h3>Eligibility criteria</h3>
+                                    <ul>
+                                        <li *ngFor="let point of card?.eligibilityCriteriaList">
+                                            <span class="material-icons custom_check">check</span>
+                                            {{point}}
+                                        </li>
+                                        <li *ngIf="!card?.eligibilityCriteriaList?.length">
+                                            -----
+                                        </li>
+                                    </ul>
+                                </div>
+                            </tr>
+                           
+                        </table>
+                    </div>
+                </div>
+               
+                <div class="col-md-3" *ngIf="cards?.length!=5">
+                    <div class="table-responsive table-bordered tableSize">
+                        <table class="table">
+                            <div class="text-center">
+                                <button class="btn btn-md add-card-btn" (click)="navigateToCardsList()">Add a {{id==1?'card':'finance'}}
+                                    +</button>
+                            </div>
+                        </table>
+                    </div>
+                </div>
+                <div class="inner right" (click)="scrollRight()"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- OLD UI -->
+
+<section id="cards_compare " class="d-none">
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table custom-table">
+                <thead>
+                    <th></th>
+                    <th>Feature 1</th>
+                    <th>Feature 2</th>
+                    <th>Feature 3</th>
+                    <th>Feature 4</th>
+                    <th>Feature 5</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="compare_card_td">
+                            <h4>Visa Platinum Credit Card</h4>
+                            <div class="bank_image">
+                                <img src="../../../assets/images/main_images/nyad_bank.png" alt="">
+                            </div>
+                            <div class="card_image">
+                                <img src="../../../assets/images/main_images/Group_card_compare.svg" alt="">
+                            </div>
+                        </td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons">close</span></td>
+                    </tr>
+                    <tr>
+                        <td class="compare_card_td">
+                            <h4>Visa Platinum Credit Card</h4>
+                            <div class="bank_image">
+                                <img src="../../../assets/images/main_images/nyad_bank.png" alt="">
+                            </div>
+                            <div class="card_image">
+                                <img src="../../../assets/images/main_images/Group_card_compare.svg" alt="">
+                            </div>
+                        </td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons">close</span></td>
+                    </tr>
+                    <tr>
+                        <td class="compare_card_td">
+                            <h4>Visa Platinum Credit Card</h4>
+                            <div class="bank_image">
+                                <img src="../../../assets/images/main_images/nyad_bank.png" alt="">
+                            </div>
+                            <div class="card_image">
+                                <img src="../../../assets/images/main_images/Group_card_compare.svg" alt="">
+                            </div>
+                        </td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons">close</span></td>
+                    </tr>
+                    <tr>
+                        <td class="compare_card_td">
+                            <h4>Visa Platinum Credit Card</h4>
+                            <div class="bank_image">
+                                <img src="../../../assets/images/main_images/nyad_bank.png" alt="">
+                            </div>
+                            <div class="card_image">
+                                <img src="../../../assets/images/main_images/Group_card_compare.svg" alt="">
+                            </div>
+                        </td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons">close</span></td>
+                    </tr>
+                    <tr>
+                        <td class="compare_card_td">
+                            <h4>Visa Platinum Credit Card</h4>
+                            <div class="bank_image">
+                                <img src="../../../assets/images/main_images/nyad_bank.png" alt="">
+                            </div>
+                            <div class="card_image">
+                                <img src="../../../assets/images/main_images/Group_card_compare.svg" alt="">
+                            </div>
+                        </td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons custom_check">check</span></td>
+                        <td><span class="material-icons">close</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

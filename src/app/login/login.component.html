@@ -1,0 +1,119 @@
+<!-- <p>login works!</p> -->
+
+<section id="login_page">
+    <!-- <div class=""> -->
+    <div class="background_shapes">
+        <div class="top_background_shape">
+
+        </div>
+        <div class="bottom_background_shape">
+
+        </div>
+    </div>
+    <!-- <div class="container"> -->
+    <div class="login_card">
+        <div class="creditly_logo" (click)="gotoCardsSearchPage() ">
+            <a>
+                <img src="../../assets/images/header-images/header-main-logo.png" alt="">
+            </a>
+            <h2>Creditly</h2>
+        </div>
+        <div class="card custom-card">
+            <div class="card-body">
+                <div class="main_heading">
+                    <h4 *ngIf="!showForgotPwdFlag">Login to your account</h4>
+                    <div *ngIf="showForgotPwdFlag">
+                        <h4 *ngIf="!innerForgotPwdFlag">Forgot Password</h4>
+                        <h4 *ngIf="innerForgotPwdFlag">Update Password</h4>
+                    </div>
+                </div>
+                <div class="login_form">
+                    <form *ngIf="!showForgotPwdFlag" [formGroup]="formGroup" (ngSubmit)="loginProcess()">
+                        <div class="form-group">
+                            <label for="">Mobile number</label>
+                            <input type="tel" class="form-control" placeholder="Enter mobile number"
+                                formControlName="Mobile"
+                                [ngClass]="{validationClass: loginFormValidationFlag && formGroup.controls['Mobile'].errors}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Password</label>
+                            <input type="password" class="form-control" placeholder="Enter password"
+                                formControlName="password"
+                                [ngClass]="{validationClass: loginFormValidationFlag && formGroup.controls['password'].errors}">
+                        </div>
+                        <div class="text-center mt-5">
+                            <!-- (click)="gotoProfile()" -->
+                            <button class="btn btn-md login_btn" [disabled]="submit">Login</button>
+                            <div class="go_signup">
+                                <p>Don't have an account? <a [routerLink]="['/register']">Sign up</a></p>
+                                <p><a class="forgot_text" (click)="forgotPassword()">Forgot Password</a></p>
+                            </div>
+                        </div>
+                        <div class="disclaimer_text">
+                            <p>Disclaimer, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor
+                                sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                labore et dolore magna aliqua.</p>
+                        </div>
+                    </form>
+                    <div *ngIf="showForgotPwdFlag">
+                        <div *ngIf="!innerForgotPwdFlag">
+                            <div class="form-group">
+                                <label for="">Nationality ID/Iqama</label>
+                                <input type="tel" class="form-control" [(ngModel)]="forgotIqmaId"
+                                    placeholder="Enter Nationality ID/Iqama"
+                                    [ngClass]="{validationClass: validIqamaForgotFlag == true}" />
+                            </div>
+                            <div class="text-center mt-5">
+                                <button class="btn btn-md login_btn" [disabled]="sendOTPFlag"
+                                    (click)="sendOTP()">Submit</button>
+                                <div class="go_signup">
+                                    <!-- <p>Don't have an account? <a [routerLink]="['/register']">Sign up</a></p> -->
+                                    <p><a class="forgot_text" (click)="goToLogin()">Remember Password?</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <form [formGroup]="updatePasswordForm" *ngIf="innerForgotPwdFlag">
+                            <div class="form-group">
+                                <label for="">OTP</label>
+                                <input type="tel" class="form-control" formControlName="otp" placeholder="Enter OTP"
+                                    [ngClass]="{validationClass: updatePwdFormFlag && updatePasswordForm.controls['otp'].errors}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">New Password</label>
+                                <input type="password" class="form-control" formControlName="newPwd"
+                                    placeholder="Enter New Password"
+                                    [ngClass]="{validationClass: updatePwdFormFlag && updatePasswordForm.controls['newPwd'].errors}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">Confirm Password</label>
+                                <input type="password" class="form-control" formControlName="confirmPwd"
+                                    placeholder="Enter Confirm Password"
+                                    [ngClass]="{validationClass: updatePwdFormFlag && updatePasswordForm.controls['confirmPwd'].errors}" />
+                            </div>
+                            <div class="text-center mt-5">
+                                <button class="btn btn-md login_btn" [disabled]="updatePwdSubmitFlag"
+                                    (click)="updatePassword()">Update</button>
+                                <div class="go_signup">
+                                    <p *ngIf="OTPExpireTime>0"><a class="forgot_text">Resent OTP in {{OTPExpireTime}}
+                                            seconds</a></p>
+                                    <!-- <p *ngIf="OTPExpireTime==0"><a class="forgot_text" (click)="resendOTP()">Resend
+                                            OTP</a></p> -->
+
+                                    <!-- <span *ngIf="timeLeft>0">Resent code in {{timeLeft}} seconds</span>
+                                    <span *ngIf="timeLeft==0" (click)="resendOtp2()" [disabled]="timeLeft==-1">Resend
+                                        Code</span> -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="terms_conditions">
+        <a>Privacy & Terms</a>
+    </div>
+    <!-- </div> -->
+    <!-- </div> -->
+</section>

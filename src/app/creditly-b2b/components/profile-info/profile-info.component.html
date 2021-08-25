@@ -1,0 +1,351 @@
+<div class="container">
+  <div class="row mb-4">
+    <div class="">
+      <p class="profile-title pl-4" >Pending requests</p>
+      <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)">
+        <!-- <div ngxSlickItem class="slide">
+          <div class="custom-card card">
+            <div class="card-body f-12 px-3 py-4">
+              <div class="cc-img">
+                <img src="../../../../assets/images/main_images/visa_dummy_image.png" width="80px">
+              </div>
+              <div class="cc-title">
+                <p class="mb-1">Credit card</p>
+                <p class="f-18 c-txt">Visa Platinum Credit Card</p>
+              </div>
+              <div>
+                <p class="mb-1"><span><b>Status</b></span> &nbsp;
+                  <span>waiting bank approval</span>
+                </p>
+                <p class="mb-1"><span><b>Req Date</b></span> &nbsp;
+                  <span>April 7, 2021</span>
+                </p>
+                <p class=""><span><b>Req #</b></span> &nbsp;
+                  <span>4987563421</span>
+                </p>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-sm cc-btn-dark">view</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ngxSlickItem class="slide">
+          <div class="custom-card card">
+            <div class="card-body f-12 px-3 py-4">
+              <div class="cc-img">
+                <img src="../../../../assets/images/main_images/visa_dummy_image.png" width="80px">
+              </div>
+              <div class="cc-title">
+                <p class="mb-1">Credit card</p>
+                <p class="f-18 c-txt">Visa Platinum Credit Card</p>
+              </div>
+              <div>
+                <p class="mb-1"><span><b>Status</b></span> &nbsp;
+                  <span>waiting bank approval</span>
+                </p>
+                <p class="mb-1"><span><b>Req Date</b></span> &nbsp;
+                  <span>April 7, 2021</span>
+                </p>
+                <p class=""><span><b>Req #</b></span> &nbsp;
+                  <span>4987563421</span>
+                </p>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-sm cc-btn-primary">upload</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ngxSlickItem class="slide">
+          <div class="custom-card card">
+            <div class="card-body f-12 px-3 py-4">
+              <div class="cc-title">
+                <p class="mb-1">Credit card</p>
+                <p class="f-18 c-txt">Visa Platinum Credit Card</p>
+              </div>
+              <div>
+                <p class="mb-1"><span><b>Rejection reason</b></span> &nbsp;
+                  <span>Rejection reason will be detailed here in this area</span>
+                </p>
+                <p class="mb-1"><span><b>Req Date</b></span> &nbsp;
+                  <span>April 7, 2021</span>
+                </p>
+                <p class=""><span><b>Req #</b></span> &nbsp;
+                  <span>4987563421</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ngxSlickItem class="slide">
+          <div class="custom-card card">
+            <div class="card-body f-12 px-3 py-4">
+              <div class="cc-img">
+                <img src="../../../../assets/images/main_images/visa_dummy_image.png" width="80px">
+              </div>
+              <div class="cc-title">
+                <p class="mb-1">Credit card</p>
+                <p class="f-18 c-txt">Visa Platinum Credit Card</p>
+              </div>
+              <div>
+                <p class="mb-1"><span><b>Status</b></span> &nbsp;
+                  <span>waiting bank approval</span>
+                </p>
+                <p class="mb-1"><span><b>Req Date</b></span> &nbsp;
+                  <span>April 7, 2021</span>
+                </p>
+                <p class=""><span><b>Req #</b></span> &nbsp;
+                  <span>4987563421</span>
+                </p>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-sm cc-btn-dark">view</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <ng-container *ngFor="let req of request">
+          <div ngxSlickItem class="slide" *ngIf="req?.status==101">
+
+            <div class="custom-card card">
+              <div class="card-body f-12 px-3 py-4">
+                <div class="cc-img">
+                  <img onerror="this.onerror=null;this.src='../../../assets/images/icons/card.png';"
+                    src="{{req?.card?req?.card?.bank?.image:req?.loan?.bank?.image}}" width="80px">
+                </div>
+                <div class="cc-title">
+                  <p class="mb-1">{{req?.card?"Credit card":"Finance"}}</p>
+                  <p class="f-18 c-txt">{{req?.card? req?.card?.name :req?.loan?.name}}</p>
+                </div>
+                <div>
+                  <p class="mb-1"><span><b>Status</b></span> &nbsp;
+                    <span>{{req?.requestStatus?.description}}</span>
+                  </p>
+                  <p class="mb-1"><span><b>Req Date</b></span> &nbsp;
+                    <span>{{req?.request_datetime | date}}</span>
+                  </p>
+                  <p class=""><span><b>Req #</b></span> &nbsp;
+                    <span>{{req?.reference_ID}}</span>
+                  </p>
+                </div>
+                <div class="text-center" *ngIf="req?.requestStatus?.code!=107">
+                  <button class="btn btn-sm cc-btn-primary"  data-toggle="modal" data-target="#exampleModalCenter">upload</button>
+                </div>
+                <div class="text-center mt-1" *ngIf="req?.requestStatus?.code!=107">
+                  <button class="btn btn-sm cc-btn-danger" data-toggle="modal" data-target="#confirm" (click)="cancel(req?.id,req?.reference_ID)">cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <!-- <div ngxSlickItem class="slide">
+          <div class="custom-card card">
+            <div class="card-body f-12 px-3 py-4">
+              <div class="cc-title">
+                <p class="mb-1">Credit card</p>
+                <p class="f-18 c-txt">Visa Platinum Credit Card</p>
+              </div>
+              <div>
+                <p class="mb-2"><span><b>Rejection reason</b></span> &nbsp;
+                  <span>Rejection reason will be detailed here in this area</span>
+                </p>
+                <p class="mb-2"><span><b>Req Date</b></span> &nbsp;
+                  <span>April 7, 2021</span>
+                </p>
+                <p class=""><span><b>Req #</b></span> &nbsp;
+                  <span>4987563421</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+      </ngx-slick-carousel>
+
+    </div>
+    <div *ngIf="request?.length==0" class="noDataFound">
+      {{apiService.finding ? "Searching....": "No Request Found"}}
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modalClass" role="document">
+    <div class="modal-content modal-con">
+      <div class="modal-header">
+        <h5 class="head" id="exampleModalLongTitle">Upload missing documents</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row  mb-3">
+            <div class="col-sm-5 col-head">
+              ID
+            </div>
+            <div class="col-sm-7 button" *ngIf="idState==1">
+              <span class="material-icons-outlined">
+                file_upload
+              </span>
+              <p>upload</p>
+              <input id="file" type="file" class="form-control" (change)="onFileChange1($event)" accept="application/pdf,image/*">
+            </div>
+
+            <div class="col-sm-7 pdf" *ngIf="idState==2">
+              <div class="span2">
+                <span class="icon-asset material-icons ng-star-inserted ">
+                  picture_as_pdf
+                </span>
+                <p>{{fileName1}}</p>
+              </div>
+              <span class="material-icons-outlined span1">
+                clear
+              </span>
+            </div>
+            <div class="col-sm-7 button" *ngIf="idState==4">
+              <p>uploaded successfully</p>
+            </div>
+            <div class="col-sm-7" *ngIf="idState==3">
+              <div class="upload">
+                <p>{{fileName1}}</p>
+                <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                  fill="#000000">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+              </div>
+              <div class="progress bg-size">
+                <div class="progress-bar bg-color bg-size" role="progressbar" [ngStyle]="{'width': progress.p1 +'%'}" aria-valuenow="25"
+                  aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="upload">
+                <p class="svg">{{progress.p1}}% done</p>
+              </div>
+             
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-5 col-head">
+              Salary Certificate
+            </div>
+            <div class="col-sm-7 button" *ngIf="salaryState==1">
+              <span class="material-icons-outlined">
+                file_upload
+              </span>
+              <p>upload</p>
+              <input id="file" type="file" class="form-control" (change)="onFileChange2($event)" accept="application/pdf,image/*">
+            </div>
+            <div class="col-sm-7 button" *ngIf="salaryState==4">
+              <p>uploaded successfully</p>
+            </div>
+            <div class="col-sm-7 pdf" *ngIf="salaryState==2">
+              <div class="span2">
+                <span class="icon-asset material-icons ng-star-inserted ">
+                  picture_as_pdf
+                </span>
+                <p>{{fileName2}}</p>
+              </div>
+              <span class="material-icons-outlined span1">
+                clear
+              </span>
+            </div>
+
+            <div class="col-sm-7" *ngIf="salaryState==3">
+              <div class="upload">
+                <p>{{fileName2}}</p>
+                <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                  fill="#000000">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+              </div>
+              <div class="progress bg-size">
+                <div class="progress-bar bg-color bg-size" role="progressbar" [ngStyle]="{'width': progress.p2 +'%'}" aria-valuenow="25"
+                  aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="upload">
+                <p class="svg">{{ progress.p2 }}% done</p>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3 ">
+            <div class="col-sm-5 col-head">
+              Other
+            </div>
+            <div class="col-sm-7 button" *ngIf="otherState==1">
+              <span class="material-icons-outlined">
+                file_upload
+              </span>
+              <p>upload</p>
+              <input id="file" type="file" class="form-control" (change)="onFileChange3($event)" accept="application/pdf,image/*">
+            </div>
+            <div class="col-sm-7 button" *ngIf="salaryState==4">
+              <p>uploaded successfully</p>
+            </div>
+            <div class="col-sm-7 pdf" *ngIf="otherState==2">
+              <div class="span2">
+                <span class="icon-asset material-icons ng-star-inserted ">
+                  picture_as_pdf
+                </span>
+                <p>{{fileName3}}</p>
+              </div>
+              <span class="material-icons-outlined span1">
+                clear
+              </span>
+            </div>
+
+            <div class="col-sm-7" *ngIf="otherState==3">
+              <div class="upload">
+                <p>{{fileName3}}</p>
+                <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                  fill="#000000">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+              </div>
+              <div class="progress bg-size">
+                <div class="progress-bar bg-color bg-size" role="progressbar" [ngStyle]="{'width': progress.p3 +'%'}" aria-valuenow="25"
+                  aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="upload">
+                <p class="svg">{{progress.p3}}% done</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-2 mb-3">
+        <button style="width: 120px;" (click)="submit()" [disabled]="submitReq" class="btn btn-sm cc-btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmTitle"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-con">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="confirmBtn">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to cancel request no. {{reqCancel}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" [disabled]="submitReq" (click)="cancelByConfirm()">Confirm</button>
+        <button type="button" class="btn btn-secondary" (click)="click()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
