@@ -25,7 +25,8 @@ export class CardsSearchLandingPageComponent implements OnInit {
   finding = false;
   financeProduct: Array<any> = [];
   complainFilter: Array<any> = [];
-
+  twotimes = 2;
+  threetimes = 3;
   Shariah_Compliant = false;
   AnnualFeeChk = false;
   mainData = {
@@ -260,5 +261,7 @@ export class CardsSearchLandingPageComponent implements OnInit {
   public navigateToBankPage(): void {
     this.router.navigateByUrl('creditly/bank-account');
   }
+
+  
 
 }

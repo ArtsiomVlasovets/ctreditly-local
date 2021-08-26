@@ -50,7 +50,8 @@ import { BankAccountOpenComponent } from './pages/bank-account-open/bank-account
     AuoLeaseImageComponent,
     ForgotPasswordComponent,
     SharedProductViewComponent,
-    BankAccountOpenComponent
+    BankAccountOpenComponent,
+    
   ],
   imports: [
     CommonModule,

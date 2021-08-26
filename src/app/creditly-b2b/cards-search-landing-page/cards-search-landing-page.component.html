@@ -318,8 +318,9 @@
             </div>
         </div>
     </div>
+    
     <div>
-        <div class="square_bg">
+        <div class="square_bg ">
             <div class="container custom_container">
                 <div class="layout-container">
                     <div class="disclaimer_text">
@@ -390,6 +391,7 @@
                 </div>
             </div>
         </div>
+       
         <div class="triangle_bg">
             <div class="container">
                 <div class="layout-container">
@@ -468,7 +470,40 @@
                     <div>
                         <div class="list_bank_images">
                             <div class="images_position mb-2">
-                                <div class="col-md-12">
+                                <div class="row">
+                                    <ng-container *ngFor="let bank of banksList;let i=index">
+                                        
+                                        <ng-container *ngIf="i === 8">
+                                                <div class="col-md-3 pb-5 borderleft borderRight">
+                                                   
+                                                </div>
+                                                <div class="col-md-3 pb-5 borderleft borderRight">
+                                                   
+                                                </div>
+                                        </ng-container>
+
+                                    
+                                        <ng-container *ngIf="i === 11">
+                                            <div class="col-md-3 pb-5 borderleft borderRight">
+                                                
+                                            </div>
+                                            <div class="col-md-3 pb-5 borderleft borderRight">
+                                                
+                                            </div>
+                                            <div class="col-md-3 pb-5 borderleft borderRight">
+                                               
+                                            </div>
+                                        </ng-container>
+                                        
+                                        <div class="col-md-3 pb-5 borderleft borderRight" *ngIf="i != 10">
+                                            
+                                            <div class="slide">
+                                                <img src="{{ bank.image }}" alt="" width="100%">
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    
+                                    
                                     <!-- <div class="row">
                                         <div class="col-md-3 col-sm-6 col-6" *ngFor="let bank of banksList;let i=index">
                                             <img src={{bank?.image}} alt="image">
@@ -477,12 +512,12 @@
                                     <!--  (init)="slickInit($event)"
                                     (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
                                     (beforeChange)="beforeChange($event)" -->
-                                    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
+                                    <!-- <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
                                         [config]="slideConfig">
                                         <div ngxSlickItem *ngFor="let bank of banksList;let i=index" class="slide">
                                             <img src="{{ bank.image }}" alt="" width="100%">
                                         </div>
-                                    </ngx-slick-carousel>
+                                    </ngx-slick-carousel> -->
                                 </div>
                             </div>
                         </div>
