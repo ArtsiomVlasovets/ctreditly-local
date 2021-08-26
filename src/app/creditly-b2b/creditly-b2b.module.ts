@@ -30,6 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedProductViewComponent } from './shared-product-view/shared-product-view.component';
 import { ReCaptchaModule } from 'angular-recaptcha3';
 import { BankAccountOpenComponent } from './pages/bank-account-open/bank-account-open.component';
+import { AnimationSectionComponent } from './animation-section/animation-section.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { BankAccountOpenComponent } from './pages/bank-account-open/bank-account
     ForgotPasswordComponent,
     SharedProductViewComponent,
     BankAccountOpenComponent,
+    AnimationSectionComponent,
     
   ],
   imports: [

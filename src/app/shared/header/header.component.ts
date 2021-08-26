@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
     // Get the offset position of the navbar
     var sticky = navbar.offsetTop;
-    if (window.pageYOffset > sticky) {
+    if (window.pageYOffset > 30) {
       // navbar.classList.add("sticky")
       this.applyStickyStyles = true;
     } else {
