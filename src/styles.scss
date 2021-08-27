@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~angular-notifier/styles";
-@import 'material-icons/iconfont/material-icons.scss';
+@import "material-icons/iconfont/material-icons.scss";
 @import "./variable_styles.scss";
 
 /* body {
@@ -19,13 +19,12 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-repeat: no-repeat;
+  background-position: center;
   @include mobile {
     margin: 0px 0px;
   }
 }
-
 
 body,
 h1,
@@ -34,8 +33,7 @@ h3,
 h4,
 h5,
 p,
-a
-{
+a {
   font-family: "Cairo", sans-serif !important;
 }
 
@@ -48,14 +46,14 @@ a
   ul li {
     padding: 7px 0px;
     &:hover {
-      background-color: #09BC8A;
+      background-color: #09bc8a;
       color: #fff;
     }
     a {
       padding: 5px 12px;
     }
   }
-  
+
   .dropdown-menu.show {
     left: 31px !important;
   }
@@ -63,7 +61,6 @@ a
     display: none;
   }
 }
-
 
 /* .container {
   max-width: 912px !important;
@@ -84,38 +81,37 @@ button:active,
 button:hover,
 label:focus,
 .btn:active,
-.btn.active
- {
+.btn.active {
   outline: 0px !important;
-//   -webkit-appearance: none;
+  //   -webkit-appearance: none;
   box-shadow: none !important;
 }
 
 select:focus {
-    outline: 0px !important;
-    // -webkit-appearance: none;
-    box-shadow: none !important;
+  outline: 0px !important;
+  // -webkit-appearance: none;
+  box-shadow: none !important;
+}
+
+.theme_container {
+  max-width: 912px;
+  margin: auto;
+  .col-md-12,
+  .col-md-3,
+  .col-md-4,
+  .col-md-6 {
+    // border-left: dotted 2px #ccc;
+    // border-right: dotted 2px #ccc;
+    // padding-left: 0px;
   }
+}
 
-
-  .theme_container {
-    max-width: 912px;
-    margin: auto;
-    .col-md-12, .col-md-3, .col-md-4, .col-md-6 {
-      // border-left: dotted 2px #ccc;
-      // border-right: dotted 2px #ccc;
-      // padding-left: 0px;
-    }
-  }
-
-  
-
-   /* The container */
+/* The container */
 .container {
   display: block;
   position: relative;
   padding-left: 35px;
-  margin-bottom: 12px;
+  // margin-bottom: 12px;
   cursor: pointer;
   font-size: 16px;
   -webkit-user-select: none;
@@ -125,7 +121,7 @@ select:focus {
 }
 
 /* Hide the browser's default radio button */
-.container input[type='radio'] {
+.container input[type="radio"] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -181,4 +177,4 @@ select:focus {
 }
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";

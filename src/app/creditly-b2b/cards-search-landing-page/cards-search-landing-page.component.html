@@ -44,7 +44,7 @@
         </div>
         <div class="container mainPart-container">
 
-            <div class="layout-container">
+            <div class="layout-container padding-b400">
                 <div class="layout-content">
                     <!-- column-layout -->
                     <div class="col-md-12">
@@ -121,7 +121,7 @@
     <div>
         <div>
             <div class="container">
-                <div class="layout-container">
+                <div class="layout-container padding-t400">
                     <p class="looking_for">LOOKING FOR</p>
                     <!-- nav options -->
                     <ul class="nav nav-pills" id="pills-tab" role="tablist">
@@ -163,7 +163,7 @@
                             aria-labelledby="pills-contact-tab">
                             <div class="filter-section f-s">
                                 <form [formGroup]="autoLeaseFinanceForm">
-                                    <div class="container">
+                                    
                                         <div class="row py-3 mb-3 d-none">
                                             <div class="col-md-3">
                                                 <p>Im interested in</p>
@@ -301,7 +301,7 @@
                                                 <!-- </div> -->
                                             </div>
                                         </div>
-                                    </div>
+                                    
                                 </form>
                             </div>
                         </div>
@@ -319,7 +319,7 @@
         </div>
     </div>
     
-    <div>
+    <div >
         <div class="square_bg ">
             <div class="container custom_container">
                 <div class="layout-container">
@@ -388,10 +388,14 @@
                             </div>
                         </div>
                     </div>
+                   
+                       
+                   
                 </div>
+               
             </div>
         </div>
-       <app-animation-section></app-animation-section>
+        <app-animation-section></app-animation-section>
         <!-- <div class="triangle_bg">
             <div class="container">
                 <div class="layout-container">
@@ -402,16 +406,20 @@
             </div>
         </div> -->
         <div class="register_section">
-            <div class="text-center">
-                <button class="btn btn-md register_now_btn" (click)="navigateToRegister()">Register Now</button>
-                <p>Takes less than a minute, and completely FREE!</p>
+            <div class="container">
+                <div class="layout-container">
+                    <div class="text-center">
+                        <button class="btn btn-md register_now_btn" (click)="navigateToRegister()">Register Now</button>
+                        <p>Takes less than a minute, and completely FREE!</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div>
         <div class="why_creditly">
             <div class="container">
-                <div class="layout-container">
+                <div class="layout-container pt-5 pb-5">
                     <div class="disclaimer_text main_topic">
                         <p class="title one">Why Creditly</p>
                     </div>
@@ -462,39 +470,39 @@
         <div class="our_partners">
             <div class="container">
                 <div class="layout-container">
-                    <div class="disclaimer_text">
+                    <div class="disclaimer_text pt-5">
                         <p class="title">Our partners</p>
                         <!-- <p class="content">We invest in the best security practices and resources to ensure the highest level of security</p> -->
                     </div>
-                    <div>
+                    <div class="pb-5">
                         <div class="list_bank_images">
                             <div class="images_position mb-2">
                                 <div class="row">
                                     <ng-container *ngFor="let bank of banksList;let i=index">
                                         
                                         <ng-container *ngIf="i === 8">
-                                                <div class="col-md-3 pb-5 borderleft borderRight">
+                                                <div class="col-md-3 pb-5 ">
                                                    
                                                 </div>
-                                                <div class="col-md-3 pb-5 borderleft borderRight">
+                                                <div class="col-md-3 pb-5 ">
                                                    
                                                 </div>
                                         </ng-container>
 
                                     
                                         <ng-container *ngIf="i === 11">
-                                            <div class="col-md-3 pb-5 borderleft borderRight">
+                                            <div class="col-md-3 pb-5 ">
                                                 
                                             </div>
-                                            <div class="col-md-3 pb-5 borderleft borderRight">
+                                            <div class="col-md-3 pb-5 ">
                                                 
                                             </div>
-                                            <div class="col-md-3 pb-5 borderleft borderRight">
+                                            <div class="col-md-3 pb-5 ">
                                                
                                             </div>
                                         </ng-container>
                                         
-                                        <div class="col-md-3 pb-5 borderleft borderRight" *ngIf="i != 10">
+                                        <div class="col-md-3 pb-5" *ngIf="i != 10">
                                             
                                             <div class="slide">
                                                 <img src="{{ bank.image }}" alt="" width="100%">

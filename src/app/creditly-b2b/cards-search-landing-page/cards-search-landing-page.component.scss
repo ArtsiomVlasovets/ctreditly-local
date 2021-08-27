@@ -69,7 +69,7 @@ input[type="radio"]:checked {
   width: 100%;
   max-width: 1080px;
   margin: 0 16px;
-  background-image: none !important;
+  // background-image: none !important;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -189,10 +189,10 @@ input[type="radio"]:checked {
 }
 
 #cards_search_landing_page {
-  margin-top: 400px;
-  @include mobile {
-    margin-top: 100px;
-  }
+  // margin-top: 400px;
+  // @include mobile {
+  //   margin-top: 100px;
+  // }
   /*  background: url(../../assets/images/main_images/Component_background_lines.svg) repeat 0 0;
   background-repeat: no-repeat;
   background-position: center; */
@@ -205,7 +205,7 @@ input[type="radio"]:checked {
   .sky_background {
     // background: #0080FF 0% 0% no-repeat padding-box;
     background-color: $primary_sky_blue;
-    padding: 20px 0px;
+    // padding: 20px 0px;
     // background-color: #EDF4FF;
     .content {
       // padding: 30px 0px;
@@ -329,13 +329,13 @@ input[type="radio"]:checked {
 .square_bg {
   background-color: #282f3a;
   .custom_container {
-    padding: 30px 0px 20px;
+    // padding: 30px 0px 20px;
     @include mobile {
       padding-left: 30px;
     }
   }
   .disclaimer_text {
-    margin: 50px 0px;
+    padding: 80px 0px;
     .title {
       color: $primary_green;
       border-left: solid 1px $primary_green;
@@ -376,6 +376,7 @@ input[type="radio"]:checked {
     // margin-top: 60px;
     max-width: 400px;
     margin: 60px auto 0px auto;
+    padding-bottom: 20px;
     h6 {
       color: $primary_green;
       font-size: 20px;
@@ -423,12 +424,13 @@ input[type="radio"]:checked {
   }
   p {
     font-size: 15px;
-    margin: 20px;
+    margin: 0;
+    padding: 20px;
   }
 }
 
 .why_creditly {
-  padding: 60px 0px;
+  // padding: 60px 0px;
   .col-md-3 {
     padding-left: 0px;
   }
@@ -471,8 +473,13 @@ input[type="radio"]:checked {
   margin-bottom: -342px;
   height: 586px; */
 
+  .slide {
+    max-width: 140px;
+    margin: auto;
+  }
+
   background: #ebebec;
-  padding: 25px 0px;
+  // padding: 25px 0px;
   height: 100%;
   img {
     background: transparent;
@@ -488,6 +495,7 @@ input[type="radio"]:checked {
       border-left: solid 1px #000 !important;
       padding-left: 14px;
       font-size: 24px;
+      margin-bottom: 50px;
     }
     .content {
       color: #777d90;
@@ -507,11 +515,12 @@ input[type="radio"]:checked {
       }
       img {
         width: 100%;
-        max-width: 200px;
-        max-height: 100px;
-        height: 100%;
-        margin: auto;
-        border: solid 1px #ccc;
+        max-height: 75px;
+        // max-width: 200px;
+        // max-height: 100px;
+        // height: 100%;
+        // margin: auto;
+        // border: solid 1px #ccc;
       }
       .col-md-3 {
         text-align: center;
@@ -528,6 +537,10 @@ input[type="radio"]:checked {
 }
 
 /*  For Tabs */
+
+#pills-tabContent {
+  padding: 20px 0;
+}
 
 .nav-pills .nav-link.active {
   background-color: #fff;
@@ -619,8 +632,16 @@ input[type="radio"]:checked {
 }
 
 .filter-section {
-  background-color: $primary_sky_blue;
-  padding: 20px 20px;
+  // background-color: $primary_sky_blue;
+  padding: 40px 0px;
+}
+
+.padding-t400 {
+  padding-top: 400px;
+
+  @include mobile {
+    padding-top: 100px;
+  }
 }
 
 .are_you_from {
