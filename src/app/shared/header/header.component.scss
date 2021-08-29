@@ -4,6 +4,14 @@
   position: relative;
   // z-index: 1;
   transition: all 0.9s ease;
+
+  @include extrasmall {
+    .container,
+    .container-fluid {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 }
 
 .headerStickyClass {
@@ -332,9 +340,11 @@ h2 {
     transform: rotate(90deg);
     margin-right: -3px;
     margin-bottom: -1px;
+    width: 17px;
   }
   .right-arrow {
     margin-top: 1px;
+    width: 16px;
   }
 }
 .mobile-anchor-text {
@@ -411,6 +421,9 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include mobile {
+    margin-top: 20px;
+  }
   .right_mobile_logo {
     display: flex;
     align-items: center;
@@ -427,9 +440,9 @@ h2 {
   }
 }
 .black-bg-transparent {
-  background: transparent linear-gradient(203deg, #fff 20%, #000 0%) 20% 0%
+  background: transparent linear-gradient(200deg, #fff 20%, #000 0%) 20% 0%
     no-repeat padding-box;
-  height: 600px;
+  height: 635px;
   padding-top: 85px;
   ul {
     padding-left: 10px;

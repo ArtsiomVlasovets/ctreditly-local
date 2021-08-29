@@ -1,8 +1,5 @@
-
-$primary_green : #09BC8A;
-$primary_sky_blue : #EDF4FF; 
-
-
+$primary_green: #09bc8a;
+$primary_sky_blue: #edf4ff;
 
 //  ********* Media Queries For Desktop  ************
 
@@ -10,7 +7,7 @@ $for-desktop: 1200px;
 
 @mixin desktop {
   @media screen and (max-width: #{ $for-desktop }) {
-    @content; 
+    @content;
   }
 }
 
@@ -20,7 +17,7 @@ $tab: 991px;
 
 @mixin tab {
   @media screen and (max-width: #{ $tab }) {
-   @content;
+    @content;
   }
 }
 
@@ -33,26 +30,33 @@ $mobile: 767px;
     @content;
   }
 }
+
+$extrasmall: 530px;
+
+@mixin extrasmall {
+  @media screen and (max-width: #{ $extrasmall }) {
+    @content;
+  }
+}
+
 .validationClass {
   border-bottom: solid 1px red !important;
-  
 }
 .validationClass::placeholder {
   color: red;
   opacity: 1; /* Firefox */
 }
-.validationPClass{
-  color:red;
+.validationPClass {
+  color: red;
   font-size: 13px;
 }
 button:disabled {
-  background: #dddddd!important;
+  background: #dddddd !important;
 }
-.noDataFound{
+.noDataFound {
   font-size: 22px;
   text-align: center;
   margin-top: 80px;
   color: #5acaa1;
   font-weight: 600;
-
 }

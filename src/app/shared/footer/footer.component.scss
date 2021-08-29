@@ -28,7 +28,7 @@
   cursor: pointer;
   z-index: 1;
   @include mobile {
-    top: 130px;
+    bottom: 130px;
   }
 }
 .up-arrow {
@@ -48,6 +48,12 @@
   // top: 2739px;
   position: relative;
   margin-top: -340px;
+
+  @include extrasmall {
+    .layout-container {
+      background-image: none;
+    }
+  }
   .footer_curve {
     position: relative;
     // left: -2.6884765625px;
@@ -62,7 +68,7 @@
     padding: 0px 0px;
     @include mobile {
       clip-path: polygon(0% 0%, 100% 18%, 100% 100%, 0% 100%);
-      height: 1115px;
+      height: auto;
     }
     .footer_logo_part {
       margin-top: 100px;
@@ -141,6 +147,10 @@
       flex-direction: column;
       text-align: center;
       align-items: center;
+
+      @include mobile {
+        padding-bottom: 30px;
+      }
     }
   }
   .disclaimer_text {

@@ -1,3 +1,5 @@
+@import "../../../variable_styles.scss";
+
 .CLIENT #animation_wrapper {
   display: flex;
   height: 95vh;
@@ -5,11 +7,42 @@
   justify-content: center;
   align-items: center;
   margin: 0px;
-  margin-bottom: 12%;
+  padding-bottom: 12%;
+  margin-top: -110px;
+
+  @include desktop {
+    height: 62vh;
+    padding-bottom: 4%;
+  }
+  @include tab {
+    height: 60vh;
+    padding-bottom: 0%;
+  }
+  @include mobile {
+    height: 43vh;
+    padding-bottom: 0%;
+  }
+
+  @include extrasmall {
+    height: 226px;
+    margin-top: 0;
+    padding-bottom: 0;
+  }
 }
 .CLIENT {
-  //   position: absolute;
-  //   top: 100%;
-  //   left: 0;
-  //   width: 100%;
+  position: relative;
+  z-index: -1;
+}
+.CLIENT .container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.CLIENT .layout-container {
+  height: 100%;
 }

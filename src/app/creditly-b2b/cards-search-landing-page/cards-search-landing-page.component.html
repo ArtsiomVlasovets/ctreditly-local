@@ -1,7 +1,19 @@
 <!-- <p>cards-search-landing-page works!</p> -->
 <!-- <section class="global_main_section"> -->
-
+    <!-- <svg class="banner-gradient" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      width="1920" height="1080"  viewBox="0 0 1920 1080">
+        <defs>
+            <linearGradient id="linear-gradient" x1="0.247" y1="-0.656" x2="0.599" y2="0.769"
+                gradientUnits="objectBoundingBox">
+                <stop offset="0" stop-color="#243655" />
+                <stop offset="1" stop-color="#fff" />
+            </linearGradient>
+        </defs>
+        <path id="Path_4608" data-name="Path 4608" d="M632.156-338.387V294.048l-1281.73,1.224Z"
+            transform="translate(632.156 295.272) rotate(180)" fill="url(#linear-gradient)" />
+    </svg> -->
 <section class="page_variable_section d-none">
+
     <div class="header_starts"></div>
     <div class="container">
         <div class="variable_text_image">
@@ -32,6 +44,7 @@
             </div>
         </div>
     </div>
+
 </section>
 
 <section>
@@ -408,7 +421,7 @@
         <div class="register_section">
             <div class="container">
                 <div class="layout-container">
-                    <div class="text-center">
+                    <div class="text-center pt-5">
                         <button class="btn btn-md register_now_btn" (click)="navigateToRegister()">Register Now</button>
                         <p>Takes less than a minute, and completely FREE!</p>
                     </div>
@@ -502,7 +515,7 @@
                                             </div>
                                         </ng-container>
                                         
-                                        <div class="col-md-3 pb-5" *ngIf="i != 10">
+                                        <div class="col-xs-6 col-sm-6 col-md-3 pb-5" *ngIf="i != 10">
                                             
                                             <div class="slide">
                                                 <img src="{{ bank.image }}" alt="" width="100%">
