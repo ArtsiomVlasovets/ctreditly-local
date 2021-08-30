@@ -490,32 +490,30 @@
                     <div class="pb-5">
                         <div class="list_bank_images">
                             <div class="images_position mb-2">
-                                <div class="row">
+                                <div class="row align-items-center">
                                     <ng-container *ngFor="let bank of banksList;let i=index">
                                         
-                                        <ng-container *ngIf="i === 8">
-                                                <div class="col-md-3 pb-5 ">
+                                        <ng-container  *ngIf="i === 8">
+                                                <div class="col-sm-3 col-md-3 d-none d-sm-block pb-5 ">
                                                    
                                                 </div>
-                                                <div class="col-md-3 pb-5 ">
-                                                   
-                                                </div>
+                                               
                                         </ng-container>
 
                                     
-                                        <ng-container *ngIf="i === 11">
-                                            <div class="col-md-3 pb-5 ">
+                                        <ng-container *ngIf="i === 12">
+                                            <div class="col-sm-3 col-md-3 pb-5 d-none d-sm-block">
                                                 
                                             </div>
-                                            <div class="col-md-3 pb-5 ">
+                                            <div class="col-sm-3 col-md-3 pb-5 d-none d-sm-block ">
                                                 
                                             </div>
-                                            <div class="col-md-3 pb-5 ">
+                                            <div class="col-sm-3 col-md-3 pb-5 d-none d-sm-block">
                                                
                                             </div>
                                         </ng-container>
                                         
-                                        <div class="col-xs-6 col-sm-6 col-md-3 pb-5" *ngIf="i != 10">
+                                        <div class="col-xs-6 col-sm-3 col-md-3 pb-5" *ngIf="i != 10">
                                             
                                             <div class="slide">
                                                 <img src="{{ bank.image }}" alt="" width="100%">

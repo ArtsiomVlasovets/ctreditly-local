@@ -501,6 +501,14 @@ input[type="radio"]:checked {
   .slide {
     max-width: 140px;
     margin: auto;
+
+    @include tab {
+      max-width: 110px;
+
+      img {
+        max-height: 58px !important;
+      }
+    }
   }
 
   background: #ebebec;
@@ -510,7 +518,8 @@ input[type="radio"]:checked {
     background: transparent;
   }
   @include mobile {
-    height: 750px;
+    height: auto;
+    padding-bottom: 210px;
   }
 
   .disclaimer_text {
@@ -533,6 +542,12 @@ input[type="radio"]:checked {
     margin-bottom: 50px;
     // padding: 0px 20px;
     .images_position {
+      @include extrasmall {
+        .pb-5 {
+          padding-bottom: 1rem !important;
+        }
+      }
+
       // display: flex;
       justify-content: space-between;
       @include mobile {
@@ -550,9 +565,11 @@ input[type="radio"]:checked {
       .col-md-3 {
         text-align: center;
       }
-      .col-xs-6 {
-        flex: 0 0 50%;
-        max-width: 50%;
+      @include extrasmall {
+        .col-xs-6 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
       }
     }
     .last_image {

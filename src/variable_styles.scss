@@ -31,7 +31,7 @@ $mobile: 767px;
   }
 }
 
-$extrasmall: 530px;
+$extrasmall: 576px;
 
 @mixin extrasmall {
   @media screen and (max-width: #{ $extrasmall }) {
