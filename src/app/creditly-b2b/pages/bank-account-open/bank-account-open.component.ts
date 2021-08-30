@@ -20,7 +20,7 @@ export class BankAccountOpenComponent implements OnInit {
   constructor(private router: Router, private creditlyServices: CreditlyServicesService) { }
 
   ngOnInit(): void {
-    this.banksList = this.banks.filter(item => item.isProductAvail == true);
+    this.banksList = this.banks.filter(item => item.isAccOpenAvail == true);
   }
 
   checkError() {
