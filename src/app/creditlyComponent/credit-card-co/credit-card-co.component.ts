@@ -74,7 +74,7 @@ export class CreditCardCoComponent implements OnInit {
     localStorage.setItem("selectedCard", JSON.stringify(data));
     localStorage.setItem("CategoryID", "1");
     if (localStorage.getItem("sessionToken"))
-      this.router.navigateByUrl('creditly/applycard');
+      this.router.navigateByUrl('creditly/applyProduct?For=CreditCard');
     else
       this.router.navigateByUrl('/login');
   }

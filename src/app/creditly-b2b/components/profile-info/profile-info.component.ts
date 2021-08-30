@@ -10,6 +10,8 @@ import { FileUploadService } from 'src/app/file-upload.service';
 })
 export class ProfileInfoComponent implements OnInit {
   @ViewChild('confirm') public childModal;
+
+  categoryID=localStorage.getItem('CategoryID');
   constructor(public apiService: CreditlyServicesService,public uploadService:FileUploadService) { }
   progress={
     p1:0,
@@ -81,7 +83,7 @@ export class ProfileInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log()
+    
     this.apiService.request.subscribe(res => {
       this.request = JSON.parse(localStorage.getItem("productRequest"))
     })

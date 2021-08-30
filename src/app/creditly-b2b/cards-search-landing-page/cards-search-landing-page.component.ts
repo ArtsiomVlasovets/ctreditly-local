@@ -241,7 +241,7 @@ export class CardsSearchLandingPageComponent implements OnInit {
   }
 
   public findAutoFinance(): void {
-    Swal.fire("navigate to auto lease page...")
+    // Swal.fire("navigate to auto lease page...")
     console.log("autolese form values",this.autoLeaseFinanceForm.value);
     let autoloanFilterReq = {
       NetSalary: this.autoLeaseFinanceForm.value.netSalary,

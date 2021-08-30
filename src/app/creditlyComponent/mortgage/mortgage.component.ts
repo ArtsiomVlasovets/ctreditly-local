@@ -221,7 +221,7 @@ export class MortgageCoComponent implements OnInit {
     localStorage.setItem("CategoryID", "2");
     localStorage.setItem("applyLoanData", JSON.stringify({ duration: this.formGroup.value.Period * 12, mangementFee: this.FilterValue(1, data?.fees) }));
     if (localStorage.getItem("sessionToken"))
-      this.router.navigateByUrl('creditly/applycard');
+      this.router.navigateByUrl('creditly/applyProduct?For=Mortgage');
     else
       this.router.navigateByUrl('/login');
   }

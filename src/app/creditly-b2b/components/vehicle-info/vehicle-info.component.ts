@@ -254,7 +254,7 @@ export class VehicleInfoComponent implements OnInit {
     console.log("autoLoanItem", autoLoanItem);
     localStorage.setItem("CategoryID", 'AutoLoan');
     localStorage.setItem("selectedCard", JSON.stringify(autoLoanItem));
-    this.router.navigateByUrl('creditly/applycard');
+    this.router.navigateByUrl('creditly/applyProduct?For=VehicleInfo');
   }
 
   shareURL(item) {

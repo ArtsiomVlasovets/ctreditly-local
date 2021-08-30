@@ -51,7 +51,7 @@ export class CompareCreditCardsComponent implements OnInit {
   public applyForCreditCard(data): void {
     localStorage.setItem("selectedCard", JSON.stringify(data));
     if(localStorage.getItem("sessionToken"))
-    this.router.navigateByUrl('creditly/applycard');
+    this.router.navigateByUrl('creditly/applyProduct');
     else
     this.router.navigateByUrl('/login');
   }
