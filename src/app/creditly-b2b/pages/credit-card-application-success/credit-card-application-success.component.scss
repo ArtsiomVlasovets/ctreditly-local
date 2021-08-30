@@ -1,6 +1,11 @@
 // @import "../../../variable_styles.scss";
 @import "../../../../variable_styles.scss";
 
+.item_image {
+  width: 100%;
+  height: 100%;
+}
+
 #login_page {
   position: relative;
   .background_shapes {

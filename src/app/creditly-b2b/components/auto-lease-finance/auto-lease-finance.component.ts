@@ -67,7 +67,7 @@ export class AutoLeaseFinanceComponent implements OnInit {
   ngOnInit() {
     // await this.creditlyServeices.initToken();
 
-    
+
 
     this.findAutoFinance();
     if (localStorage.getItem("compareBy") == "AutoLoan") {
@@ -163,7 +163,7 @@ export class AutoLeaseFinanceComponent implements OnInit {
 
       }
     }
-    
+
     let req = {
       PageNumber: 1,
       PageSize: 100,
@@ -224,10 +224,14 @@ export class AutoLeaseFinanceComponent implements OnInit {
 
   public applyForAutoLoan(autoLoanItem): void {
     console.log("autoLoanItem", autoLoanItem);
-    localStorage.setItem("CategoryID", '3');
-    localStorage.setItem("selectedCard", JSON.stringify(autoLoanItem));
-    localStorage.removeItem('selectedVehicleId');
-    this.router.navigateByUrl('creditly/applycard');
+    if (this.userData) {
+      localStorage.setItem("CategoryID", '3');
+      localStorage.setItem("selectedCard", JSON.stringify(autoLoanItem));
+      localStorage.removeItem('selectedVehicleId');
+      this.router.navigateByUrl('creditly/applyProduct?For=AutoLoans');
+    } else {
+      this.router.navigateByUrl('/login');
+    } 
   }
 
   public showCardDetails(i) {

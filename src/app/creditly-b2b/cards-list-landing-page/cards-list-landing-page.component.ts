@@ -86,7 +86,7 @@ export class CardsListLandingPageComponent implements OnInit {
     localStorage.setItem("selectedCard", JSON.stringify(data));
     localStorage.setItem("CategoryID", "1");
     if (localStorage.getItem("sessionToken"))
-      this.router.navigateByUrl('creditly/applycard');
+      this.router.navigateByUrl('creditly/applyProduct?For=CreditCard');
     else
       this.router.navigateByUrl('/login');
   }
@@ -251,7 +251,9 @@ export class CardsListLandingPageComponent implements OnInit {
     }
 
     let baseUrl = this.creditlyServices.shareProductUrl;
-    let componentUrl = "creditly/applycard"
+    // let baseUrl = "http://beta.creditly.sa/#/"
+    // let componentUrl = "creditly/shareProductView"
+    let componentUrl = "creditly/applyProduct"
     let totUrl = `${baseUrl}${componentUrl}/?title=${item.seo.url}&prodType=1`
     console.log("totUrl", totUrl);
 

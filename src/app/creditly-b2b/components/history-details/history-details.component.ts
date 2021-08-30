@@ -10,7 +10,7 @@ import { FileUploadService } from 'src/app/file-upload.service';
 
 })
 export class HistoryDetailsComponent implements OnInit {
-
+  categoryID=localStorage.getItem('CategoryID');
   constructor(public apiService: CreditlyServicesService,public uploadService:FileUploadService) { }
   progress={
     p1:0,
@@ -170,8 +170,6 @@ export class HistoryDetailsComponent implements OnInit {
       if(this.request.findIndex(val=>val.id==this.idCancel)>-1){
         this.request[this.request.findIndex(val=>val.id==this.idCancel)]["requestStatus"]["code"]=107;
         this.request[this.request.findIndex(val=>val.id==this.idCancel)]["requestStatus"]["description"]="Cancel by user";
-
-        // this.request[this.request.findIndex(val=>val.id==this.idCancel)]["status"]=107;
       }
     })
   }

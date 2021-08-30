@@ -114,11 +114,13 @@
               <div class="card-body f-12 px-3 py-4">
                 <div class="cc-img">
                   <img onerror="this.onerror=null;this.src='../../../assets/images/icons/card.png';"
-                    src="{{req?.card?req?.card?.bank?.image:req?.loan?.bank?.image}}" width="80px">
+                    src="{{req?.card?req?.card?.image:req?.bank?.image}}" width="80px">
                 </div>
                 <div class="cc-title">
-                  <p class="mb-1">{{req?.card?"Credit card":"Finance"}}</p>
-                  <p class="f-18 c-txt">{{req?.card? req?.card?.name :req?.loan?.name}}</p>
+                  <p class="mb-1" *ngIf="categoryID!='bank'">{{req?.card?"Credit card":"Finance"}}</p>
+                  <p class="mb-1" *ngIf="categoryID=='bank'">Bank</p>
+                  <p class="f-18 c-txt" *ngIf="categoryID!='bank'">{{req?.card? req?.card?.name :req?.loan?.name}}</p>
+                  <p class="f-18 c-txt" *ngIf="categoryID=='bank'">{{req?.bank?.name}}</p>
                 </div>
                 <div>
                   <p class="mb-1"><span><b>Status</b></span> &nbsp;

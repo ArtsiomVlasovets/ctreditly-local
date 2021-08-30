@@ -7,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreditCardApplicationSuccessComponent implements OnInit {
   requestedCardData=JSON.parse(localStorage.getItem("requestedCardData"));
-  CategoryID =parseInt(localStorage.getItem("CategoryID"))
+  CategoryID =localStorage.getItem("CategoryID");
   data=this.requestedCardData?.card?this.requestedCardData?.card:this.requestedCardData?.loan;
   type=localStorage.getItem('CategoryID');
   successMessageFlag : boolean ;
   constructor() {
+    if(this.CategoryID == 'bank') {
+      this.data = this.requestedCardData.bank;
+    }
     if(this.requestedCardData.responseStatusCode == 0) {
       this.successMessageFlag = true;
     } else {

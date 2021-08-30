@@ -59,7 +59,7 @@ const routes: Routes = [
         path:"bank-account",component:BankAccountOpenComponent
       }, 
       {
-        path:"applycard",component:ApplycreditcardComponent
+        path:"applyProduct",component:ApplycreditcardComponent
       },
       {
         path:"testing",component:TestingComponent

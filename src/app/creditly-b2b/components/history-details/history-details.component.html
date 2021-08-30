@@ -1,125 +1,136 @@
 <div class="container">
-    <div class="row mb-4">
-        <div class="">
-            <p class="req-title pl-3">Pending</p>
-            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
-                (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-                (beforeChange)="beforeChange($event)">
-                <ng-container *ngFor="let req of request">
-                    <div ngxSlickItem class="slide" *ngIf="req?.status==101">
-                        <div class="custom-card card">
-                            <div class="card-body f-12 px-3 py-4">
-                                <div class="cc-img">
-                                    <img style="height: 61px;" onerror="this.onerror=null;this.src='../../../assets/images/icons/card.png';" src="{{req?.card?req?.card?.image:req?.loan?.bank?.image}}"
-                                        width="80px">
-                                </div>
-                                <div class="cc-title">
-                                    <p class="mb-1">{{req?.card?"Credit card":"Finance"}}</p>
-                                    <p class="f-18 c-txt">{{req?.card?req?.card?.name:req?.loan?.name}}</p>
-                                </div>
-                                <div>
-                                    <p class="mb-1"><span><b>Status</b></span> &nbsp;
-                                        <span>{{req?.requestStatus?.description}}</span>
-                                    </p>
-                                    <p class="mb-1"><span><b>Req Date</b></span> &nbsp;
-                                        <span>{{req?.request_datetime | date}}</span>
-                                    </p>
-                                    <p class=""><span><b>Req #</b></span> &nbsp;
-                                        <span>{{req?.reference_ID}}</span>
-                                    </p>
-                                </div>
-                                <div class="text-center" *ngIf="req?.requestStatus?.code!=107">
-                                    <button class="btn btn-sm cc-btn-primary"  data-toggle="modal" data-target="#exampleModal">upload</button>
-                                  </div>
-                                  <div class="text-center mt-1" *ngIf="req?.requestStatus?.code!=107">
-                                    <button class="btn btn-sm cc-btn-danger" data-toggle="modal" data-target="#confirmed" (click)="cancel(req?.id,req?.reference_ID)">cancel</button>
-                                  </div>
-                            </div>
-                        </div>
-                    </div>
-                </ng-container>
-            </ngx-slick-carousel>
-        </div>
-
-    </div>
-    <div *ngIf="request?.length==0" class="noDataFound MRT">
-        No History Found
-    </div>
-    <div class="row mb-4">
-        <div class="">
-            <p class="req-title pl-3 mt-5">Rejected</p>
-            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
-                (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-                (beforeChange)="beforeChange($event)">
-                <ng-container *ngFor="let req of request">
-                    <div ngxSlickItem class="slide"
-                        *ngIf="req?.status==112 || req?.status==110 || req?.status==109 || req?.status==105 || req?.status==111">
-                        <div class="custom-card card">
-                            <div class="card-body f-12 px-3 py-4">
-                                <div class="cc-img">
-                                    <img style="height: 44px;" onerror="this.onerror=null;this.src='../../../assets/images/icons/card.png';" src="{{req?.card?req?.card?.image:req?.loan?.bank?.image}}"
-                                        width="80px">
-                                </div>
-                                <div class="cc-title">
-                                    <p class="mb-1">{{req?.card?"Credit card":"Finance"}}</p>
-                                    <p class="f-18 c-txt">{{req?.card?req?.card?.name:req?.loan?.name}}</p>
-                                </div>
-                                <div>
-                                    <p class="mb-1"><span><b>Status</b></span> &nbsp;
-                                        <span>{{req?.requestStatus?.description}}</span>
-                                    </p>
-                                    <p class="mb-1"><span><b>Req Date</b></span> &nbsp;
-                                        <span>{{req?.request_datetime | date}}</span>
-                                    </p>
-                                    <p class=""><span><b>Req #</b></span> &nbsp;
-                                        <span>{{req?.reference_ID}}</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ng-container>
-
-            </ngx-slick-carousel>
-        </div>
-    </div>
-
-    <div *ngIf="request?.length==0" class="noDataFound MRT ">
-        No Request Found
-    </div>
-    <div class="row m-0">
-        <div class="d-flex justify-content-between w-100 mt-5">
-            <p><b>History</b></p>
-            <p><b>Filter</b></p>
-        </div>
-        <div class="table-responsive">
-            <table class="table req-table">
-                <tbody>
-                    <tr *ngFor="let req of request">
-                        <td>
-                            <img src="assets/images/main_images/credit.png" height="45px" />
-                        </td>
-                        <td>
-                            <p class="mb-0">{{req?.card?"Credit card":"Finance"}}</p>
-                            <p class="m-0 f-14">{{req?.card?req?.card?.name:req?.loan?.name}}</p>
-                        </td>
-                        <td class="align-middle">
-                            <p class="mb-0">{{req?.request_datetime | date}}</p>
-                        </td>
-                        <td class="align-middle">
-                            <p class="mb-0">{{filter(req?.requestStatusList,req?.status)}}</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div *ngIf="request?.length==0" class="noDataFound MRT">
-                No History Found
+  <div class="row mb-4">
+    <div class="">
+      <p class="req-title pl-3">Pending</p>
+      <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)">
+        <ng-container *ngFor="let req of request">
+          <div ngxSlickItem class="slide" *ngIf="req?.status==101">
+            <div class="custom-card card">
+              <div class="card-body f-12 px-3 py-4">
+                <div class="cc-img">
+                  <img style="height: 61px;"
+                    onerror="this.onerror=null;this.src='../../../assets/images/icons/card.png';"
+                    src="{{req?.card?req?.card?.image:req?.bank?.image}}" width="80px">
+                </div>
+                <div class="cc-title">
+                  <p class="mb-1" *ngIf="categoryID!='bank'">{{req?.card?"Credit card":"Finance"}}</p>
+                  <p class="mb-1" *ngIf="categoryID=='bank'">Bank</p>
+                  <p class="f-18 c-txt" *ngIf="categoryID!='bank'">{{req?.card?req?.card?.name:req?.loan?.name}}</p>
+                  <p class="f-18 c-txt" *ngIf="categoryID=='bank'">{{req?.bank?.name}}</p>
+                </div>
+                <div>
+                  <p class="mb-1"><span><b>Status</b></span> &nbsp;
+                    <span>{{req?.requestStatus?.description}}</span>
+                  </p>
+                  <p class="mb-1"><span><b>Req Date</b></span> &nbsp;
+                    <span>{{req?.request_datetime | date}}</span>
+                  </p>
+                  <p class=""><span><b>Req #</b></span> &nbsp;
+                    <span>{{req?.reference_ID}}</span>
+                  </p>
+                </div>
+                <div class="text-center" *ngIf="req?.requestStatus?.code!=107">
+                  <button class="btn btn-sm cc-btn-primary" data-toggle="modal"
+                    data-target="#exampleModal">upload</button>
+                </div>
+                <div class="text-center mt-1" *ngIf="req?.requestStatus?.code!=107">
+                  <button class="btn btn-sm cc-btn-danger" data-toggle="modal" data-target="#confirmed"
+                    (click)="cancel(req?.id,req?.reference_ID)">cancel</button>
+                </div>
+              </div>
             </div>
-        </div>
+          </div>
+        </ng-container>
+      </ngx-slick-carousel>
     </div>
+
+  </div>
+  <div *ngIf="request?.length==0" class="noDataFound MRT">
+    No History Found
+  </div>
+  <div class="row mb-4">
+    <div class="">
+      <p class="req-title pl-3 mt-5">Rejected</p>
+      <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)">
+        <ng-container *ngFor="let req of request">
+          <div ngxSlickItem class="slide"
+            *ngIf="req?.status==112 || req?.status==110 || req?.status==109 || req?.status==105 || req?.status==111">
+            <div class="custom-card card">
+              <div class="card-body f-12 px-3 py-4">
+                <div class="cc-img">
+                  <img style="height: 44px;"
+                    onerror="this.onerror=null;this.src='../../../assets/images/icons/card.png';"
+                    src="{{req?.card?req?.card?.image:req?.bank?.image}}" width="80px">
+                </div>
+                <div class="cc-title">
+                  <p class="mb-1" *ngIf="categoryID!='bank'">{{req?.card?"Credit card":"Finance"}}</p>
+                  <p class="mb-1" *ngIf="categoryID=='bank'">Bank</p>
+                  <p class="f-18 c-txt" *ngIf="categoryID!='bank'">{{req?.card?req?.card?.name:req?.loan?.name}}</p>
+                  <p class="f-18 c-txt" *ngIf="categoryID=='bank'">{{req?.bank?.name}}</p>
+                </div>
+                <div>
+                  <p class="mb-1"><span><b>Status</b></span> &nbsp;
+                    <span>{{req?.requestStatus?.description}}</span>
+                  </p>
+                  <p class="mb-1"><span><b>Req Date</b></span> &nbsp;
+                    <span>{{req?.request_datetime | date}}</span>
+                  </p>
+                  <p class=""><span><b>Req #</b></span> &nbsp;
+                    <span>{{req?.reference_ID}}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </ngx-slick-carousel>
+    </div>
+  </div>
+
+  <div *ngIf="request?.length==0" class="noDataFound MRT ">
+    No Request Found
+  </div>
+  <div class="row m-0">
+    <div class="d-flex justify-content-between w-100 mt-5">
+      <p><b>History</b></p>
+      <p><b>Filter</b></p>
+    </div>
+    <div class="table-responsive">
+      <table class="table req-table">
+        <tbody>
+          <tr *ngFor="let req of request">
+            <td>
+              <img src="{{req?.card?req?.card?.image:req?.bank?.image}}" height="45px" />
+            </td>
+            <td>
+              <p class="mb-0" *ngIf="categoryID!='bank'">{{req?.card?"Credit card":"Finance"}}</p>
+              <p class="mb-0" *ngIf="categoryID=='bank'">Bank</p>
+              <p class="m-0 f-14" *ngIf="categoryID!='bank'">{{req?.card?req?.card?.name:req?.loan?.name}}</p>
+              <p class="f-14 m-0" *ngIf="categoryID=='bank'">{{req?.bank?.name}}</p>
+            </td>
+            <td class="align-middle">
+              <p class="mb-0">{{req?.request_datetime | date}}</p>
+            </td>
+            <td class="align-middle">
+              <p class="mb-0">{{filter(req?.requestStatusList,req?.status)}}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="request?.length==0" class="noDataFound MRT">
+        No History Found
+      </div>
+    </div>
+  </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modalClass" role="document">
     <div class="modal-content modal-con">
       <div class="modal-header">
@@ -139,7 +150,8 @@
                 file_upload
               </span>
               <p>upload</p>
-              <input id="file" type="file" class="form-control" (change)="onFileChange1($event)" accept="application/pdf,image/*">
+              <input id="file" type="file" class="form-control" (change)="onFileChange1($event)"
+                accept="application/pdf,image/*">
             </div>
 
             <div class="col-sm-7 pdf" *ngIf="idState==2">
@@ -167,13 +179,13 @@
                 </svg>
               </div>
               <div class="progress bg-size">
-                <div class="progress-bar bg-color bg-size" role="progressbar" [ngStyle]="{'width': progress.p1 +'%'}" aria-valuenow="25"
-                  aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar bg-color bg-size" role="progressbar" [ngStyle]="{'width': progress.p1 +'%'}"
+                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <div class="upload">
                 <p class="svg">{{progress.p1}}% done</p>
               </div>
-             
+
             </div>
           </div>
           <div class="row mb-3">
@@ -185,7 +197,8 @@
                 file_upload
               </span>
               <p>upload</p>
-              <input id="file" type="file" class="form-control" (change)="onFileChange2($event)" accept="application/pdf,image/*">
+              <input id="file" type="file" class="form-control" (change)="onFileChange2($event)"
+                accept="application/pdf,image/*">
             </div>
             <div class="col-sm-7 button" *ngIf="salaryState==4">
               <p>uploaded successfully</p>
@@ -213,8 +226,8 @@
                 </svg>
               </div>
               <div class="progress bg-size">
-                <div class="progress-bar bg-color bg-size" role="progressbar" [ngStyle]="{'width': progress.p2 +'%'}" aria-valuenow="25"
-                  aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar bg-color bg-size" role="progressbar" [ngStyle]="{'width': progress.p2 +'%'}"
+                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <div class="upload">
                 <p class="svg">{{ progress.p2 }}% done</p>
@@ -230,7 +243,8 @@
                 file_upload
               </span>
               <p>upload</p>
-              <input id="file" type="file" class="form-control" (change)="onFileChange3($event)" accept="application/pdf,image/*">
+              <input id="file" type="file" class="form-control" (change)="onFileChange3($event)"
+                accept="application/pdf,image/*">
             </div>
             <div class="col-sm-7 button" *ngIf="salaryState==4">
               <p>uploaded successfully</p>
@@ -258,8 +272,8 @@
                 </svg>
               </div>
               <div class="progress bg-size">
-                <div class="progress-bar bg-color bg-size" role="progressbar" [ngStyle]="{'width': progress.p3 +'%'}" aria-valuenow="25"
-                  aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar bg-color bg-size" role="progressbar" [ngStyle]="{'width': progress.p3 +'%'}"
+                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <div class="upload">
                 <p class="svg">{{progress.p3}}% done</p>
@@ -269,7 +283,8 @@
         </div>
       </div>
       <div class="text-center mt-2 mb-3">
-        <button style="width: 120px;" (click)="submit()" [disabled]="submitReq" class="btn btn-sm cc-btn-primary">Submit</button>
+        <button style="width: 120px;" (click)="submit()" [disabled]="submitReq"
+          class="btn btn-sm cc-btn-primary">Submit</button>
       </div>
     </div>
   </div>
@@ -287,10 +302,10 @@
         <p>Are you sure you want to cancel request no. {{reqCancel}}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" [disabled]="submitReq" (click)="cancelByConfirm()">Confirm</button>
+        <button type="button" class="btn btn-primary" [disabled]="submitReq"
+          (click)="cancelByConfirm()">Confirm</button>
         <button type="button" class="btn btn-secondary" (click)="click()">Close</button>
       </div>
     </div>
   </div>
 </div>
-
