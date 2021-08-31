@@ -40,8 +40,10 @@ input[type="radio"]:checked {
       // clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 3px 100%);
       /*  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 80%);
             background: transparent linear-gradient(154deg, #FFFFFF 25%, #777D90 100%) 20% 0% no-repeat padding-box; */
-
-      background: url(../../../assets/images/main_images/GreyBackgroundimage.svg);
+      background: transparent linear-gradient(341deg, #243655c7 0%, #ffffff 80%)
+        0% 0% no-repeat padding-box;
+      clip-path: polygon(100% 0, 0 0, 0 99%);
+      // background: url(../../../assets/images/main_images/GreyBackgroundimage.svg);
       background-repeat: no-repeat;
       background-size: cover;
       width: 100%;
@@ -49,7 +51,7 @@ input[type="radio"]:checked {
       background-position: center center;
 
       @include mobile {
-        height: 110%;
+        // height: 110%;
       }
     }
   }
