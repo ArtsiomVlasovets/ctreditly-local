@@ -99,7 +99,8 @@ export class CardsSearchLandingPageComponent implements OnInit {
   loginFormValidationFlag: boolean = false;
   submit: boolean = false;
 
-  banks = JSON.parse(localStorage.getItem("masterData")).banks;
+  local_data = JSON.parse(localStorage.getItem("masterData"));
+  banks = this.local_data?.banks;
   banksList = [];
   slideConfig = {"slidesToShow": 4, "slidesToScroll": 1};
 
@@ -115,7 +116,7 @@ export class CardsSearchLandingPageComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.initForm();
-    this.workTypesList = this.masterData.workTypes;
+    this.workTypesList = this.masterData?.workTypes;
   }
 
 

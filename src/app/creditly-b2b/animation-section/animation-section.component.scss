@@ -8,11 +8,12 @@
   align-items: center;
   margin: 0px;
   padding-bottom: 12%;
-  margin-top: -110px;
+  margin-top: -230px;
 
   @include desktop {
     height: 62vh;
     padding-bottom: 4%;
+    margin-top: -110px;
   }
   @include tab {
     height: 60vh;

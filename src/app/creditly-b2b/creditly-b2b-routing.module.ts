@@ -32,6 +32,11 @@ const routes: Routes = [
         path: "", redirectTo: "LandingPage", pathMatch: "full"
       },
       {
+        path: 'LandingPage',
+        component: CardsSearchLandingPageComponent,
+        canActivate: [LoginGuard],
+      },
+      {
         path: "cards-list", component: CardsListLandingPageComponent
       },
       {
@@ -67,11 +72,7 @@ const routes: Routes = [
       {
         path:"shareProductView",component:SharedProductViewComponent
       },
-       {
-        path: 'LandingPage',
-        component: CardsSearchLandingPageComponent,
-        canActivate: [LoginGuard],
-      },
+       
     ]
   },
   

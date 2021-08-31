@@ -10,9 +10,11 @@ gsap.registerPlugin(ScrollTrigger);
   styleUrls: ['./animation-section.component.scss']
 })
 export class AnimationSectionComponent implements OnInit {
-  scriptAnimArr = [
-    'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js'
+	scriptAnimArr = [
+	  '/assets/gsap.min.js',
+	  '/assets/ScrollTrigger.min.js',
+    // 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js',
+    // 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js'
   ];
     @ViewChild('animation_wrapper', { static: true }) animWrapper: ElementRef<HTMLDivElement>;
   // animWrapper = document.getElementById("animation_wrapper")
@@ -3061,7 +3063,9 @@ gsapAnim()
 
     this.scriptAnimArr.forEach((elem)=>{
         let tempScipt = document.createElement('script')
-        tempScipt.src = elem
+		tempScipt.src = elem;
+		// tempScipt.nonce = "r@nd0m";
+		
         scriptList.appendChild(tempScipt)
     })
  }
