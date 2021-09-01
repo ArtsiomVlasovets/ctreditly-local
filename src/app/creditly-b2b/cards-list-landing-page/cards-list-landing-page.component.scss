@@ -7,7 +7,8 @@
     position: relative;
     .own-bg {
       width: 100%;
-      height: 90vh;
+      // height: 90vh;
+      height: 50vw;
       margin-top: -100px;
       background-position: center center;
       background: linear-gradient(
@@ -27,9 +28,6 @@
   right: 0;
   top: 326px;
 
-  img.cardImg {
-    transform: rotate(0deg);
-  }
   .first_part {
     align-self: center;
 
@@ -42,51 +40,34 @@
 @media only screen and (max-width: 1680px) {
   .bannerTextImage.container {
     top: 310px;
-    img.cardImg {
-      transform: rotate(-3deg);
-    }
   }
 }
 @media only screen and (max-width: 1440px) {
   .bannerTextImage.container {
     top: 242px;
-    img.cardImg {
-      transform: rotate(-3deg);
-    }
   }
 }
 
 @media only screen and (max-width: 1370px) {
   .bannerTextImage.container {
     top: 189px;
-    img.cardImg {
-      transform: rotate(-1deg);
-    }
   }
 }
 
 @media only screen and (max-width: 1030px) {
   .bannerTextImage.container {
     top: 164px;
-    img.cardImg {
-      transform: rotate(-8deg);
-    }
   }
 }
 @media only screen and (max-width: 770px) {
   .bannerTextImage.container {
     top: 230px;
-    img.cardImg {
-      transform: rotate(-24deg);
-      width: 80%;
-    }
   }
 }
 @media only screen and (max-width: 570px) {
   .bannerTextImage.container {
     top: 150px;
     img.cardImg {
-      transform: rotate(0deg);
       width: 50%;
       margin: auto;
       display: table;
@@ -118,9 +99,6 @@
     .second_part {
       position: absolute;
       right: 20%;
-      img {
-        transform: rotate(3deg);
-      }
     }
   }
 }
