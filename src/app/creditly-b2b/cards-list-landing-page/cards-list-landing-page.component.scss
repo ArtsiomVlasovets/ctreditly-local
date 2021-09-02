@@ -18,15 +18,27 @@
         #bdc0c9 50%,
         #ffffff 60%
       );
+
+      @include extrasmall {
+        height: 100vw;
+      }
     }
   }
 }
-.bannerTextImage.container {
+.main-container-banner-card-list.container {
   position: absolute;
   margin: auto;
   left: 0;
   right: 0;
-  top: 326px;
+  top: 100px;
+  height: 50vw;
+  .layout-container {
+    height: 100%;
+    position: relative;
+  }
+}
+.bannerTextImage {
+  padding-top: 220px;
 
   .first_part {
     align-self: center;
@@ -38,39 +50,76 @@
 }
 
 @media only screen and (max-width: 1680px) {
-  .bannerTextImage.container {
-    top: 310px;
+  .bannerTextImage {
+    padding-top: 160px;
+  }
+}
+@media only screen and (max-width: 1536px) {
+  .bannerTextImage {
+    padding-top: 123px;
   }
 }
 @media only screen and (max-width: 1440px) {
-  .bannerTextImage.container {
-    top: 242px;
+  .bannerTextImage {
+    padding-top: 100px;
   }
 }
 
 @media only screen and (max-width: 1370px) {
-  .bannerTextImage.container {
-    top: 189px;
+  .bannerTextImage {
+    padding-top: 82px;
   }
 }
 
+@media only screen and (max-width: 1280px) {
+  .bannerTextImage {
+    padding-top: 60px;
+  }
+}
 @media only screen and (max-width: 1030px) {
-  .bannerTextImage.container {
-    top: 164px;
+  .bannerTextImage {
+    padding-top: 31px;
+
+    img.cardImg {
+      width: 57%;
+    }
+    h1 {
+      max-width: 250px;
+      font-size: 24px;
+    }
   }
 }
 @media only screen and (max-width: 770px) {
-  .bannerTextImage.container {
-    top: 230px;
+  .bannerTextImage {
+    padding-top: 10px;
+
+    img.cardImg {
+      width: 50%;
+    }
   }
 }
-@media only screen and (max-width: 570px) {
-  .bannerTextImage.container {
-    top: 150px;
+@media only screen and (max-width: 600px) {
+  .bannerTextImage {
+    padding-top: 0px;
+
+    img.cardImg {
+      width: 46%;
+    }
+
+    h1 {
+      font-size: 18px;
+      max-width: 159px;
+    }
+  }
+}
+@media only screen and (max-width: 576px) {
+  .bannerTextImage {
+    padding-top: 30px;
     img.cardImg {
       width: 50%;
       margin: auto;
       display: table;
+      padding-top: 30px;
     }
   }
 }
@@ -126,10 +175,14 @@
   @include mobile {
     margin-top: 100px;
   } */
+
+  #pills-tabContent {
+    padding: 20px 0;
+  }
   .sky_background {
     // background: #0080FF 0% 0% no-repeat padding-box;
     background-color: $primary_sky_blue;
-    padding: 20px 0px;
+
     // background-color: #EDF4FF;
     .content {
       // padding: 30px 0px;
