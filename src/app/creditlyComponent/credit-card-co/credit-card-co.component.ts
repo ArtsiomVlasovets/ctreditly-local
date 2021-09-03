@@ -2,13 +2,14 @@ import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreditlyServicesService } from 'src/app/creditly-services.service';
-
+import { NgNavigatorShareService } from 'ng-navigator-share';
 @Component({
   selector: 'app-credit-card-co',
   templateUrl: './credit-card-co.component.html',
   styleUrls: ['./credit-card-co.component.scss']
 })
 export class CreditCardCoComponent implements OnInit {
+   private ngNavigatorShareService: NgNavigatorShareService;
   profileDate = JSON.parse(localStorage.getItem('loginResponse'));
   cardListShow=false;
   cards = JSON.parse(localStorage.getItem("masterData"))?.cards;
@@ -50,10 +51,12 @@ export class CreditCardCoComponent implements OnInit {
     "APRSorting": 0
   }
   compareCard: Array<any> = [];
-  constructor(private router: Router, private creditlyServices: CreditlyServicesService) {
+  constructor(private router: Router, private creditlyServices: CreditlyServicesService, ngNavigatorShareService: NgNavigatorShareService) {
     if (localStorage.getItem("compareBy") == "card") {
       this.compareCard = localStorage.getItem("compairCards") ? JSON.parse(localStorage.getItem("compairCards")) : [];
     }
+
+    this.ngNavigatorShareService = ngNavigatorShareService;
   }
 
   ngOnInit() {
@@ -62,6 +65,22 @@ export class CreditCardCoComponent implements OnInit {
   addCompare() {
 
   }
+
+  async shareApi() {
+    try{
+      const sharedResponse = await this.ngNavigatorShareService.share({
+        title:'`Web Articles and Tutorials',
+        text: 'Check out my blog — its worth looking.',
+        url: 'www.codershood.info'
+      });
+      console.log(sharedResponse);
+    } catch(error) {
+      console.log('You app is not shared, reason: ',error);
+    }
+    
+  }
+
+
   selectCard(id) {
     this.mainData.CardTypeID = id;
     this.search();
