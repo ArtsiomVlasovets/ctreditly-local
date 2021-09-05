@@ -9,7 +9,6 @@ import { NgNavigatorShareService } from 'ng-navigator-share';
   styleUrls: ['./credit-card-co.component.scss']
 })
 export class CreditCardCoComponent implements OnInit {
-   private ngNavigatorShareService: NgNavigatorShareService;
   profileDate = JSON.parse(localStorage.getItem('loginResponse'));
   cardListShow=false;
   cards = JSON.parse(localStorage.getItem("masterData"))?.cards;
@@ -51,22 +50,21 @@ export class CreditCardCoComponent implements OnInit {
     "APRSorting": 0
   }
   compareCard: Array<any> = [];
-  constructor(private router: Router, private creditlyServices: CreditlyServicesService, ngNavigatorShareService: NgNavigatorShareService) {
+  constructor(private router: Router, private creditlyServices: CreditlyServicesService, private ngNavigatorShareService: NgNavigatorShareService) {
     if (localStorage.getItem("compareBy") == "card") {
       this.compareCard = localStorage.getItem("compairCards") ? JSON.parse(localStorage.getItem("compairCards")) : [];
     }
 
-    this.ngNavigatorShareService = ngNavigatorShareService;
+    // this.ngNavigatorShareService = ngNavigatorShareService;
   }
 
   ngOnInit() {
 
   }
-  addCompare() {
 
-  }
 
   async shareApi() {
+    
     try{
       const sharedResponse = await this.ngNavigatorShareService.share({
         title:'`Web Articles and Tutorials',
@@ -77,8 +75,7 @@ export class CreditCardCoComponent implements OnInit {
     } catch(error) {
       console.log('You app is not shared, reason: ',error);
     }
-    
-  }
+     }
 
 
   selectCard(id) {
