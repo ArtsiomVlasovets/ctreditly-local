@@ -385,6 +385,15 @@ export class CreditlyServicesService {
     }
   }
 
+
+  shareIntent(url) {
+
+    let headers = this.headers.set('Token', localStorage.getItem('sessionToken'));
+    console.log(headers);
+      return this.http.post(this.mainBaseUrl + `/Card/urldetail`, url, { headers: headers })
+    
+  }
+
   /* Open bank account API call */
 
 }

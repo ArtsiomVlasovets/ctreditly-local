@@ -63,19 +63,26 @@ export class CreditCardCoComponent implements OnInit {
   }
 
 
-  async shareApi() {
+ async shareApi(value) {
+
+   let url = value?.seo?.url;
+   console.log('url', url);
+  //  this.creditlyServices.shareIntent(url).subscribe(res => {
+  //    console.log("share result", res);
+  //   })
+      try {
+        const sharedResponse = await this.ngNavigatorShareService.share({
+          title: '`Web Articles and Tutorials',
+          text: 'Check out my blog — its worth looking.',
+          url: ''
+        });
+        console.log(sharedResponse);
+      } catch (error) {
+        alert(error);
+      }
+   
     
-    try{
-      const sharedResponse = await this.ngNavigatorShareService.share({
-        title:'`Web Articles and Tutorials',
-        text: 'Check out my blog — its worth looking.',
-        url: 'www.codershood.info'
-      });
-      console.log(sharedResponse);
-    } catch(error) {
-      console.log('You app is not shared, reason: ',error);
-    }
-     }
+  }
 
 
   selectCard(id) {
