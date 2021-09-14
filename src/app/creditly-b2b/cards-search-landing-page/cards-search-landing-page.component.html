@@ -144,182 +144,239 @@
                                 (click)="navigateToBankPage()" role="tab" aria-controls="pills-contact" aria-selected="false">
                                 Bank account</a> </li>
                     </ul>
-                </div>
-            </div>
-        </div>
-        <div class="sky_background">
-            <div class="container">
-                <div class="layout-container">
+
                     <div class="tab-content" id="pills-tabContent p-3">
                         <!-- 1st card -->
-                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                            aria-labelledby="pills-home-tab">
-                            <app-credit-card-co></app-credit-card-co>
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <!-- <app-credit-card-co></app-credit-card-co> -->
+                    
+                            <div class="credit-card-main">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="card-img">
+                                                    <img src="/assets/images/main_images/visa_dummy_image.png">
+                                                </div>
+                                                <div class="card-info">
+                                                    <h3>Emirates NBD</h3>
+                                                    <p>Platinum Credit Card</p>
+                                                    <hr>
+                                                    <p><span>0%</span> Annual Percentage Rate</p>
+                                                
+                                                    <a>Learn More <i class="fa fa-angle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="card-img">
+                                                    <img src="/assets/images/main_images/visa_dummy_image.png">
+                                                </div>
+                                                <div class="card-info">
+                                                    <h3>Emirates NBD</h3>
+                                                    <p>Platinum Credit Card</p>
+                                                    <hr>
+                                                    <p><span>0%</span> Annual Percentage Rate</p>
+                    
+                                                    <a>Learn More <i class="fa fa-angle-right"></i></a>
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="card-img">
+                                                    <img src="/assets/images/main_images/visa_dummy_image.png">
+                                                </div>
+                                                <div class="card-info">
+                                                    <h3>Emirates NBD</h3>
+                                                    <p>Platinum Credit Card</p>
+                                                    <hr>
+                                                    <p><span>0%</span> Annual Percentage Rate</p>
+                                                
+                                                    <a>Learn More <i class="fa fa-angle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            
-                        </div> <!-- 2nd card -->
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                            aria-labelledby="pills-profile-tab">
-                            <app-personal-co></app-personal-co>
-                        </div> <!-- 3nd card -->
-                        <div class="tab-pane fade third" id="pills-contact" role="tabpanel"
-                            aria-labelledby="pills-contact-tab">
-                            <div class="filter-section f-s">
-                                <form [formGroup]="autoLeaseFinanceForm">
-                                    
-                                        <div class="row py-3 mb-3 d-none">
-                                            <div class="col-md-3">
-                                                <p>Im interested in</p>
-                                            </div>
-                                            <div class="col-md-9 radio-tabs h-25">
-                                                <input type="radio" id="radio1" name="radios" value="all" checked>
-                                                <label for="radio1">All</label>
-                                                <input type="radio" id="radio2" name="radios" value="false">
-                                                <label for="radio2">50% 50%</label>
-                                                <input type="radio" id="radio3" name="radios" value="true">
-                                                <label for="radio3">Auto-lease</label>
-                                                <input type="radio" id="radio4" name="radios" value="true">
-                                                <label for="radio4">Second hand car financing</label>
-                                            </div>
-                                        </div>
-                                        <div class="content">
-                                            <p>Set your Auto-lease details</p>
-                                        </div>
-                                        <div class="row filter-row">
-                                            <div class="col-md-6">
-                                                <div class="monthly_income">
-                                                    <p class="text">Your Monthly Income</p>
-                                                    <p class="amount"><b> {{this.autoLeaseFinanceForm?.value?.netSalary | currency: "SAR"}} </b>
-                                                    </p>
-                                                </div>
-                                                <div class="slider-margin">
-                                                    <!-- [(value)]="value" -->
-                                                    <ngx-slider formControlName="netSalary" [options]="options3"></ngx-slider>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="monthly_income">
-                                                    <p class="text">Finance amount</p>
-                                                    <p class="amount"><b> {{this.autoLeaseFinanceForm?.value?.financeAmount | currency: "SAR"}}
-                                                        </b></p>
-                                                </div>
-                                                <div class="slider-margin">
-                                                    <!-- [(value)]="value" -->
-                                                    <ngx-slider formControlName="financeAmount" [options]="options3"></ngx-slider>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-5 filter-row">
-                                            <div class="col-md-4">
-                                                <div class="monthly_income">
-                                                    <p class="text">Finance period</p>
-                                                    <p class="amount"><b>Year {{this.autoLeaseFinanceForm.value.financePeriod}} </b></p>
-                                                </div>
-                                                <div class="slider-margin">
-                                                    <!-- [(value)]="value" -->
-                                                    <ngx-slider formControlName="financePeriod" [options]="options4"></ngx-slider>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="monthly_income">
-                                                    <p class="text">Downpayment</p>
-                                                    <p class="amount"><b>{{this.autoLeaseFinanceForm.value.downPayment | currency: "SAR"}} </b>
-                                                    </p>
-                                                </div>
-                                                <div class="slider-margin">
-                                                    <!-- [(value)]="value" -->
-                                                    <ngx-slider formControlName="downPayment" [options]="options5"></ngx-slider>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="monthly_income">
-                                                    <p class="text">Ballon payment</p>
-                                                    <p class="amount"><b>{{this.autoLeaseFinanceForm.value.lastPayment | currency: "SAR"}} </b>
-                                                    </p>
-                                                </div>
-                                                <div class="slider-margin">
-                                                    <!-- [(value)]="value" -->
-                                                    <ngx-slider formControlName="lastPayment" [options]="options5"></ngx-slider>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-3 col-md-12">
-                                            <div class="below_slider_part row">
-                                                <div class="are_you_from col-md-4 text-left">
-                                                    <p>Are you Saudi?</p>
-                                                    <div class="custom_radio_button">
-                                                        <label class="container">Yes
-                                                            <input (click)="handlerFromSaudi(1)" name="areYouSaudi" type="radio"
-                                                                checked="nationality==1">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <label class="container">No
-                                                            <input (click)="handlerFromSaudi(2)" name="areYouSaudi" type="radio"
-                                                                checked="nationality==2">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <!-- <span><input class="" type="radio" name="from" id="yes"> Yes</span>&nbsp;
-                                                    <span class="no_radio"><input class="" type="radio" name="from" id="no"> No</span> -->
-                                                    </div>
-                                                </div>
-                                                <div class="are_you_from col-md-4 text-center">
-                                                    <p>Employer type</p>
-                                                    <div class="custom_select_input">
-                                                        <select formControlName="workType" name="" id="" class="select-input">
-                                                            <option value="0">All</option>
-                                                            <option *ngFor="let item of workTypesList" value={{item?.id}}> {{item?.name}}
-                                                            </option>
-                                                            <!-- <option value="Private">Private</option> -->
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="are_you_from col-md-4 text-center">
-                                                    <p>Salary transfer?</p>
-                                                    <div class="custom_radio_button last_custom_radio_btn">
-                                                        <label class="container">Yes
-                                                            <input value="yes" id="salaryTransfer" name="salaryTransferF" type="radio"
-                                                                [checked]="salaryTransferFlag === true" (click)="handlerSalaryTransfer('yes')">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <label class="container">No
-                                                            <input value="no" id="salaryTransfer" name="salaryTransferF" type="radio"
-                                                                [checked]="salaryTransferFlag === false" (click)="handlerSalaryTransfer('no')">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <!-- <span><input class="" type="radio" name="to" id="yes"> Yes</span>&nbsp;
-                                                    <span class="no_radio"><input class="" type="radio" name="to" id="no"> No</span> -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-3">
+                                    <div class="text-info">
+                                        <div class="mt-3 mb-5">
                                             <div class="find_cards_section">
-                                                <button class="btn btn-md find_cards_btn" (click)="findAutoFinance()">FIND A FINANCE</button>
+                                                <button class="btn btn-md find_cards_btn">SEE ALL CREDIT CARDS</button>
                                                 <!-- <div class="find_cards_content"> -->
-                                                <p>One click to see all credit cards from all Saudi banks</p>
-                                                <p class="more_text">e.g. Alrajhi Bank, Riyad Bank, Alinma bank, Albilad Bank,
-                                                    Aljazirah bank,
-                                                    NCB,
-                                                    ANB and more…</p>
+                                                <p class="pt-3">One click to see all available credit cards from all Saudi Arabia banks</p>
+                                                <p class="more_text">e.g. Alrajhi Bank, Riyad Bank, Alinma bank, Albilad Bank, Aljazirah bank, NCB, ANB and more…</p> 
                                                 <!-- </div> -->
                                             </div>
                                         </div>
-                                    
+                                    </div>
+                                </div>
+                    
+                            </div>
+                    
+                    
+                        </div> <!-- 2nd card -->
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <app-personal-co></app-personal-co>
+                        </div> <!-- 3nd card -->
+                        <div class="tab-pane fade third" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                            <div class="filter-section f-s">
+                                <form [formGroup]="autoLeaseFinanceForm">
+                    
+                                    <div class="row py-3 mb-3 d-none">
+                                        <div class="col-md-3">
+                                            <p>Im interested in</p>
+                                        </div>
+                                        <div class="col-md-9 radio-tabs h-25">
+                                            <input type="radio" id="radio1" name="radios" value="all" checked>
+                                            <label for="radio1">All</label>
+                                            <input type="radio" id="radio2" name="radios" value="false">
+                                            <label for="radio2">50% 50%</label>
+                                            <input type="radio" id="radio3" name="radios" value="true">
+                                            <label for="radio3">Auto-lease</label>
+                                            <input type="radio" id="radio4" name="radios" value="true">
+                                            <label for="radio4">Second hand car financing</label>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <p>Set your Auto-lease details</p>
+                                    </div>
+                                    <div class="row filter-row">
+                                        <div class="col-md-6">
+                                            <div class="monthly_income">
+                                                <p class="text">Your Monthly Income</p>
+                                                <p class="amount"><b> {{this.autoLeaseFinanceForm?.value?.netSalary | currency: "SAR"}} </b>
+                                                </p>
+                                            </div>
+                                            <div class="slider-margin">
+                                                <!-- [(value)]="value" -->
+                                                <ngx-slider formControlName="netSalary" [options]="options3"></ngx-slider>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="monthly_income">
+                                                <p class="text">Finance amount</p>
+                                                <p class="amount"><b> {{this.autoLeaseFinanceForm?.value?.financeAmount | currency: "SAR"}}
+                                                    </b></p>
+                                            </div>
+                                            <div class="slider-margin">
+                                                <!-- [(value)]="value" -->
+                                                <ngx-slider formControlName="financeAmount" [options]="options3"></ngx-slider>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5 filter-row">
+                                        <div class="col-md-4">
+                                            <div class="monthly_income">
+                                                <p class="text">Finance period</p>
+                                                <p class="amount"><b>Year {{this.autoLeaseFinanceForm.value.financePeriod}} </b></p>
+                                            </div>
+                                            <div class="slider-margin">
+                                                <!-- [(value)]="value" -->
+                                                <ngx-slider formControlName="financePeriod" [options]="options4"></ngx-slider>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="monthly_income">
+                                                <p class="text">Downpayment</p>
+                                                <p class="amount"><b>{{this.autoLeaseFinanceForm.value.downPayment | currency: "SAR"}} </b>
+                                                </p>
+                                            </div>
+                                            <div class="slider-margin">
+                                                <!-- [(value)]="value" -->
+                                                <ngx-slider formControlName="downPayment" [options]="options5"></ngx-slider>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="monthly_income">
+                                                <p class="text">Ballon payment</p>
+                                                <p class="amount"><b>{{this.autoLeaseFinanceForm.value.lastPayment | currency: "SAR"}} </b>
+                                                </p>
+                                            </div>
+                                            <div class="slider-margin">
+                                                <!-- [(value)]="value" -->
+                                                <ngx-slider formControlName="lastPayment" [options]="options5"></ngx-slider>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 col-md-12">
+                                        <div class="below_slider_part row">
+                                            <div class="are_you_from col-md-4 text-left">
+                                                <p>Are you Saudi?</p>
+                                                <div class="custom_radio_button">
+                                                    <label class="container">Yes
+                                                        <input (click)="handlerFromSaudi(1)" name="areYouSaudi" type="radio"
+                                                            checked="nationality==1">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <label class="container">No
+                                                        <input (click)="handlerFromSaudi(2)" name="areYouSaudi" type="radio"
+                                                            checked="nationality==2">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <!-- <span><input class="" type="radio" name="from" id="yes"> Yes</span>&nbsp;
+                                                                        <span class="no_radio"><input class="" type="radio" name="from" id="no"> No</span> -->
+                                                </div>
+                                            </div>
+                                            <div class="are_you_from col-md-4 text-center">
+                                                <p>Employer type</p>
+                                                <div class="custom_select_input">
+                                                    <select formControlName="workType" name="" id="" class="select-input">
+                                                        <option value="0">All</option>
+                                                        <option *ngFor="let item of workTypesList" value={{item?.id}}> {{item?.name}}
+                                                        </option>
+                                                        <!-- <option value="Private">Private</option> -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="are_you_from col-md-4 text-center">
+                                                <p>Salary transfer?</p>
+                                                <div class="custom_radio_button last_custom_radio_btn">
+                                                    <label class="container">Yes
+                                                        <input value="yes" id="salaryTransfer" name="salaryTransferF" type="radio"
+                                                            [checked]="salaryTransferFlag === true" (click)="handlerSalaryTransfer('yes')">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <label class="container">No
+                                                        <input value="no" id="salaryTransfer" name="salaryTransferF" type="radio"
+                                                            [checked]="salaryTransferFlag === false" (click)="handlerSalaryTransfer('no')">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <!-- <span><input class="" type="radio" name="to" id="yes"> Yes</span>&nbsp;
+                                                                        <span class="no_radio"><input class="" type="radio" name="to" id="no"> No</span> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="find_cards_section">
+                                            <button class="btn btn-md find_cards_btn" (click)="findAutoFinance()">FIND A FINANCE</button>
+                                            <!-- <div class="find_cards_content"> -->
+                                            <p>One click to see all credit cards from all Saudi banks</p>
+                                            <p class="more_text">e.g. Alrajhi Bank, Riyad Bank, Alinma bank, Albilad Bank,
+                                                Aljazirah bank,
+                                                NCB,
+                                                ANB and more…</p>
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                    
                                 </form>
                             </div>
                         </div>
-                        <div class="tab-pane fade third" id="pills-mortgage" role="tabpanel"
-                            aria-labelledby="pills-contact-tab">
+                        <div class="tab-pane fade third" id="pills-mortgage" role="tabpanel" aria-labelledby="pills-contact-tab">
                             <app-mortgage-co></app-mortgage-co>
                         </div>
-                        <div class="tab-pane fade third" id="pills-mortgage" role="tabpanel"
-                            aria-labelledby="pills-contact-tab">
-
+                        <div class="tab-pane fade third" id="pills-mortgage" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
     
     <div >
