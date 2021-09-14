@@ -1,11 +1,19 @@
 <!-- <p>header works!</p> -->
 <!-- class="header_starts" -->
 <section id="myHeader" class="header_part " [ngClass]="{'headerStickyClass' : applyStickyStyles == true}">
-    <div class="col-md-12">
-        <div class="container theme_container mb-0">
-            <div class="layout-container">
-                <div class="d-none d-md-block">
-                    <div class="text-center d-flex justify-content-center align-items-center ar_logo_text">
+
+        <div class="topbar">
+            <div class="container">
+                <div class="topbar-inner">
+                    <div class="contact-info-top">
+                        <a><i class="fas fa-phone"></i> 920001273</a>
+                        <a><i class="far fa-envelope"></i> help@creditly.sa</a>
+                        
+                        
+                    </div>
+
+                    <div class="login-lang">
+                        <a routerLink="/login"><i class="far fa-user" ></i> Login</a>
                         <div class="lang-change">
                             <span (click)="selectLanguage('AR')" *ngIf="!showEnglishLogo"><img
                                     src="../../../assets/images/footer-images/arabic-ln.png" alt="ar" width="25px">
@@ -15,7 +23,72 @@
                                 EN</span>
                         </div>
                     </div>
-                    <!-- header-main-content -->
+                </div>
+            </div>
+        </div>
+
+        <div class="header-menu-main">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" routerLink="/creditly/LandingPage" routerLinkActive="active">
+                        <img class="header-logo" src="/assets/images/header-images/header-main-logo.png" alt="">
+                    
+                        <span class="logo-text">Creditly</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                
+                                <a [routerLink]="['./cards-list']" routerLinkActive="active" class="nav-link">Credit Card</a>
+                            </li>
+                            <li class="nav-item">
+                                <a [routerLink]="['./personalFinance']" routerLinkActive="active" class="nav-link">Personal finance</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" [routerLink]="['./autoLease']" routerLinkActive="active">Auto
+                                    lease</a>
+                            </li>
+                            <li class="nav-item">
+                                <a [routerLink]="['./mortgage']" routerLinkActive="active" class="nav-link">Mortgage</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['./bank-account']" routerLinkActive="active">Bank
+                                account</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+   
+
+    <!-- <div class="col-md-12">
+        <div class="container">
+            <div class="text-center d-flex justify-content-center align-items-center ar_logo_text">
+                <div class="lang-change">
+                    <span (click)="selectLanguage('AR')" *ngIf="!showEnglishLogo"><img
+                            src="../../../assets/images/footer-images/arabic-ln.png" alt="ar" width="25px">
+                        AR </span>
+                    <span (click)="selectLanguage('EN')" *ngIf="showEnglishLogo"><img
+                            src="../../../assets/images/footer-images/english-ln.png" alt="en" width="25px">
+                        EN</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="container theme_container mb-0">
+           
+                <div class="d-none d-md-block">
+                   
 
                     <div class="col-md-12">
                         <div class="row header-main-content">
@@ -59,11 +132,7 @@
                                 </nav>
                             </div>
                             <div class="col-md-2 right-login" *ngIf="service.to=='Profile'">
-                                <!--  <span class="img-arrow">
-                                    <img class="left-arrow" src="../../../assets/images/footer-images/down-arrow.svg" />
-                                    <img class="right-arrow" src="../../../assets/images/footer-images/up-arrow.svg"
-                                        width="11px" />
-                                </span> -->
+                                
                                 <svg xmlns="http://www.w3.org/2000/svg" width="26.761" height="16.089"
                                     viewBox="0 0 26.761 16.089">
                                     <g id="Group_4053" data-name="Group 4053" transform="translate(-1032.027 -51.906)">
@@ -82,10 +151,8 @@
                                     <b>Profile</b>
                                 </p>
                                 <p class="img-text dropdown d-none">
-                                    <!-- routerLink="../userProfile" -->
                                     <a class="dropdown-toggle" type="button" id="dropdownMenuButton1"
                                         data-toggle="dropdown" aria-expanded="false">
-                                        <!-- <b>Profile</b> -->
                                         <b>{{profileDate?.firstName}} {{profileDate?.lastName}}</b>
                                     </a>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
@@ -113,14 +180,9 @@
                                         </a>
                                     </li>
                                 </ul>
-                                <!-- </p> -->
                             </div>
                             <div class="col-md-2 right-login" *ngIf="service.to=='Login'">
-                                <!-- <span class="img-arrow">
-                                    <img class="left-arrow" src="../../../assets/images/footer-images/down-arrow.svg" />
-                                    <img class="right-arrow" src="../../../assets/images/footer-images/up-arrow.svg"
-                                        width="11px" />
-                                </span> -->
+                                
                                 <svg xmlns="http://www.w3.org/2000/svg" width="26.761" height="16.089"
                                     viewBox="0 0 26.761 16.089">
                                     <g id="Group_4053" data-name="Group 4053" transform="translate(-1032.027 -51.906)">
@@ -139,9 +201,6 @@
                         </div>
                     </div>
 
-                    <!-- <div class="header" id="myHeader">
-                        <h2>My Header</h2>
-                    </div> -->
 
 
                     <div class="d-none" *ngIf="service.to=='Login'">
@@ -166,10 +225,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
 
 
-            <!-- mobile header -->
+         
 
             <div class="mobile-header d-block d-md-none">
                 <div class="container-fluid">
@@ -242,7 +301,6 @@
                                         <img class="right-arrow" src="../../../assets/images/footer-images/up-arrow.svg"
                                             width="11px" />
                                     </span>
-                                    <!-- lang-change -->
                                     <div class="mt-1">
                                         <span (click)="selectLanguage('AR')" *ngIf="!showEnglishLogo">AR<img
                                                 src="../../../assets/images/footer-images/arabic-ln.png" alt="ar"
@@ -315,73 +373,6 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
 
 </section>
-
-<!-- 
-<svg class="d-none" xmlns="http://www.w3.org/2000/svg" width="911" height="59" viewBox="0 0 911 59">
-    <g id="Component_82_76" data-name="Component 82 – 76" transform="translate(1 1)">
-        <g id="Group_3588" data-name="Group 3588" transform="translate(-129.545 -2.168)">
-            <text id="Auto_lease" data-name="Auto lease" transform="translate(606.545 43.168)" fill="#282f3a"
-                font-size="17" font-family="Cairo-SemiBold, Cairo" font-weight="600">
-                <tspan x="0" y="0">Auto lease</tspan>
-            </text>
-            <text id="Mortgage" transform="translate(708.545 43.168)" fill="#282f3a" font-size="17"
-                font-family="Cairo-SemiBold, Cairo" font-weight="600">
-                <tspan x="0" y="0">Mortgage</tspan>
-            </text>
-            <text id="Bank_account" data-name="Bank account" transform="translate(804.545 43.168)" fill="#282f3a"
-                font-size="17" font-family="Cairo-SemiBold, Cairo" font-weight="600">
-                <tspan x="0" y="0">Bank account</tspan>
-            </text>
-            <text id="Personal_finance" data-name="Personal finance" transform="translate(460.545 43.168)"
-                fill="#282f3a" font-size="17" font-family="Cairo-SemiBold, Cairo" font-weight="600">
-                <tspan x="0" y="0">Personal finance</tspan>
-            </text>
-            <text id="Credit_card" data-name="Credit card" transform="translate(345.545 43.168)" fill="#09bc8a"
-                font-size="17" font-family="Cairo-Bold, Cairo" font-weight="700">
-                <tspan x="0" y="0">Credit card</tspan>
-            </text>
-        </g>
-        <g id="Group_3822" data-name="Group 3822" transform="translate(-195 -22)">
-            <g id="Group_3599" data-name="Group 3599" transform="translate(182 -2)">
-                <g id="Group_3194" data-name="Group 3194" transform="translate(13 24)">
-                    <path id="Path_3571" data-name="Path 3571" d="M-580.482-1248.226v13.974l-12.771-6.482Z"
-                        transform="translate(617.621 1255.132)" fill="#01dbff" stroke="#282f3a" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" />
-                    <path id="Path_3572" data-name="Path 3572"
-                        d="M-646.365-1249.06l24.348-14.219,12.809,6.913-24.822,14.51Z"
-                        transform="translate(646.365 1263.279)" fill="#282f3a" stroke="#282f3a" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" />
-                    <path id="Path_3573" data-name="Path 3573" d="M-646.365-1203.61V-1232.4l12.37,7.266v28.671Z"
-                        transform="translate(646.365 1246.568)" fill="#282f3a" stroke="#282f3a" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" />
-                    <path id="Path_3574" data-name="Path 3574"
-                        d="M-606.972-1200.609l-12.348,6.926v14.509l24.794-14.357Z"
-                        transform="translate(631.728 1229.362)" fill="#ebebec" stroke="#282f3a" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" />
-                </g>
-            </g>
-            <text id="Creditly" transform="translate(292 65)" fill="#282f3a" font-size="26"
-                font-family="Cairo-SemiBold, Cairo" font-weight="600">
-                <tspan x="-42.822" y="0">Creditly</tspan>
-            </text>
-        </g>
-        <g id="Group_4054" data-name="Group 4054" transform="translate(-162 -46)">
-            <text id="Login" transform="translate(1051 87)" font-size="18" font-family="Cairo-SemiBold, Cairo"
-                font-weight="600">
-                <tspan x="-20.853" y="0">Login</tspan>
-            </text>
-            <g id="Group_4053" data-name="Group 4053" transform="translate(5.592 -1.996)">
-                <path id="Path_3572-2" data-name="Path 3572"
-                    d="M-634.338-1256.831l12.017-6.448,12.631,7.438-12.631,6.65Z"
-                    transform="translate(1667.365 1316.185)" fill="#282f3a" stroke="#282f3a" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" />
-                <path id="Path_3571-2" data-name="Path 3571" d="M-593.253-1248.226v13.974l12.771-6.482Z"
-                    transform="translate(1638.271 1301.132)" fill="#01dbff" stroke="#282f3a" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" />
-            </g>
-        </g>
-    </g>
-</svg> -->

@@ -8,7 +8,7 @@ import { CreditlyServicesService } from 'src/app/creditly-services.service';
 })
 export class HeaderComponent implements OnInit {
 
-  showEnglishLogo: boolean = false;
+  showEnglishLogo: boolean = true;
   applyStickyStyles: boolean = false;
   profileDate = JSON.parse(localStorage.getItem('loginResponse'));
 
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
     // Get the offset position of the navbar
     var sticky = navbar.offsetTop;
-    if (window.pageYOffset > 30) {
+    if (window.pageYOffset > 10) {
       // navbar.classList.add("sticky")
       this.applyStickyStyles = true;
     } else {
@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public selectLanguage(type): void {
-    console.log("event language", type);
+    
     if (type == "AR") {
       this.showEnglishLogo = true;
     } else {

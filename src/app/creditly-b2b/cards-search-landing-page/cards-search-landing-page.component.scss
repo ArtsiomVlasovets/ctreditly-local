@@ -18,48 +18,24 @@ input[type="radio"]:checked {
   left: 0;
   width: 100%;
 }
-
-.backgroundMask {
+.layerMask {
+  position: relative;
+}
+.backgroundMask2 {
   position: absolute;
-  top: 0px;
+  background-color: #282f3a;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-
-  .background {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    overflow: hidden;
-    .own-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      // clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 3px 100%);
-      /*  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 80%);
-            background: transparent linear-gradient(154deg, #FFFFFF 25%, #777D90 100%) 20% 0% no-repeat padding-box; */
-      background: transparent linear-gradient(341deg, #243655c7 0%, #ffffff 80%)
-        0% 0% no-repeat padding-box;
-      clip-path: polygon(100% 0, 0 0, 0 99%);
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 100%;
-      height: 100%;
-      background-position: center center;
-
-      @include mobile {
-        // height: 110%;
-      }
-    }
-  }
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 43%, 0% 100%);
+  z-index: 1;
 }
 
 .mainPart-container {
   position: relative;
-  z-index: 1;
   justify-content: center;
+  z-index: 1;
 
   @include extrasmall {
     .col-md-12 {
@@ -68,7 +44,8 @@ input[type="radio"]:checked {
     }
   }
   .layout-content {
-    padding-top: 56px;
+    padding-top: 150px;
+    padding-bottom: 200px;
     @include mobile {
       padding-top: 82px;
     }
@@ -108,29 +85,38 @@ input[type="radio"]:checked {
   border-radius: 0px;
   max-width: 430px;
   margin: auto;
+  padding: 20px 0;
   @include mobile {
     // max-width: 300px;
   }
+  h3 {
+    color: #282f3a;
+    font-size: 25px;
+    font-weight: 600;
+  }
   .login-para {
-    font-size: 13px;
+    font-size: 16px;
     color: #8e8e8e;
   }
   .mobile-label {
     color: #09bc8a;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
   }
   .custom-input {
     border: transparent;
     border-bottom: solid 1px #000;
     border-radius: 0px;
+    background-color: #f2f2f2;
+    font-weight: 600;
+    color: #000;
   }
   .get-starts-btn {
     background-color: $primary_green;
     border: transparent;
     color: #fff;
-    font-weight: 600;
-    padding: 6px 40px;
+    font-weight: 700;
+    padding: 6px 60px;
     @include mobile {
       width: 100%;
     }
@@ -162,13 +148,14 @@ input[type="radio"]:checked {
 .header_main_text {
   z-index: 9999;
   max-width: 350px;
+  h1 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #fff;
+  }
   @include mobile {
     max-width: 240px;
     margin-bottom: 40px;
-    h1 {
-      font-size: 40px;
-      font-weight: 600;
-    }
   }
 }
 .header_main_image {
@@ -187,17 +174,15 @@ input[type="radio"]:checked {
 }
 
 #cards_search_landing_page {
-  // margin-top: 400px;
-  // @include mobile {
-  //   margin-top: 100px;
-  // }
-  /*  background: url(../../assets/images/main_images/Component_background_lines.svg) repeat 0 0;
-  background-repeat: no-repeat;
-  background-position: center; */
   .nav {
+    justify-content: center;
     @include mobile {
       display: flex;
       flex-direction: column;
+    }
+
+    .nav-link {
+      font-size: 17px;
     }
   }
   .sky_background {
@@ -280,12 +265,12 @@ input[type="radio"]:checked {
     }
   }
   .looking_for {
-    border-left: solid 1px $primary_green;
-    color: $primary_green;
-    font-size: 11px;
-    font-weight: 500;
+    color: #282f3a;
+    font-size: 14px;
+    font-weight: 600;
     padding-left: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
+    text-align: center;
   }
 }
 
@@ -545,28 +530,27 @@ input[type="radio"]:checked {
 
 .nav-pills .nav-link.active {
   background-color: unset;
-  color: #000;
+  color: $primary_green;
   border-bottom: solid 3px $primary_green;
   border-radius: 0px;
   font-size: 18px;
-  font-weight: 500;
-  padding-left: 0px !important;
+  font-weight: 700;
+
   @include mobile {
-    border-bottom: transparent;
     font-weight: 600;
   }
-  &::before {
-    content: url(../../../assets/images/footer-images/up-arrow.svg);
-    height: 20px;
-    width: 20px;
-    margin-right: 8px;
-  }
+  // &::before {
+  //   content: url(../../../assets/images/footer-images/up-arrow.svg);
+  //   height: 20px;
+  //   width: 20px;
+  //   margin-right: 8px;
+  // }
 }
 
 .nav-pills .nav-link {
   border-radius: 0.25rem;
-  color: #000;
-  font-size: 14px;
+  color: $dark_blue;
+  font-size: 17px;
   font-weight: 500;
 }
 
@@ -635,6 +619,7 @@ input[type="radio"]:checked {
 
 .padding-t400 {
   padding-top: 400px;
+  margin-top: -378px;
 
   @include mobile {
     padding-top: 100px;
