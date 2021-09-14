@@ -388,9 +388,9 @@ export class CreditlyServicesService {
 
   shareIntent(url) {
 
-    let headers = this.headers.set('Token', localStorage.getItem('sessionToken'));
+    let headers = this.headers.set('Token', localStorage.getItem('token'));
     console.log(headers);
-      return this.http.post(this.mainBaseUrl + `/Card/urldetail`, url, { headers: headers })
+      return this.http.post(this.mainBaseUrl + `/Card/urldetail`, {URL: url}, { headers: headers })
     
   }
 
