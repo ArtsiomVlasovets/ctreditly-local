@@ -324,13 +324,16 @@ input[type="radio"]:checked {
       color: $primary_green;
       border-left: solid 1px $primary_green;
       padding-left: 14px;
-      font-size: 24px;
+      font-size: 30px;
+      font-weight: 600;
     }
     .content {
       color: $primary_sky_blue;
-      font-size: 14px;
+      font-size: 18px;
       margin: 0px 13px 17px;
-      max-width: 376px;
+      max-width: 500px;
+      font-weight: 400;
+      font-family: "IBM Plex Sans", sans-serif;
     }
   }
   .main_three_blocks {
@@ -340,9 +343,9 @@ input[type="radio"]:checked {
     }
     .register_sections {
       .title {
-        color: #01dbff;
-        font-size: 24px;
-        font-weight: 300;
+        color: #3e9fff;
+        font-size: 27px;
+        font-weight: 400;
         margin: 10px 0px;
       }
       .content {
@@ -350,20 +353,26 @@ input[type="radio"]:checked {
         max-width: 290px;
         color: #fff;
         width: 100%;
+        font-family: "IBM Plex Sans", sans-serif;
       }
     }
   }
   .get_most {
     color: #fff;
-    max-width: 400px;
+    max-width: 450px;
     margin: 60px auto 0px auto;
     padding-bottom: 20px;
     h6 {
       color: $primary_green;
-      font-size: 20px;
+      font-size: 24px;
+      text-align: center;
+      font-weight: 600;
     }
     p {
-      font-size: 14px;
+      font-size: 18px;
+      font-family: "IBM Plex Sans", sans-serif;
+      text-align: center;
+      padding-top: 30px;
     }
   }
 }
@@ -398,13 +407,17 @@ input[type="radio"]:checked {
   .register_now_btn {
     color: #fff;
     background-color: $primary_green;
-    font-size: 20px;
+    font-size: 17px;
     padding: 7px 70px;
+    font-weight: 700;
   }
   p {
-    font-size: 15px;
+    font-size: 14px;
     margin: 0;
     padding: 20px;
+    color: #282f3a;
+    font-weight: 400;
+    font-family: "IBM Plex Sans", sans-serif;
   }
 }
 
@@ -415,24 +428,34 @@ input[type="radio"]:checked {
   .main_topic {
     margin: 20px 0px !important;
     .one {
-      color: #000 !important;
-      border-left: solid 1px #000 !important;
+      color: #09bc8a;
+      border-left: solid 1px #000;
+      font-weight: 600;
+      font-size: 30px;
+      padding-left: 14px;
     }
   }
   .disclaimer_text {
     font-weight: 600;
     .title {
-      color: $primary_green;
+      color: #282f3a;
       border-left: solid 1px $primary_green;
       padding-left: 14px;
-      font-size: 24px;
-      font-weight: 600;
+      font-size: 30px;
+      font-weight: 400;
     }
     .content {
-      color: #777d90;
-      font-size: 18px;
+      color: #282f3a;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
       margin: 0px 13px 17px;
       max-width: 376px;
+    }
+    .material-icons {
+      color: $primary_green;
+      font-size: 20px;
+      margin-right: 7px;
     }
   }
   .four_blocks {
@@ -442,12 +465,7 @@ input[type="radio"]:checked {
   }
 }
 .our_partners {
-  /* background: #EBEBEC;
-  padding: 35px 0px 0 0px;
-  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 53%);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 67%);
-  margin-bottom: -342px;
-  height: 586px; */
+  background: rgba(40, 47, 58, 0.75);
 
   .slide {
     max-width: 140px;
@@ -460,9 +478,6 @@ input[type="radio"]:checked {
     }
   }
 
-  background: #ebebec;
-  margin-bottom: -340px;
-  height: 100%;
   img {
     background: transparent;
   }
@@ -473,10 +488,10 @@ input[type="radio"]:checked {
 
   .disclaimer_text {
     .title {
-      color: #000 !important;
-      border-left: solid 1px #000 !important;
+      color: #fff !important;
+      border-left: solid 1px #fff !important;
       padding-left: 14px;
-      font-size: 24px;
+      font-size: 18px;
       margin-bottom: 50px;
     }
     .content {
@@ -488,36 +503,18 @@ input[type="radio"]:checked {
   }
   .list_bank_images {
     margin-bottom: 50px;
-    .images_position {
-      @include extrasmall {
-        .pb-5 {
-          padding-bottom: 1rem !important;
-        }
-      }
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 
-      justify-content: space-between;
-      @include mobile {
-        margin-bottom: 0px !important;
-      }
+    .bank_logo {
+      display: flex;
+      flex-basis: 20%;
+      padding: 20px;
+      justify-content: center;
+
       img {
-        width: 100%;
-        max-height: 75px;
-      }
-      .col-md-3 {
-        text-align: center;
-      }
-      @include extrasmall {
-        .col-xs-6 {
-          flex: 0 0 50%;
-          max-width: 50%;
-        }
-      }
-    }
-    .last_image {
-      margin-top: 30px;
-      padding-right: 60px;
-      @include mobile {
-        padding-right: 0px;
+        max-width: 130px;
       }
     }
   }
@@ -822,6 +819,63 @@ input[type="radio"]:checked {
         color: #3e9fff;
         display: block;
       }
+    }
+  }
+}
+
+.mobile-app-section {
+  position: relative;
+
+  .back-mobile-img {
+    // width: 50%;
+    // position: absolute;
+    // z-index: 1;
+    margin-top: -344px;
+    img {
+      width: 120%;
+    }
+    // background-image: url(/assets/images/mobile-phones.png);
+    // background-repeat: no-repeat;
+    // background-position: left;
+    // height: 100%;
+    // background-size: contain;
+  }
+
+  .background-color-area {
+    clip-path: polygon(0 0, 100% 34%, 100% 100%, 0% 100%);
+    background-color: #09bc8a;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobile-app-inner {
+    padding-top: 300px;
+    padding-bottom: 100px;
+  }
+  .mobile-app-text {
+    .title {
+      font-size: 30px;
+      font-weight: 600;
+      color: #fff;
+      border-left: 1px solid #fff;
+      padding-left: 14px;
+    }
+
+    .content {
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #fff;
+      padding-left: 14px;
+    }
+  }
+  .app-stores {
+    padding-top: 20px;
+    img {
+      margin-right: 10px;
     }
   }
 }

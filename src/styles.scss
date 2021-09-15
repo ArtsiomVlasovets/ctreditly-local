@@ -26,15 +26,8 @@
   }
 }
 
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-a {
-  font-family: "Cairo", sans-serif;
+body {
+  font-family: "Cairo", sans-serif !important;
 }
 
 .slider-margin {

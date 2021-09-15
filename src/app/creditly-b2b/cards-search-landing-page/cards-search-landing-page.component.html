@@ -385,9 +385,7 @@
                 <div class="layout-container">
                     <div class="disclaimer_text">
                         <p class="title">Hard made easy</p>
-                        <p class="content">Find best financial products from all Saudi Arabia banks, based on your
-                            credit
-                            score in seconds</p>
+                        <p class="content">Find best financial products from all Saudi Arabia banks, based on your credit score in seconds</p>
                     </div>
                     <!-- main_three_blocks -->
                     <div class="col-md-12">
@@ -401,9 +399,9 @@
                                         <p class="title">Register</p>
                                     </div>
                                     <div>
-                                        <p class="content">Create your profile in seconds, your data is securely fetched
-                                            from
-                                            Absher, XYZ and CCC</p>
+                                        <p class="content">Create your profile in seconds, your
+                                        data is securely fetched from
+                                        Absher, XYZ and CCC</p>
                                     </div>
                                 </div>
                             </div>
@@ -416,10 +414,9 @@
                                         <p class="title">Browse</p>
                                     </div>
                                     <div>
-                                        <p class="content">Navigate across different banking products and see the
-                                            products
-                                            you
-                                            are eligible for!</p>
+                                        <p class="content">Navigate across different banking
+                                        products and see the products
+                                        you are eligible for!</p>
                                     </div>
                                 </div>
                             </div>
@@ -432,7 +429,8 @@
                                         <p class="title">Apply</p>
                                     </div>
                                     <div>
-                                        <p class="content">Select the product you like and apply for it in seconds.</p>
+                                        <p class="content">Select the product you like and
+                                        apply for it in seconds.</p>
                                     </div>
                                 </div>
                             </div>
@@ -479,9 +477,9 @@
     <div>
         <div class="why_creditly">
             <div class="container">
-                <div class="layout-container pt-5 pb-5">
+                <div class="layout-container pt-5 pb-5" style="padding-bottom: 150px !important;">
                     <div class="disclaimer_text main_topic">
-                        <p class="title one">Why Creditly</p>
+                        <p class="one">Why Creditly</p>
                     </div>
                     <div class="col-md-12">
                         <div class="four_blocks row">
@@ -526,65 +524,60 @@
             </div>
         </div>
     </div>
+
+    <div class="mobile-app-section">
+        
+
+        <div class="background-color-area">
+
+        </div>
+        <div class="container">
+            <div class="layout-container mobile-app-inner">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="back-mobile-img">
+                            <img src="/assets/images/mobile-phones.png">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mobile-app-text">
+                            
+                                    <p class="title"> Mobile App</p>
+                                    <p class="content">Quisque vestibulum ligula enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam accumsan risus maximus
+                                    dui luctus, ac consequat Leo commodo. Proin fermentum malesuada odio, eu bibendum nisi fermentum quis. Sed porta, nulla
+                                    a aliquet varius, mauris mauris pharetra purus, et aliquet tortor risus nec mi. Class aptent taciti sociosqu ad litora
+                                    torquent per conubia nostra, per inceptos himenaeos. Curabitur ornare mollis ullamcorper. Integer et hendrerit quam, nec
+                                    varius nisl.</p>
+
+                                    <div class="app-stores">
+                                        <img src="/assets/images/istore.png">
+                                        <img src="/assets/images/googlestore.png">
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <div>
         <div class="our_partners">
             <div class="container">
                 <div class="layout-container">
                     <div class="disclaimer_text pt-5">
                         <p class="title">Our partners</p>
-                        <!-- <p class="content">We invest in the best security practices and resources to ensure the highest level of security</p> -->
                     </div>
                     <div class="pb-5">
                         <div class="list_bank_images">
-                            <div class="images_position mb-2">
-                                <div class="row align-items-center">
-                                    <ng-container *ngFor="let bank of banksList;let i=index">
-                                        
-                                        <ng-container  *ngIf="i === 8">
-                                                <div class="col-sm-3 col-md-3 d-none d-sm-block pb-5 ">
-                                                   
-                                                </div>
-                                               
-                                        </ng-container>
-
-                                    
-                                        <ng-container *ngIf="i === 12">
-                                            <div class="col-sm-3 col-md-3 pb-5 d-none d-sm-block">
-                                                
-                                            </div>
-                                            <div class="col-sm-3 col-md-3 pb-5 d-none d-sm-block ">
-                                                
-                                            </div>
-                                            <div class="col-sm-3 col-md-3 pb-5 d-none d-sm-block">
-                                               
-                                            </div>
-                                        </ng-container>
-                                        
-                                        <div class="col-xs-6 col-sm-3 col-md-3 pb-5" *ngIf="i != 10">
-                                            
-                                            <div class="slide">
+                            
+                                
+                                      
+                                            <div class="bank_logo" *ngFor="let bank of banksList;let i=index">
                                                 <img src="{{ bank.image }}" alt="" width="100%">
                                             </div>
-                                        </div>
-                                    </ng-container>
-                                    
-                                    
-                                    <!-- <div class="row">
-                                        <div class="my-2 col-md-3 col-sm-6 col-6" *ngFor="let bank of banksList;let i=index">
-                                            <img src={{bank?.image}} alt="image">
-                                        </div>
-                                    </div> -->
-                                    <!--  (init)="slickInit($event)"
-                                    (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-                                    (beforeChange)="beforeChange($event)" -->
-                                    <!-- <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
-                                        [config]="slideConfig">
-                                        <div ngxSlickItem *ngFor="let bank of banksList;let i=index" class="slide">
-                                            <img src="{{ bank.image }}" alt="" width="100%">
-                                        </div>
-                                    </ngx-slick-carousel> -->
-                                </div>
-                            </div>
+                                
+                           
                         </div>
                     </div>
                 </div>
