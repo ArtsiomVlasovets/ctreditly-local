@@ -1,4 +1,5 @@
-<section id="cards-list-page">
+<!-- <section id="cards-list-page">
+
     <div>
         <div>
 
@@ -6,7 +7,6 @@
         <div class="sky_background">
 
                     <div class="tab-content" id="pills-tabContent p-3">
-                        <!-- 1st card -->
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab">
                             <div class="content">
@@ -36,8 +36,7 @@
                                                     [checked]="NationalityID==2">
                                                 <span class="checkmark"></span>
                                             </label>
-                                            <!-- <span><input type="radio" name="from" id="yes" checked> Yes</span>
-                                            <span class="no_radio"><input type="radio" name="from" id="no"> No</span> -->
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -46,13 +45,13 @@
                                 <div class="find_cards_section">
                                     <button class="btn btn-md find_cards_btn" [disabled]="submit" (click)="search()">SEE
                                         CREDIT CARDS</button>
-                                    <!-- <div class="find_cards_content"> -->
+                                   
                                     <p>One click to see all credit cards from all Saudi banks</p>
                                     <p class="more_text">e.g. Alrajhi Bank, Riyad Bank, Alinma bank, Albilad Bank,
                                         Aljazirah bank,
                                         NCB,
                                         ANB and more…</p>
-                                    <!-- </div> -->
+                                   
                                 </div>
                             </div>
                         </div>
@@ -83,7 +82,6 @@
     <div *ngIf="cardListShow">
         <div class="cards_list">
             <div class="container">
-                <!-- layout-container -->
                 <div class="">
                     <div class="filter_part">
                         <p>Filter</p>
@@ -94,7 +92,6 @@
                             <div class="add_filter dropdown-toggle" data-toggle="dropdown">Add filter +</div>
                             <ul class="dropdown-menu">
                                 <li (click)="setValues(true,1,'IsCashBack',0,'Cash back')"><a>Cash back</a></li>
-                                <!-- <li (click)="filterForList(2,true,0)"><a>Rewards</a></li> -->
                                 <li (click)="setValues(true,3,'Shariah_Compliant',0,'Shariah compliance')"><a>Shariah
                                         compliance</a></li>
                                 <li (click)="setValues(true,4,'IsLoungeAccess',0,'Lounge access')"><a>Lounge access</a>
@@ -134,7 +131,6 @@
                                     <div class="mobile_flight_text">
                                         <div class="row text-center ">
                                             <div class="col-md-4 col-6 refund_not">
-                                                <!-- <img src="../../../assets/images/icons/cashback-icon.png" alt=""> -->
                                                 <svg id="np_cashback_1727163_000000" xmlns="http://www.w3.org/2000/svg"
                                                     width="37.318" height="30.388" viewBox="0 0 37.318 30.388">
                                                     <g id="Group_3523" data-name="Group 3523">
@@ -207,7 +203,6 @@
                                         <div class="col-md-8">
                                             <div class="row text-center web_flight_text">
                                                 <div class="col-md-4 refund_not" *ngIf="val?.isCashBack">
-                                                    <!-- <img src="../../../assets/images/icons/cashback-icon.png" alt=""> -->
                                                     <svg id="np_cashback_1727163_000000"
                                                         xmlns="http://www.w3.org/2000/svg" width="37.318"
                                                         height="30.388" viewBox="0 0 37.318 30.388">
@@ -276,8 +271,7 @@
                                                         <div class="row align-items-center">
                                                             <div class="col-md-4 col-4">
                                                                 <div class="inner-block-header">
-                                                                    <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
-                                                                        alt=""> -->
+                                                                  
                                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                                         width="21.727" height="21.72"
                                                                         viewBox="0 0 21.727 21.72">
@@ -427,15 +421,7 @@
                                                         <div class="row align-items-center">
                                                             <div class="col-md-4 col-4">
                                                                 <div class="inner-block-header">
-                                                                    <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
-                                                                        alt=""> -->
-                                                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="21.433" height="27.037" viewBox="0 0 21.433 27.037">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12.671" height="12.197" viewBox="0 0 12.671 12.197">
-                                                                                <path id="Path_4420" data-name="Path 4420" d="M38.978,25.938a2.17,2.17,0,0,0-.266-.533,2.038,2.038,0,0,0-.761-.657,2.137,2.137,0,0,0-.647-.209l-1.618-.219a.184.184,0,0,1-.124-.086l-.723-1.446a2.041,2.041,0,0,0-1.846-1.132A2.063,2.063,0,0,0,31.138,22.8l-.019.048-.466.951-.228.457a.152.152,0,0,1-.124.086l-1.608.238a1.942,1.942,0,0,0-.58.171,2.052,2.052,0,0,0-.818.685,2.112,2.112,0,0,0-.266.552,2.109,2.109,0,0,0,.533,2.1l1.17,1.123a.147.147,0,0,1,.048.124L28.5,30.924a2.022,2.022,0,0,0,.818,2,2.058,2.058,0,0,0,2.179.162l1.446-.761a.21.21,0,0,1,.152,0l1.446.752A2.065,2.065,0,0,0,37.532,30.9l-.285-1.589a.145.145,0,0,1,.048-.133l1.161-1.132a1.9,1.9,0,0,0,.257-.3,2.044,2.044,0,0,0,.266-1.8Zm-1.846.742-1.17,1.132a2.053,2.053,0,0,0-.59,1.817l.285,1.589a.14.14,0,0,1-.067.143.144.144,0,0,1-.171.019l-1.446-.742a2.059,2.059,0,0,0-1.912,0l-1.446.761a.145.145,0,0,1-.171-.019.141.141,0,0,1-.067-.143l.276-1.589a2.031,2.031,0,0,0-.609-1.817l-1.161-1.123a.139.139,0,0,1,.086-.247l1.608-.238A2.075,2.075,0,0,0,32.127,25.1v-.01l.723-1.446a.148.148,0,0,1,.143-.086.142.142,0,0,1,.143.086l.076.152.485.951.171.343A2.057,2.057,0,0,0,35.42,26.2l1.618.228a.145.145,0,0,1,.133.1.185.185,0,0,1-.038.152Z" transform="translate(-26.669 -21.406)" fill="#96f" stroke="#fff" stroke-width="0.5"/>
-                                                                              </svg>
-                                                                              
-                                                                            <path id="Path_4421" data-name="Path 4421" d="M22.967,6.437a10.46,10.46,0,0,0-7.612,17.641v7.935a.948.948,0,0,0,.447.809.987.987,0,0,0,.932.048l2.731-1.37,3.111,1.389a1.009,1.009,0,0,0,.78,0L26.469,31.5,29.2,32.87a.987.987,0,0,0,.932-.048.951.951,0,0,0,.447-.809V24.078A10.46,10.46,0,0,0,22.968,6.437Zm5.709,24.035-1.76-.875a.961.961,0,0,0-.809-.019l-3.14,1.4-3.14-1.4a.912.912,0,0,0-.809.019l-1.76.875v-4.8a10.42,10.42,0,0,0,11.418,0Zm.951-8.2a7.947,7.947,0,0,1-.951,1.009,8.541,8.541,0,0,1-11.418,0,7.947,7.947,0,0,1-.951-1.009,8.11,8.11,0,0,1-.951-1.456A8.448,8.448,0,0,1,14.4,16.9a8.563,8.563,0,0,1,17.127,0,8.448,8.448,0,0,1-.951,3.911,8.108,8.108,0,0,1-.951,1.456Z" transform="translate(-12.251 -6.187)" fill="#96f" stroke="#fff" stroke-width="0.5"/>
-                                                                          </svg> -->
+                                                                    
 
                                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                                         width="21.433" height="27.037"
@@ -506,4 +492,129 @@
             </div>
         </div>
     </div>
+</section> -->
+
+
+<section class="credit-card-list">
+    <div class="credit-card-main">
+     
+        <div class="container">
+         <!-- <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/assets/images/main_images/visa_dummy_image.png">
+                        </div>
+                        <div class="card-info">
+                            <h3>Emirates NBD</h3>
+                            <p>Platinum Credit Card</p>
+                            <hr>
+                            <p><span>0%</span> Annual Percentage Rate</p>
+    
+                            <a>Learn More <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/assets/images/main_images/visa_dummy_image.png">
+                        </div>
+                        <div class="card-info">
+                            <h3>Emirates NBD</h3>
+                            <p>Platinum Credit Card</p>
+                            <hr>
+                            <p><span>0%</span> Annual Percentage Rate</p>
+    
+                            <a>Learn More <i class="fa fa-angle-right"></i></a>
+                        </div>
+    
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/assets/images/main_images/visa_dummy_image.png">
+                        </div>
+                        <div class="card-info">
+                            <h3>Emirates NBD</h3>
+                            <p>Platinum Credit Card</p>
+                            <hr>
+                            <p><span>0%</span> Annual Percentage Rate</p>
+    
+                            <a>Learn More <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+<div class="slider-owl">
+    <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide>
+            <div class="card">
+                <div class="card-img">
+                    <img src="/assets/images/main_images/visa_dummy_image.png">
+                </div>
+                <div class="card-info">
+                    <h3>Emirates NBD</h3>
+                    <p>Platinum Credit Card</p>
+                    <hr>
+                    <p><span>0%</span> Annual Percentage Rate</p>
+
+                    <a>Learn More <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template carouselSlide>
+            <div class="card">
+                <div class="card-img">
+                    <img src="/assets/images/main_images/visa_dummy_image.png">
+                </div>
+                <div class="card-info">
+                    <h3>Emirates NBD</h3>
+                    <p>Platinum Credit Card</p>
+                    <hr>
+                    <p><span>0%</span> Annual Percentage Rate</p>
+
+                    <a>Learn More <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template carouselSlide>
+            <div class="card">
+                <div class="card-img">
+                    <img src="/assets/images/main_images/visa_dummy_image.png">
+                </div>
+                <div class="card-info">
+                    <h3>Emirates NBD</h3>
+                    <p>Platinum Credit Card</p>
+                    <hr>
+                    <p><span>0%</span> Annual Percentage Rate</p>
+
+                    <a>Learn More <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+        </ng-template>
+    </owl-carousel-o>
+</div>
+            
+          
+    
+            <div class="text-info">
+                <div class="mt-3 mb-5">
+                    <div class="find_cards_section">
+                        <button class="btn btn-md find_cards_btn">SEE ALL CREDIT CARDS</button>
+                        <!-- <div class="find_cards_content"> -->
+                        <p class="pt-3">One click to see all available credit cards from all Saudi Arabia banks</p>
+                        <p class="more_text">e.g. Alrajhi Bank, Riyad Bank, Alinma bank, Albilad Bank, Aljazirah bank, NCB,
+                            ANB and more…</p>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+  
+      
+    
 </section>

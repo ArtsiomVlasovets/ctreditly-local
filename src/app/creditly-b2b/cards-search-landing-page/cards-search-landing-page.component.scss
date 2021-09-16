@@ -48,6 +48,7 @@ input[type="radio"]:checked {
     padding-bottom: 200px;
     @include mobile {
       padding-top: 82px;
+      padding-bottom: 0;
     }
 
     .column-layout {
@@ -71,6 +72,7 @@ input[type="radio"]:checked {
   background-position: center;
   @include mobile {
     margin: 0px 0px;
+    background-image: none;
   }
 }
 
@@ -154,8 +156,14 @@ input[type="radio"]:checked {
     color: #fff;
   }
   @include mobile {
-    max-width: 240px;
+    max-width: 100%;
     margin-bottom: 40px;
+    text-align: center;
+  }
+  @include extrasmall {
+    h1 {
+      font-size: 22px;
+    }
   }
 }
 .header_main_image {
@@ -273,6 +281,14 @@ input[type="radio"]:checked {
     margin-bottom: 20px;
     text-align: center;
   }
+  .tabsDropDown {
+    text-decoration: underline;
+    a {
+      font-size: 17px;
+      font-weight: 700;
+      color: $primary_green;
+    }
+  }
 }
 
 .below_slider_part {
@@ -326,6 +342,10 @@ input[type="radio"]:checked {
       padding-left: 14px;
       font-size: 30px;
       font-weight: 600;
+
+      @include mobile {
+        border-left: 0;
+      }
     }
     .content {
       color: $primary_sky_blue;
@@ -410,6 +430,10 @@ input[type="radio"]:checked {
     font-size: 17px;
     padding: 7px 70px;
     font-weight: 700;
+
+    @include extrasmall {
+      width: 90%;
+    }
   }
   p {
     font-size: 14px;
@@ -433,6 +457,9 @@ input[type="radio"]:checked {
       font-weight: 600;
       font-size: 30px;
       padding-left: 14px;
+      @include extrasmall {
+        border-left: 0;
+      }
     }
   }
   .disclaimer_text {
@@ -443,6 +470,9 @@ input[type="radio"]:checked {
       padding-left: 14px;
       font-size: 30px;
       font-weight: 400;
+      @include extrasmall {
+        border-left: 0;
+      }
     }
     .content {
       color: #282f3a;
@@ -481,18 +511,18 @@ input[type="radio"]:checked {
   img {
     background: transparent;
   }
-  @include mobile {
-    height: auto;
-    padding-bottom: 210px;
-  }
 
   .disclaimer_text {
     .title {
       color: #fff !important;
-      border-left: solid 1px #fff !important;
+      border-left: solid 1px #fff;
       padding-left: 14px;
       font-size: 18px;
       margin-bottom: 50px;
+
+      @include mobile {
+        border-left: 0;
+      }
     }
     .content {
       color: #777d90;
@@ -512,6 +542,16 @@ input[type="radio"]:checked {
       flex-basis: 20%;
       padding: 20px;
       justify-content: center;
+
+      @include desktop {
+        flex-basis: 25%;
+      }
+      @include tab {
+        flex-basis: 33%;
+      }
+      @include extrasmall {
+        flex-basis: 50%;
+      }
 
       img {
         max-width: 130px;
@@ -621,6 +661,7 @@ input[type="radio"]:checked {
 
   @include mobile {
     padding-top: 100px;
+    margin-top: 0;
   }
   @include extrasmall {
     padding-top: 50px;
@@ -780,70 +821,30 @@ input[type="radio"]:checked {
   border-right: 1px solid #ddd;
 }
 
-.credit-card-main {
-  margin-top: 100px;
-  .card {
-    padding: 30px;
-    border-radius: 0;
-    box-shadow: 0 15px 26px 0 rgba(0, 0, 0, 0.1);
-
-    .card-img {
-      margin-top: -100px;
-      margin-bottom: 20px;
-      img {
-        width: 100%;
-      }
-    }
-
-    .card-info {
-      h3 {
-        font-size: 20px;
-        text-align: center;
-        color: #3e9fff;
-        font-family: "IBM Plex Sans", sans-serif;
-      }
-      p {
-        font-size: 14px;
-        text-align: center;
-        color: #282f3a;
-        font-family: "IBM Plex Sans", sans-serif;
-        span {
-          font-size: 17px;
-          font-weight: 700;
-        }
-      }
-      a {
-        font-family: "IBM Plex Sans", sans-serif;
-        font-size: 14px;
-        text-align: center;
-        color: #3e9fff;
-        display: block;
-      }
-    }
-  }
-}
-
 .mobile-app-section {
   position: relative;
 
   .back-mobile-img {
-    // width: 50%;
-    // position: absolute;
-    // z-index: 1;
     margin-top: -344px;
+    @include tab {
+      margin-top: -245px;
+    }
+
+    @include mobile {
+      margin-top: -413px;
+      margin-bottom: 70px;
+    }
     img {
       width: 120%;
+      @include mobile {
+        width: 100%;
+      }
     }
-    // background-image: url(/assets/images/mobile-phones.png);
-    // background-repeat: no-repeat;
-    // background-position: left;
-    // height: 100%;
-    // background-size: contain;
   }
 
   .background-color-area {
     clip-path: polygon(0 0, 100% 34%, 100% 100%, 0% 100%);
-    background-color: #09bc8a;
+    background-color: #282f3a;
     position: absolute;
     top: 0;
     left: 0;
@@ -862,6 +863,9 @@ input[type="radio"]:checked {
       color: #fff;
       border-left: 1px solid #fff;
       padding-left: 14px;
+      @include mobile {
+        border-left: 0;
+      }
     }
 
     .content {
@@ -874,6 +878,7 @@ input[type="radio"]:checked {
   }
   .app-stores {
     padding-top: 20px;
+    padding-left: 14px;
     img {
       margin-right: 10px;
     }

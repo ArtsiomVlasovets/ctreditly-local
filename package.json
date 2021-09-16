@@ -32,6 +32,7 @@
     "jquery": "^3.6.0",
     "material-icons": "^0.7.1",
     "ng-navigator-share": "^1.0.4",
+    "ngx-owl-carousel-o": "^6.0.0",
     "ngx-slick-carousel": "^0.5.1",
     "ngx-spinner": "^11.0.2",
     "popper.js": "^1.16.1",

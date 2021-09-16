@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { CreditlyServicesService } from 'src/app/creditly-services.service';
 import { ReCaptchaService } from 'angular-recaptcha3';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cards-search-landing-page',
@@ -15,6 +14,7 @@ export class CardsSearchLandingPageComponent implements OnInit {
   profileDate = JSON.parse(localStorage.getItem('loginResponse'));
   cards = JSON.parse(localStorage.getItem("masterData"))?.cards;
   masterData = JSON.parse(localStorage.getItem('masterData'));
+  
   workTypesList = [];
   NationalityID = 1;
   showCardDetailsFlag: string = "_";
@@ -263,6 +263,10 @@ export class CardsSearchLandingPageComponent implements OnInit {
     this.router.navigateByUrl('creditly/bank-account');
   }
 
-  
+  selectedTabs= 'Credit Card';
+  selectTabs(value) {
+    this.selectedTabs = value;
+  }
+
 
 }

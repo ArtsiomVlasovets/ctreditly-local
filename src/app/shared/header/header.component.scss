@@ -11,10 +11,14 @@
   top: 0;
   width: 100%;
   background: #fff;
-  box-shadow: 0px 0px 20px #00000014;
+  // box-shadow: 0px 0px 20px #00000014;
   transition: all 0.9s ease;
   z-index: 999;
-  box-shadow: 0px 4px 14px 0px #4d4d4d;
+  box-shadow: 0px 4px 14px 0px #282f3a;
+
+  .header-menu-main {
+    background-color: #5f6671;
+  }
 }
 
 .arabicOption {
@@ -96,7 +100,7 @@
 }
 
 .header-menu-main {
-  background-color: #5f6671;
+  background-color: #282f3a;
 
   .navbar {
     background-color: transparent;
@@ -119,6 +123,12 @@
         color: #282f3a;
         font-weight: 600;
         font-family: "IBM Plex Sans", sans-serif;
+      }
+      .nav-link:hover {
+        color: #fff;
+      }
+      .nav-link:active {
+        color: #fff;
       }
       .nav-item:last-child .nav-link {
         padding-right: 0;

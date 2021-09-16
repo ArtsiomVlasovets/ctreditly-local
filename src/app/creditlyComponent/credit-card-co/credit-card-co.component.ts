@@ -3,12 +3,42 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreditlyServicesService } from 'src/app/creditly-services.service';
 import { NgNavigatorShareService } from 'ng-navigator-share';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-credit-card-co',
   templateUrl: './credit-card-co.component.html',
   styleUrls: ['./credit-card-co.component.scss']
 })
 export class CreditCardCoComponent implements OnInit {
+
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    margin: 30,
+    stagePadding:30,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 3
+      }
+    },
+    nav: true
+  }
+
   profileDate = JSON.parse(localStorage.getItem('loginResponse'));
   cardListShow=false;
   cards = JSON.parse(localStorage.getItem("masterData"))?.cards;

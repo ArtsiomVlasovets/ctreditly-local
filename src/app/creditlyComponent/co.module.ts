@@ -10,6 +10,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { PersonalCoComponent } from './personal-co/personal-co.component';
 import { CreditCardCoComponent } from './credit-card-co/credit-card-co.component';
 import { AutoLeaseCoComponent } from './auto-lease-co/auto-lease-co.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -23,7 +24,8 @@ import { AutoLeaseCoComponent } from './auto-lease-co/auto-lease-co.component';
     FormsModule,
     ReactiveFormsModule,
     ProfileFormModule,
-    NgxSliderModule
+    NgxSliderModule,
+    CarouselModule
   ],
   exports: [ MortgageCoComponent,PersonalCoComponent,CreditCardCoComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

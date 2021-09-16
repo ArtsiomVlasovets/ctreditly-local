@@ -24,9 +24,10 @@
 .go_to_top {
   position: fixed;
   bottom: 150px;
-  right: 10px;
+  right: 20px;
   cursor: pointer;
   z-index: 1;
+  text-align: center;
   @include mobile {
     bottom: 130px;
   }
@@ -95,12 +96,18 @@
     }
   }
   .footer_links_section {
+    @include mobile {
+      padding-bottom: 30px;
+    }
     p {
       color: #09bc8a;
       border-left: solid 1px #09bc8a;
       padding-left: 14px;
       font-size: 18px;
       font-weight: 400;
+      @include mobile {
+        border-left: 0;
+      }
     }
     ul {
       padding-left: 14px;
@@ -149,6 +156,9 @@
       padding-left: 14px;
       font-size: 18px;
       font-weight: 400;
+      @include mobile {
+        border-left: 0;
+      }
     }
     .content {
       font-family: "IBM Plex Sans", sans-serif;

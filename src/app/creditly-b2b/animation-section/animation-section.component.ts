@@ -1,7 +1,7 @@
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap } from 'gsap';
 
 gsap.registerPlugin(ScrollTrigger);
 @Component({
@@ -2996,7 +2996,8 @@ contents = `
 
 
   ngOnInit(): void {
-    this.init()
+	  this.importSVG();
+	  this.addScripts();
   }
 
 gsapAnim()
@@ -3045,19 +3046,15 @@ gsapAnim()
 
  displayContents(contents)
 {
-   this.animWrapper.nativeElement.innerHTML = contents
+	 this.animWrapper.nativeElement.innerHTML = contents;
   //  this.document.getElementById("#cr").style.width = "100%";
   //  this.document.getElementById("#cr").style.height = "100%";
         // document.querySelector("#animation_wrapper svg").style.width = "100%"
         // document.querySelector("#animation_wrapper svg").style.height = "100%"
-        setTimeout(this.gsapAnim, 200)
+	 setTimeout(this.gsapAnim, 200);
 }
 
- init()
-{
-    this.importSVG()
-    this.addScripts()
-}
+
 
  addScripts()
 {
