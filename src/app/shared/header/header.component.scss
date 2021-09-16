@@ -18,6 +18,14 @@
 
   .header-menu-main {
     background-color: #5f6671;
+    .navbar-nav {
+      .nav-link {
+        color: #282f3a !important;
+      }
+      .nav-link:hover {
+        color: #fff !important;
+      }
+    }
   }
 }
 
@@ -120,8 +128,8 @@
     .navbar-nav {
       .nav-link {
         font-size: 14px;
-        color: #282f3a;
-        font-weight: 600;
+        color: #fff;
+        font-weight: 400;
         font-family: "IBM Plex Sans", sans-serif;
       }
       .nav-link:hover {

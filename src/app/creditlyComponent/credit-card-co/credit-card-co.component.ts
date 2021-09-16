@@ -18,7 +18,7 @@ export class CreditCardCoComponent implements OnInit {
     touchDrag: true,
     pullDrag: true,
     dots: true,
-    margin: 30,
+    margin: 20,
     stagePadding:30,
     navSpeed: 700,
     navText: ['', ''],
@@ -36,7 +36,7 @@ export class CreditCardCoComponent implements OnInit {
         items: 3
       }
     },
-    nav: true
+    nav: false
   }
 
   profileDate = JSON.parse(localStorage.getItem('loginResponse'));
