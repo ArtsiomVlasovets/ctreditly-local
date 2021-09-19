@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
 @import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
 @import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 @import "~angular-notifier/styles";
@@ -170,5 +172,84 @@ select:focus {
   border-bottom: solid 1px red !important;
 }
 
-/* Importing Bootstrap SCSS file. */
-@import "~bootstrap/scss/bootstrap";
+.credit-card-main {
+  margin-top: 100px;
+
+  .card {
+    padding: 30px;
+    border-radius: 0;
+    margin-top: 80px;
+    // box-shadow: 0 15px 26px 0 rgba(0, 0, 0, 0.1);
+
+    .card-img {
+      margin-top: -100px;
+      margin-bottom: 20px;
+      img {
+        width: 100%;
+      }
+    }
+
+    .card-info {
+      h3 {
+        font-size: 20px;
+        text-align: center;
+        color: #3e9fff;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      p {
+        font-size: 14px;
+        text-align: center;
+        color: #282f3a;
+        font-family: "IBM Plex Sans", sans-serif;
+        span {
+          font-size: 17px;
+          font-weight: 700;
+        }
+      }
+      a {
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px;
+        text-align: center;
+        color: #3e9fff;
+        display: block;
+      }
+    }
+  }
+}
+
+.find_cards_section {
+  text-align: center;
+  padding: 40px 0px;
+  p {
+    font-size: 17px;
+    color: #282f3a;
+    font-weight: 400;
+
+    margin: 20px;
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+  .more_text {
+    font-size: 12px;
+    color: #282f3a;
+  }
+  .find_cards_content {
+    max-width: 488px;
+    margin: auto;
+  }
+  .find_cards_btn {
+    background-color: $primary_green;
+    color: #fff;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 8px 17px;
+    border-radius: 3px;
+
+    @include extrasmall {
+      width: 100%;
+    }
+  }
+}
+
+.owl-carousel .owl-dots {
+  display: block !important;
+}

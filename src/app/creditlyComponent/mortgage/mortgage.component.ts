@@ -2,6 +2,7 @@ import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CreditlyServicesService } from 'src/app/creditly-services.service';
 
 @Component({
@@ -10,6 +11,35 @@ import { CreditlyServicesService } from 'src/app/creditly-services.service';
   styleUrls: ['./mortgage.component.scss']
 })
 export class MortgageCoComponent implements OnInit {
+
+  
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    margin: 20,
+    stagePadding:30,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 3
+      }
+    },
+    nav: false
+  }
+  
   cardListShow=false;
   loanUnitTypes = JSON.parse(localStorage.getItem('masterData'))?.loanUnitTypes;
   formGroup: FormGroup;

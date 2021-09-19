@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CreditlyServicesService } from 'src/app/creditly-services.service';
 import { NgNavigatorShareService } from 'ng-navigator-share';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+
 @Component({
   selector: 'app-credit-card-co',
   templateUrl: './credit-card-co.component.html',

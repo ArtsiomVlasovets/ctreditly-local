@@ -27,7 +27,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NgxSliderModule,
     CarouselModule
   ],
-  exports: [ MortgageCoComponent,PersonalCoComponent,CreditCardCoComponent],
+  exports: [ MortgageCoComponent,PersonalCoComponent,CreditCardCoComponent, AutoLeaseCoComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CoModule { }
