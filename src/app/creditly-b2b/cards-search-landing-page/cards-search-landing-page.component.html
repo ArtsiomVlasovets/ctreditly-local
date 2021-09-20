@@ -400,14 +400,10 @@
                     </div>
                     <div class="pb-5">
                         <div class="list_bank_images">
-                            
-                                
-                                      
-                                            <div class="bank_logo" *ngFor="let bank of banksList;let i=index">
-                                                <img src="{{ bank.image }}" alt="" width="100%">
-                                            </div>
-                                
-                           
+
+                            <div class="bank_logo" *ngFor="let bank of banksList;let i=index">
+                                <img type="image/svg+xml" src="{{ bank.image }}" alt="" width="100%">
+                            </div>
                         </div>
                     </div>
                 </div>

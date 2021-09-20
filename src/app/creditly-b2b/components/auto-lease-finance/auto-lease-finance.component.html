@@ -195,6 +195,7 @@
                     <p><span (click)="reomveFilterItem(filterItem,i)">X</span>&nbsp; {{filterItem}} </p>
                 </div>
             </div>
+           
             <div>
                 <div *ngIf="autoLoansList?.length>0">
                     <div class="card custom-card" *ngFor="let item of autoLoansList;let i=index">
@@ -570,6 +571,207 @@
                     <div class="card mt-3">
                         <div class="card-body text-center">
                             <h3>No results found...</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gradual-loading-img" *ngIf="!autoLoansList">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: space-between;">
+                                <div style="flex-basis: 30%;">
+                                    <ngx-skeleton-loader [theme]="{ height: '50px'}"></ngx-skeleton-loader>
+                
+                                    <div style="width: 50%;">
+                                        <ngx-skeleton-loader [theme]="{ height: '20px'}"></ngx-skeleton-loader>
+                                    </div>
+                                </div>
+                                <div class="share_and_compare" style="display: flex; flex-basis: 30%;">
+                                    <div class="user_option" style="flex-basis: 50%; padding-right: 30px;">
+                                        <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
+                                    </div>
+                
+                                    <div class="user_option" style="flex-basis: 50%;">
+                                        <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
+                                    </div>
+                                </div>
+                
+                            </div>
+                            <div class="">
+                                <div class="row ">
+                                    <div class="col-md-3 col-6">
+                                        <ngx-skeleton-loader [theme]="{ height: '90px'}"></ngx-skeleton-loader>
+                                    </div>
+                                    <div class="col-md-3 col-6 ">
+                                        <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                    </div>
+                                    <div class="col-md-3 col-6 ">
+                                        <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                    </div>
+                                    <div class="col-md-3 col-6">
+                                        <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row  mt-5">
+                                <div class="col-md-3 col-6 ">
+                                    <ngx-skeleton-loader [theme]="{ height: '60px'}"></ngx-skeleton-loader>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                </div>
+                                <div class="col-md-3 col-6 ">
+                                    <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3 col-6">
+                                    <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
+                                </div>
+                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: space-between;">
+                                <div style="flex-basis: 30%;">
+                                    <ngx-skeleton-loader [theme]="{ height: '50px'}"></ngx-skeleton-loader>
+                    
+                                    <div style="width: 50%;">
+                                        <ngx-skeleton-loader [theme]="{ height: '20px'}"></ngx-skeleton-loader>
+                                    </div>
+                                </div>
+                                <div class="share_and_compare" style="display: flex; flex-basis: 30%;">
+                                    <div class="user_option" style="flex-basis: 50%; padding-right: 30px;">
+                                        <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
+                                    </div>
+                    
+                                    <div class="user_option" style="flex-basis: 50%;">
+                                        <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                            <div class="">
+                                <div class="row ">
+                                    <div class="col-md-3 col-6">
+                                        <ngx-skeleton-loader [theme]="{ height: '90px'}"></ngx-skeleton-loader>
+                                    </div>
+                                    <div class="col-md-3 col-6 ">
+                                        <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                    </div>
+                                    <div class="col-md-3 col-6 ">
+                                        <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                    </div>
+                                    <div class="col-md-3 col-6">
+                                        <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row  mt-5">
+                                <div class="col-md-3 col-6 ">
+                                    <ngx-skeleton-loader [theme]="{ height: '60px'}"></ngx-skeleton-loader>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                </div>
+                                <div class="col-md-3 col-6 ">
+                                    <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3 col-6">
+                                    <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: space-between;">
+                                <div style="flex-basis: 30%;">
+                                    <ngx-skeleton-loader [theme]="{ height: '50px'}"></ngx-skeleton-loader>
+                    
+                                    <div style="width: 50%;">
+                                        <ngx-skeleton-loader [theme]="{ height: '20px'}"></ngx-skeleton-loader>
+                                    </div>
+                                </div>
+                                <div class="share_and_compare" style="display: flex; flex-basis: 30%;">
+                                    <div class="user_option" style="flex-basis: 50%; padding-right: 30px;">
+                                        <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
+                                    </div>
+                    
+                                    <div class="user_option" style="flex-basis: 50%;">
+                                        <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                            <div class="">
+                                <div class="row ">
+                                    <div class="col-md-3 col-6">
+                                        <ngx-skeleton-loader [theme]="{ height: '90px'}"></ngx-skeleton-loader>
+                                    </div>
+                                    <div class="col-md-3 col-6 ">
+                                        <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                    </div>
+                                    <div class="col-md-3 col-6 ">
+                                        <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                    </div>
+                                    <div class="col-md-3 col-6">
+                                        <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row  mt-5">
+                                <div class="col-md-3 col-6 ">
+                                    <ngx-skeleton-loader [theme]="{ height: '60px'}"></ngx-skeleton-loader>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                </div>
+                                <div class="col-md-3 col-6 ">
+                                    <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3 col-6">
+                                    <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
+                                </div>
+                    
+                            </div>
                         </div>
                     </div>
                 </div>

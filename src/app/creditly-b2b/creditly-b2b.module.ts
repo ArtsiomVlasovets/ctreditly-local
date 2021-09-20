@@ -31,7 +31,7 @@ import { SharedProductViewComponent } from './shared-product-view/shared-product
 import { ReCaptchaModule } from 'angular-recaptcha3';
 import { BankAccountOpenComponent } from './pages/bank-account-open/bank-account-open.component';
 import { AnimationSectionComponent } from './animation-section/animation-section.component';
-
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 @NgModule({
   declarations: [
     CardsListLandingPageComponent,
@@ -67,7 +67,7 @@ import { AnimationSectionComponent } from './animation-section/animation-section
     ProfileModule,
     NgxSpinnerModule,
     SlickCarouselModule ,
-    CoModule,
+    CoModule,NgxSkeletonLoaderModule.forRoot({ animation: 'progress', loadingText: 'This item is actually loading...' }),
     NgbModule,
     ReCaptchaModule.forRoot({
       invisible: {
