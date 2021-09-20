@@ -235,15 +235,7 @@ export class CardsListLandingPageComponent implements OnInit {
   }
 
   shareURL(item) {
-    /*  // let baseUrl = this.creditlyServices.shareProductUrl;
-     let baseUrl = "http://beta.creditly.sa/#/"
-     // let baseUrl = "http://localhost:2040/#/"
-     let componentUrl = "creditly/shareProductView"
-     let totUrl = `${baseUrl}${componentUrl}/?title=${item.seo.url}&prodType=1`
-     console.log("totUrl", totUrl);
-     const sss = this.router.createUrlTree([], { queryParams: { title: item.seo.url, prodType: '1' } });
-     console.log("sss", this.serializer.serialize(sss));
-      */
+ 
 
     if (!this.ngNavigatorShareService.canShare()) {
       this.creditlyServices.notify('This service/api is not supported in your Browser', 'error');
@@ -251,8 +243,6 @@ export class CardsListLandingPageComponent implements OnInit {
     }
 
     let baseUrl = this.creditlyServices.shareProductUrl;
-    // let baseUrl = "http://beta.creditly.sa/#/"
-    // let componentUrl = "creditly/shareProductView"
     let componentUrl = "creditly/applyProduct"
     let totUrl = `${baseUrl}${componentUrl}/?title=${item.seo.url}&prodType=1`
     console.log("totUrl", totUrl);
@@ -270,20 +260,4 @@ export class CardsListLandingPageComponent implements OnInit {
     })
   }
 
-  /* async shareURL(item) {
-    let baseUrl = this.creditlyServices.shareProductUrl;
-    let componentUrl = "creditly/applycard"
-    let totUrl = `${baseUrl}${componentUrl}/?title=${item.seo.url}&prodType=1`
-    console.log("totUrl", totUrl);
-    try {
-      const sharedResponse = await this.ngNavigatorShareService.share({
-        title: 'Creditly',
-        url: totUrl
-      });
-      console.log(sharedResponse);
-    } catch (error) {
-      console.log('You app is not shared, reason: ', error);
-    }
-
-  } */
 }

@@ -501,52 +501,23 @@
         <div class="container">
             <div class="d-none d-md-block">
                 <div class="row ">
-                    <div class="col-md-4">
-                        <div class="card">
+                    <div class="col-md-4" *ngFor="let card of cards; let i = index; ">
+                        <div class="card" *ngIf="i < 3">
                             <div class="card-img">
-                                <img src="/assets/images/main_images/visa_dummy_image.png">
+                                <!-- <img src="/assets/images/main_images/visa_dummy_image.png"> -->
+                                <img [src]="card?.image">
                             </div>
                             <div class="card-info">
-                                <h3>Emirates NBD</h3>
+                                <h3>{{card?.name}}</h3>
                                 <p>Platinum Credit Card</p>
                                 <hr>
-                                <p><span>0%</span> Annual Percentage Rate</p>
+                                <p><span>{{card?.apr}}%</span> Annual Percentage Rate</p>
 
-                                <a>Learn More <i class="fa fa-angle-right"></i></a>
+                                <a routerLink="/creditly/cards-list">Learn More <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="/assets/images/main_images/visa_dummy_image.png">
-                            </div>
-                            <div class="card-info">
-                                <h3>Emirates NBD</h3>
-                                <p>Platinum Credit Card</p>
-                                <hr>
-                                <p><span>0%</span> Annual Percentage Rate</p>
-
-                                <a>Learn More <i class="fa fa-angle-right"></i></a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="/assets/images/main_images/visa_dummy_image.png">
-                            </div>
-                            <div class="card-info">
-                                <h3>Emirates NBD</h3>
-                                <p>Platinum Credit Card</p>
-                                <hr>
-                                <p><span>0%</span> Annual Percentage Rate</p>
-
-                                <a>Learn More <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
           
