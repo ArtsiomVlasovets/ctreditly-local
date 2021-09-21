@@ -25,7 +25,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { AuoLeaseImageComponent } from './components/auo-lease-image/auo-lease-image.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CoModule } from '../creditlyComponent/co.module';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedProductViewComponent } from './shared-product-view/shared-product-view.component';
 import { ReCaptchaModule } from 'angular-recaptcha3';
@@ -49,7 +48,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     TestingComponent,
     CardsSearchLandingPageComponent,
     AuoLeaseImageComponent,
-    ForgotPasswordComponent,
+    
     SharedProductViewComponent,
     BankAccountOpenComponent,
     AnimationSectionComponent,

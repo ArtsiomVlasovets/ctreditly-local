@@ -12,6 +12,7 @@ import { RegisterComponent } from './shared/register/register.component';
 import { AuthGuard } from './shared/routingGuard/auth.guard';
 import { LoginGuard } from './shared/routingGuard/login.guard';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 const routes: Routes = [
   {
     path: '',
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'forgotpass',
+    component: ForgotPasswordComponent,
     canActivate: [LoginGuard],
   },
   {

@@ -288,6 +288,10 @@ input[type="radio"]:checked {
       font-weight: 700;
       color: $primary_green;
     }
+    .dropdown-item.active,
+    .dropdown-item:active {
+      background-color: transparent;
+    }
   }
 }
 

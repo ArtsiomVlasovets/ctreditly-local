@@ -1,5 +1,5 @@
 import { Options } from '@angular-slider/ngx-slider';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -11,7 +11,7 @@ import { CreditlyServicesService } from 'src/app/creditly-services.service';
   styleUrls: ['./personal-co.component.scss']
 })
 export class PersonalCoComponent implements OnInit {
-
+  @Input() Label: string;
   
   customOptions: OwlOptions = {
     loop: true,

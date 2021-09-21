@@ -16,6 +16,7 @@ import { NotifierModule } from 'angular-notifier';
 import { HeaderComponent } from './shared/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReCaptchaModule } from 'angular-recaptcha3';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 /* const RECAPTCHA_OPTION = {
   language?: 'en';
@@ -29,6 +30,7 @@ import { ReCaptchaModule } from 'angular-recaptcha3';
     LandingPageComponent,
     LandingPageCardsListComponent,
     LoginComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

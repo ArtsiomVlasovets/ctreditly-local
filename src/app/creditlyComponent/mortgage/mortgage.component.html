@@ -462,102 +462,55 @@
         <div class="container">
             <div class="d-none d-md-block">
                 <div class="row ">
-                    <div class="col-md-4">
-                        <div class="card">
+                    <div class="col-md-4" *ngFor="let list of mortgateList; let i = index;">
+                        <div class="card" *ngIf="i < 3">
                             <div class="card-img">
-                                <img src="/assets/images/main_images/visa_dummy_image.png">
+                                <img [src]="list?.image">
                             </div>
                             <div class="card-info">
-                                <h3>Emirates NBD</h3>
+                                <h3>{{list?.name}}</h3>
                                 <p>Platinum Credit Card</p>
                                 <hr>
-                                <p><span>0%</span> Annual Percentage Rate</p>
+                                <p><span>{{list?.apr}}%</span> Annual Percentage Rate</p>
 
-                                <a>Learn More <i class="fa fa-angle-right"></i></a>
+                                <a routerLink="/creditly/mortgage">Learn More <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="/assets/images/main_images/visa_dummy_image.png">
-                            </div>
-                            <div class="card-info">
-                                <h3>Emirates NBD</h3>
-                                <p>Platinum Credit Card</p>
-                                <hr>
-                                <p><span>0%</span> Annual Percentage Rate</p>
 
-                                <a>Learn More <i class="fa fa-angle-right"></i></a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="/assets/images/main_images/visa_dummy_image.png">
-                            </div>
-                            <div class="card-info">
-                                <h3>Emirates NBD</h3>
-                                <p>Platinum Credit Card</p>
-                                <hr>
-                                <p><span>0%</span> Annual Percentage Rate</p>
-
-                                <a>Learn More <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                   
+                   
                 </div>
             </div>
 
-            <div class="slider-owl d-md-none ">
-                <owl-carousel-o [options]="customOptions">
-                    <ng-template carouselSlide>
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="/assets/images/main_images/visa_dummy_image.png">
-                            </div>
-                            <div class="card-info">
-                                <h3>Emirates NBD</h3>
-                                <p>Platinum Credit Card</p>
-                                <hr>
-                                <p><span>0%</span> Annual Percentage Rate</p>
+            <div class="col-md-12 " *ngIf="mortgateList.length === 0">
+                <div class="noDataFound text-center">
+                    Loading....
+                </div>
+            </div>
 
-                                <a>Learn More <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </ng-template>
-                    <ng-template carouselSlide>
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="/assets/images/main_images/visa_dummy_image.png">
-                            </div>
-                            <div class="card-info">
-                                <h3>Emirates NBD</h3>
-                                <p>Platinum Credit Card</p>
-                                <hr>
-                                <p><span>0%</span> Annual Percentage Rate</p>
+            <div class="slider-owl d-md-none" >
+                
+                <owl-carousel-o [options]="customOptions" *ngIf="mortgateList.length > 0">
+                    <ng-container *ngFor="let list of mortgateList; let i = index;">
+                        <ng-container *ngIf="i < 3">
+                            <ng-template carouselSlide>
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img [src]="list?.image">
+                                    </div>
+                                    <div class="card-info">
+                                        <h3>{{list?.name}}</h3>
+                                        <p>Platinum Credit Card</p>
+                                        <hr>
+                                        <p><span>{{list?.apr}}%</span> Annual Percentage Rate</p>
 
-                                <a>Learn More <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </ng-template>
-                    <ng-template carouselSlide>
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="/assets/images/main_images/visa_dummy_image.png">
-                            </div>
-                            <div class="card-info">
-                                <h3>Emirates NBD</h3>
-                                <p>Platinum Credit Card</p>
-                                <hr>
-                                <p><span>0%</span> Annual Percentage Rate</p>
-
-                                <a>Learn More <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </ng-template>
+                                        <a routerLink="/creditly/mortgage">Learn More <i class="fa fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ng-container>
+                    </ng-container>
                 </owl-carousel-o>
             </div>
 
