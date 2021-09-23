@@ -1,7 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -17,6 +16,10 @@ import { HeaderComponent } from './shared/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReCaptchaModule } from 'angular-recaptcha3';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { NotFound404Component } from './not-found404/not-found404.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { TestscrollComponent } from './testscroll/testscroll.component';
 
 /* const RECAPTCHA_OPTION = {
   language?: 'en';
@@ -31,6 +34,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     LandingPageCardsListComponent,
     LoginComponent,
     ForgotPasswordComponent,
+    NotFound404Component,
+    TestscrollComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     FormsModule,
     ReactiveFormsModule,
     NotifierModule,
-    NgbModule,
+    NgbModule,InfiniteScrollModule,
     ReCaptchaModule.forRoot({
       invisible: {
         sitekey: '6LeH3YkaAAAAADd7pL1TWMulqSuDjTfFE5MMSS89',
@@ -60,3 +65,4 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);

@@ -1,16 +1,20 @@
 import { Options } from '@angular-slider/ngx-slider';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Router, UrlSerializer } from '@angular/router';
 import { NgNavigatorShareService } from 'ng-navigator-share';
 import { CreditlyServicesService } from 'src/app/creditly-services.service';
 import Swal from 'sweetalert2';
+import { tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-cards-list-landing-page',
   templateUrl: './cards-list-landing-page.component.html',
-  styleUrls: ['./cards-list-landing-page.component.scss']
+  styleUrls: ['./cards-list-landing-page.component.scss'],
 })
 export class CardsListLandingPageComponent implements OnInit {
+    items = Array.from({length: 100000}).map((_, i) => `Item #${i}`);
+
   profileDate = JSON.parse(localStorage.getItem('loginResponse'));
   cards = JSON.parse(localStorage.getItem("masterData"))?.cards;
   banksList = JSON.parse(localStorage.getItem("masterData"))?.banks;
@@ -32,9 +36,11 @@ export class CardsListLandingPageComponent implements OnInit {
 
   Shariah_Compliant = false;
   AnnualFeeChk = false;
+  PageNumber = 1;
+  cardListFullObj: any;
   mainData = {
     "PageNumber": 1,
-    "PageSize": 100,
+    "PageSize": 10,
     "WorkTypeID": 0,
     "NetSalary": 15000,
     "NationalityID": 1,
@@ -59,11 +65,12 @@ export class CardsListLandingPageComponent implements OnInit {
     }
   }
 
+  pageHeight: any;
   ngOnInit() {
 
     // this.creditlyServices.refreshData();
 
-    this.search()
+    this.search(this.PageNumber)
   }
 
   public getBankName(bankId): void {
@@ -76,7 +83,7 @@ export class CardsListLandingPageComponent implements OnInit {
   }
   selectCard(id) {
     this.mainData.CardTypeID = id;
-    this.search();
+    this.search(this.PageNumber);
   }
   public showCardDetails(i) {
     this.showCardDetailsFlag = i;
@@ -122,13 +129,14 @@ export class CardsListLandingPageComponent implements OnInit {
       return true;
     });
     if (this.product.length == 0) {
-      this.search();
+      this.search(this.PageNumber);
     }
   }
   FirstLetter(string: string) {
     return string.charAt(0).toLowerCase() + string.slice(1);
   }
-  search() {
+
+  search(PageNumber) {
 
     if (!this.profileDate) {
       let filterData = JSON.parse(localStorage.getItem('sharedProductFilterData'));
@@ -151,8 +159,8 @@ export class CardsListLandingPageComponent implements OnInit {
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36',
     };
     let data = {
-      "PageNumber": 1,
-      "PageSize": 100,
+      "PageNumber": PageNumber? PageNumber: 1,
+      "PageSize": 10,
       "WorkTypeID": this.profileDate?.userPersonalProfile?.workTypeID ?
         this.profileDate?.userPersonalProfile?.workTypeID : 0,
       "NetSalary": this.value,
@@ -173,10 +181,12 @@ export class CardsListLandingPageComponent implements OnInit {
       "UserID": 0,
       "APRSorting": 0
     }
-    this.product = [];
+    debugger;
     this.creditlyServices.cardList(data).subscribe(val => {
+      this.isLoading = false;
+      this.cardListFullObj = val;
       this.submit = false;
-      this.product = val.products ? val.products : [];
+      this.product =val.products? val.products: [];
       this.finding = false;
       this.oriProduct = val.products ? val.products : [];
       localStorage.removeItem('sharedProductFilterData');
@@ -260,4 +270,20 @@ export class CardsListLandingPageComponent implements OnInit {
     })
   }
 
+  isLoading = false;
+  maxListProducts = 10;
+  @HostListener("window:scroll", ["$event"])
+  getScrollHeight(): void {
+    if ((window.innerHeight + window.scrollY >= (document.body.offsetHeight -700))) {
+      console.log("bottom of the page");
+      this.PageNumber += 1;
+      this.isLoading = true;
+      if (this.product.length > 10) {
+            this.maxListProducts += 10
+      }
+          
+             
+    }
+  }
+  
 }

@@ -13,6 +13,8 @@ import { AuthGuard } from './shared/routingGuard/auth.guard';
 import { LoginGuard } from './shared/routingGuard/login.guard';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { NotFound404Component } from './not-found404/not-found404.component';
+import { TestscrollComponent } from './testscroll/testscroll.component';
 const routes: Routes = [
   {
     path: '',
@@ -84,6 +86,12 @@ const routes: Routes = [
     path: 'cc-success',
     component: CreditCardApplicationSuccessComponent,
   },
+  {
+    path: 'test-scroll',
+    component: TestscrollComponent,
+  },
+  {path: '**', component: NotFound404Component}
+
 ];
 
 @NgModule({

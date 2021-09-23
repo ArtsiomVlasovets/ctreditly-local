@@ -31,6 +31,7 @@ import { ReCaptchaModule } from 'angular-recaptcha3';
 import { BankAccountOpenComponent } from './pages/bank-account-open/bank-account-open.component';
 import { AnimationSectionComponent } from './animation-section/animation-section.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
 @NgModule({
   declarations: [
     CardsListLandingPageComponent,
@@ -65,7 +66,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     FormsModule,
     ProfileModule,
     NgxSpinnerModule,
-    SlickCarouselModule ,
+    SlickCarouselModule,
     CoModule,NgxSkeletonLoaderModule.forRoot({ animation: 'progress', loadingText: 'This item is actually loading...' }),
     NgbModule,
     ReCaptchaModule.forRoot({
@@ -81,3 +82,5 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CreditlyB2bModule { }
+
+

@@ -11,6 +11,7 @@ import { CreditCardApplicationSuccessComponent } from '../creditly-b2b/pages/cre
 import { CreditCardApplicationComponent } from '../creditly-b2b/pages/credit-card-application/credit-card-application.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NotifierModule } from 'angular-notifier';
+import { ScrollDirective } from './directives/scroll.directive';
 
 
 
@@ -23,7 +24,8 @@ import { NotifierModule } from 'angular-notifier';
     CreditCardApplicationFailureComponent,
     CreditCardApplicationOtpComponent, 
     CreditCardApplicationSuccessComponent,
-    CreditCardApplicationComponent
+    CreditCardApplicationComponent,
+    ScrollDirective
 
   ],
   imports: [

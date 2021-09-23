@@ -130,7 +130,8 @@
                 </div>
                 <div class="mt-3">
                     <div class="find_cards_section">
-                        <button class="btn btn-md find_cards_btn" [disabled]="findFinanceFlag" (click)="findAutoFinance()">FIND A FINANCE</button>
+                        <button class="btn btn-md find_cards_btn" [disabled]="findFinanceFlag"
+                            (click)="findAutoFinance()">FIND A FINANCE</button>
                         <!-- <div class="find_cards_content"> -->
                         <p>One click to see all credit cards from all Saudi banks</p>
                         <p class="more_text">e.g. Alrajhi Bank, Riyad Bank, Alinma bank, Albilad Bank,
@@ -143,7 +144,7 @@
             </div>
         </form>
     </div>
-    
+
     <div class="cards-compare-list" *ngIf="autoLoansCompareList.length">
         <div class="card custom-card">
             <div class="card-body">
@@ -195,278 +196,284 @@
                     <p><span (click)="reomveFilterItem(filterItem,i)">X</span>&nbsp; {{filterItem}} </p>
                 </div>
             </div>
-           
+
             <div>
                 <div *ngIf="autoLoansList?.length>0">
-                    <div class="card custom-card" *ngFor="let item of autoLoansList;let i=index">
-                        <div class="card-body">
-                            <div class="visa_main_part">
+                    <ng-container *ngFor="let item of autoLoansList;let i=index">
+                        <div class="card custom-card" *ngIf="i < maxListProducts">
+                            <div class="card-body">
+                                <div class="visa_main_part">
+                                    <div>
+                                        <h1> {{item.name}} </h1>
+                                        <!-- <h6> {{item?.bank.name}} </h6> -->
+                                        <p *ngIf="item.shariah_Compliant"><span><img
+                                                    src="../../../assets/images/main_images/title.PNG" width="30px"
+                                                    alt=""></span>
+                                            &nbsp;<span>Shariah complaint</span>
+                                        </p>
+                                    </div>
+                                    <div class="share_and_compare">
+                                        <ng-template #tipContentShare>
+                                            <span style="font-size: 12px;" translate>Including all taxes</span>
+                                        </ng-template>
+                                        <!--  -->
+                                        <div class="user_option mr-3" *ngIf="item?.seo?.url">
+                                            <!-- [ngbTooltip]="tipContentShare" tooltipClass="my-custom-class" -->
+                                            <img (click)="shareURL(item)"
+                                                src="../../../assets/images/main_images/np_share.svg" alt="">
+                                            <span (click)="shareURL(item)">Share</span>
+                                        </div>
+                                        <div class="user_option">
+                                            <div *ngIf="!isThereProduct(item)">
+                                                <img (click)="addToCompare(item)"
+                                                    src="../../../assets/images/main_images/np_add.svg" alt="">
+                                                <span (click)="addToCompare(item)">Add to compare</span>
+                                            </div>
+                                            <div *ngIf="isThereProduct(item)" class="d-flex align-items-center">
+                                                <span (click)="addToCompare(item)"
+                                                    class="material-icons added_item">check_box</span>
+                                                <span (click)="addToCompare(item)">Added to compare</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div>
-                                    <h1> {{item.name}} </h1>
-                                    <!-- <h6> {{item?.bank.name}} </h6> -->
-                                    <p *ngIf="item.shariah_Compliant"><span><img
-                                                src="../../../assets/images/main_images/title.PNG" width="30px"
-                                                alt=""></span>
-                                        &nbsp;<span>Shariah complaint</span>
-                                    </p>
-                                </div>
-                                <div class="share_and_compare">
-                                    <ng-template #tipContentShare>
-                                        <span style="font-size: 12px;" translate>Including all taxes</span>
-                                    </ng-template>
-                                    <!--  -->
-                                    <div class="user_option mr-3" *ngIf="item?.seo?.url">
-                                        <!-- [ngbTooltip]="tipContentShare" tooltipClass="my-custom-class" -->
-                                        <img (click)="shareURL(item)"
-                                            src="../../../assets/images/main_images/np_share.svg" alt="">
-                                        <span (click)="shareURL(item)" >Share</span>
-                                    </div>
-                                    <div class="user_option">
-                                        <div *ngIf="!isThereProduct(item)">
-                                            <img (click)="addToCompare(item)"
-                                                src="../../../assets/images/main_images/np_add.svg" alt="">
-                                            <span (click)="addToCompare(item)">Add to compare</span>
-                                        </div>
-                                        <div *ngIf="isThereProduct(item)" class="d-flex align-items-center">
-                                            <span (click)="addToCompare(item)"
-                                                class="material-icons added_item">check_box</span>
-                                            <span (click)="addToCompare(item)">Added to compare</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="row mt-3 align-items-center">
-                                    <div class="col-md-4">
-                                        <div class="visa_image">
-                                            <img src={{item?.bank.image}} alt="image"
-                                                onerror="this.onerror=null;this.src='../../../assets/images/main_images/Group_card_compare.svg'">
-                                            <!-- <img src="../../../assets/images/main_images/bank_almad.png" alt=""> -->
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="row amount_types">
-                                            <div class="col-md-4">
-                                                <div class="amount">
-                                                    <h2> {{item?.totalPayments}} </h2> <span>SAR</span>
-                                                </div>
-                                                <div class="amount_text">
-                                                    <p>All Payments Including Fees</p>
-                                                </div>
+                                    <div class="row mt-3 align-items-center">
+                                        <div class="col-md-4">
+                                            <div class="visa_image">
+                                                <img src={{item?.bank.image}} alt="image"
+                                                    onerror="this.onerror=null;this.src='../../../assets/images/main_images/Group_card_compare.svg'">
+                                                <!-- <img src="../../../assets/images/main_images/bank_almad.png" alt=""> -->
                                             </div>
-                                            <div class="col-md-4">
-                                                <div class="amount">
-                                                    <h2> {{item.monthlyInstallment}} </h2> <!-- <span>%</span> -->
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row amount_types">
+                                                <div class="col-md-4">
+                                                    <div class="amount">
+                                                        <h2> {{item?.totalPayments}} </h2> <span>SAR</span>
+                                                    </div>
+                                                    <div class="amount_text">
+                                                        <p>All Payments Including Fees</p>
+                                                    </div>
                                                 </div>
-                                                <div class="amount_text">
-                                                    <p>Monthly Installment</p>
+                                                <div class="col-md-4">
+                                                    <div class="amount">
+                                                        <h2> {{item.monthlyInstallment}} </h2> <!-- <span>%</span> -->
+                                                    </div>
+                                                    <div class="amount_text">
+                                                        <p>Monthly Installment</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="amount">
-                                                    <!-- <h2> {{item.managementFee}} </h2> <span>%</span> -->
-                                                    <h2>{{FilterValue(1,item)}}</h2> <span>%</span>
-                                                </div>
-                                                <div class="amount_text">
-                                                    <p>Management Fees</p>
+                                                <div class="col-md-4">
+                                                    <div class="amount">
+                                                        <!-- <h2> {{item.managementFee}} </h2> <span>%</span> -->
+                                                        <h2>{{FilterValue(1,item)}}</h2> <span>%</span>
+                                                    </div>
+                                                    <div class="amount_text">
+                                                        <p>Management Fees</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row mt-3 align-items-center">
-                                    <div class="col-md-4">
-                                        <div>
-                                            <!-- (click)="applyForAutoLoan(item)" -->
-                                            <button class="btn btn-md btn-block apply-btn"
-                                                (click)="applyForAutoLoan(item)">Apply Now</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="row text-center refund-row">
-                                            <div class="col-md-4 refund_not">
-                                                <!-- * 100 | number: '1.2-2' -->
-                                                <p>APR</p><span class="amount"> {{item.apr }} %</span>
-                                            </div>
-                                            <div class="col-md-4 refund_not">
-                                                <p>Profit Rate</p><span class="amount"> {{item.rate}} %</span>
-                                            </div>
-                                            <div class="col-md-4 refund_not" *ngIf="item.isinsuranceIncluded">
-                                                <img src="../../../assets/images/main_images/insured.PNG" alt="">
-                                                <span>Insurance included</span>
+                                    <div class="row mt-3 align-items-center">
+                                        <div class="col-md-4">
+                                            <div>
+                                                <!-- (click)="applyForAutoLoan(item)" -->
+                                                <button class="btn btn-md btn-block apply-btn"
+                                                    (click)="applyForAutoLoan(item)">Apply
+                                                    Now</button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div>
-                                    <!-- <div class="goto_details">
-                                        <img src="../../assets/images/main_images/triangle.svg" alt="">
-                                        <span>More Details</span>
-                                    </div> -->
-                                    <div class="goto_details">
-                                        <div *ngIf="showCardDetailsFlag!=i" (click)="showCardDetails(i+'')">
-                                            <img src="../../assets/images/main_images/triangle.svg" alt="">
-                                            <span>More Details</span>
-                                        </div>
-                                        <div *ngIf="showCardDetailsFlag==i" (click)="showCardDetails(i+'-')">
-                                            <img src="../../../assets/images/main_images/Group_downarrow.svg" alt="">
-                                            <span>Hide Details</span>
+                                        <div class="col-md-8">
+                                            <div class="row text-center refund-row">
+                                                <div class="col-md-4 refund_not">
+                                                    <!-- * 100 | number: '1.2-2' -->
+                                                    <p>APR</p><span class="amount"> {{item.apr }} %</span>
+                                                </div>
+                                                <div class="col-md-4 refund_not">
+                                                    <p>Profit Rate</p><span class="amount"> {{item.rate}} %</span>
+                                                </div>
+                                                <div class="col-md-4 refund_not" *ngIf="item.isinsuranceIncluded">
+                                                    <img src="../../../assets/images/main_images/insured.PNG" alt="">
+                                                    <span>Insurance included</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div *ngIf="showCardDetailsFlag==i">
-                                        <div class="card_details_starts">
-                                            <div class="row ">
-                                                <div class="col-md-12 col-12 mt-3">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-4 col-4">
-                                                            <div class="inner-block-header">
-                                                                <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
-                                                                    alt=""> -->
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="21.727"
-                                                                    height="21.72" viewBox="0 0 21.727 21.72">
-                                                                    <path id="np_free_338463_000000"
-                                                                        d="M21.128,18.12a.944.944,0,1,0-.944-.944A.946.946,0,0,0,21.128,18.12Zm4.451,1.114H20.226l-1.835-2.058,1.835-2.059h5.353Zm.574-5.264H25.77V9.279A.575.575,0,0,0,25.2,8.7H24.1V6.647a.575.575,0,0,0-.574-.574H20.845a.574.574,0,0,0,0,1.149h2.1V8.7H19.736a.574.574,0,0,0,0,1.149h4.886V13.97H19.969a.572.572,0,0,0-.428.191l-2.348,2.632a.575.575,0,0,0,0,.765l2.348,2.632a.572.572,0,0,0,.428.192h4.653V24.5H13.082a.574.574,0,0,0,0,1.149H25.2a.575.575,0,0,0,.574-.574v-4.69h.383a.575.575,0,0,0,.574-.574V14.543a.575.575,0,0,0-.574-.573Zm-6.69-8.925a.574.574,0,0,0-.753.306l-8.666,20.57a.564.564,0,0,0,0,.439.574.574,0,0,0,1.061.007L19.769,5.8a.575.575,0,0,0-.306-.753ZM8.968,24.5h-1a1.82,1.82,0,0,1-1.818-1.818V9.706a1.894,1.894,0,0,0,.731.147h8.742a.574.574,0,1,0,0-1.149H6.878a.73.73,0,0,1-.729-.729V7.952a.731.731,0,0,1,.731-.73h9.852a.574.574,0,0,0,0-1.149H6.88A1.878,1.878,0,0,0,5,7.949V22.68a2.97,2.97,0,0,0,2.967,2.967h1a.574.574,0,0,0,0-1.149Z"
-                                                                        transform="translate(-5 -5)" fill="#96f"
-                                                                        fill-rule="evenodd" />
-                                                                </svg>
-                                                                <span>Fees</span>
+                                    <hr>
+                                    <div>
+                                        <!-- <div class="goto_details">
+                                                                <img src="../../assets/images/main_images/triangle.svg" alt="">
+                                                                <span>More Details</span>
+                                                            </div> -->
+                                        <div class="goto_details">
+                                            <div *ngIf="showCardDetailsFlag!=i" (click)="showCardDetails(i+'')">
+                                                <img src="../../assets/images/main_images/triangle.svg" alt="">
+                                                <span>More Details</span>
+                                            </div>
+                                            <div *ngIf="showCardDetailsFlag==i" (click)="showCardDetails(i+'-')">
+                                                <img src="../../../assets/images/main_images/Group_downarrow.svg"
+                                                    alt="">
+                                                <span>Hide Details</span>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="showCardDetailsFlag==i">
+                                            <div class="card_details_starts">
+                                                <div class="row ">
+                                                    <div class="col-md-12 col-12 mt-3">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
+                                                                                            alt=""> -->
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="21.727" height="21.72"
+                                                                        viewBox="0 0 21.727 21.72">
+                                                                        <path id="np_free_338463_000000"
+                                                                            d="M21.128,18.12a.944.944,0,1,0-.944-.944A.946.946,0,0,0,21.128,18.12Zm4.451,1.114H20.226l-1.835-2.058,1.835-2.059h5.353Zm.574-5.264H25.77V9.279A.575.575,0,0,0,25.2,8.7H24.1V6.647a.575.575,0,0,0-.574-.574H20.845a.574.574,0,0,0,0,1.149h2.1V8.7H19.736a.574.574,0,0,0,0,1.149h4.886V13.97H19.969a.572.572,0,0,0-.428.191l-2.348,2.632a.575.575,0,0,0,0,.765l2.348,2.632a.572.572,0,0,0,.428.192h4.653V24.5H13.082a.574.574,0,0,0,0,1.149H25.2a.575.575,0,0,0,.574-.574v-4.69h.383a.575.575,0,0,0,.574-.574V14.543a.575.575,0,0,0-.574-.573Zm-6.69-8.925a.574.574,0,0,0-.753.306l-8.666,20.57a.564.564,0,0,0,0,.439.574.574,0,0,0,1.061.007L19.769,5.8a.575.575,0,0,0-.306-.753ZM8.968,24.5h-1a1.82,1.82,0,0,1-1.818-1.818V9.706a1.894,1.894,0,0,0,.731.147h8.742a.574.574,0,1,0,0-1.149H6.878a.73.73,0,0,1-.729-.729V7.952a.731.731,0,0,1,.731-.73h9.852a.574.574,0,0,0,0-1.149H6.88A1.878,1.878,0,0,0,5,7.949V22.68a2.97,2.97,0,0,0,2.967,2.967h1a.574.574,0,0,0,0-1.149Z"
+                                                                            transform="translate(-5 -5)" fill="#96f"
+                                                                            fill-rule="evenodd" />
+                                                                    </svg>
+                                                                    <span>Fees</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-8 col-8">
-                                                            <div class="row">
-                                                                <div class="col-md-4 col-4">
-                                                                    <div class="fees-block">
-                                                                        <p>Loan amount</p>
-                                                                        <span>SAR {{item?.actualLoanAmount}}</span>
+                                                            <div class="col-md-8 col-8">
+                                                                <div class="row">
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Loan amount</p>
+                                                                            <span>SAR {{item?.actualLoanAmount}}</span>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-md-4 col-4">
-                                                                    <div class="fees-block">
-                                                                        <p>Max financing amount</p>
-                                                                        <span>SAR {{item?.loanMaximumValue}}</span>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Max financing amount</p>
+                                                                            <span>SAR {{item?.loanMaximumValue}}</span>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-md-4 col-4">
-                                                                    <div class="fees-block">
-                                                                        <p>Early Settelement Fees</p>
-                                                                        <span *ngFor="let feeItem of item?.fees">
-                                                                            <span
-                                                                                *ngIf="feeItem.name=='Early Settlement Fees'">
-                                                                                {{feeItem.value}} Months
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Early Settelement Fees</p>
+                                                                            <span *ngFor="let feeItem of item?.fees">
+                                                                                <span
+                                                                                    *ngIf="feeItem.name=='Early Settlement Fees'">
+                                                                                    {{feeItem.value}} Months
+                                                                                </span>
                                                                             </span>
-                                                                        </span>
-                                                                        <!--  <span>{{FilterValue(2,item?.fees)}}
-                                                                            Months</span> -->
+                                                                            <!--  <span>{{FilterValue(2,item?.fees)}}
+                                                                                                    Months</span> -->
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 col-12 mt-3" *ngIf="item?.protections">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-4 col-4">
-                                                            <div class="inner-block-header">
-                                                                <img src="../../../assets/images/icons/protection-icon.png"
-                                                                    alt="">
-                                                                <span>Protection</span>
+                                                    <div class="col-md-12 col-12 mt-3" *ngIf="item?.protections">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <img src="../../../assets/images/icons/protection-icon.png"
+                                                                        alt="">
+                                                                    <span>Protection</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-8 col-8">
-                                                            <ul class="card-details-list">
-                                                                <li *ngFor="let point of item?.protections">
-                                                                    <span
-                                                                        class="material-icons custom_check">check</span>
-                                                                    <span>{{point}}</span>
-                                                                </li>
-                                                            </ul>
+                                                            <div class="col-md-8 col-8">
+                                                                <ul class="card-details-list">
+                                                                    <li *ngFor="let point of item?.protections">
+                                                                        <span
+                                                                            class="material-icons custom_check">check</span>
+                                                                        <span>{{point}}</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 col-12 mt-3" *ngIf="item?.travels">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-4 col-4">
-                                                            <div class="inner-block-header">
-                                                                <img src="../../../assets/images/main_images/np_airplane.svg"
-                                                                    alt="">
-                                                                <span>Travel</span>
+                                                    <div class="col-md-12 col-12 mt-3" *ngIf="item?.travels">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <img src="../../../assets/images/main_images/np_airplane.svg"
+                                                                        alt="">
+                                                                    <span>Travel</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-8 col-8">
-                                                            <ul class="card-details-list">
-                                                                <li *ngFor="let point of item?.travels">
-                                                                    <span
-                                                                        class="material-icons custom_check">check</span>
-                                                                    <span>{{point}}</span>
-                                                                </li>
-                                                            </ul>
+                                                            <div class="col-md-8 col-8">
+                                                                <ul class="card-details-list">
+                                                                    <li *ngFor="let point of item?.travels">
+                                                                        <span
+                                                                            class="material-icons custom_check">check</span>
+                                                                        <span>{{point}}</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 col-12 mt-3" *ngIf="item?.rewardsPrograms">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-4 col-4">
-                                                            <div class="inner-block-header">
-                                                                <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
-                                                                    alt=""> -->
-                                                                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="21.433" height="27.037" viewBox="0 0 21.433 27.037">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12.671" height="12.197" viewBox="0 0 12.671 12.197">
-                                                                            <path id="Path_4420" data-name="Path 4420" d="M38.978,25.938a2.17,2.17,0,0,0-.266-.533,2.038,2.038,0,0,0-.761-.657,2.137,2.137,0,0,0-.647-.209l-1.618-.219a.184.184,0,0,1-.124-.086l-.723-1.446a2.041,2.041,0,0,0-1.846-1.132A2.063,2.063,0,0,0,31.138,22.8l-.019.048-.466.951-.228.457a.152.152,0,0,1-.124.086l-1.608.238a1.942,1.942,0,0,0-.58.171,2.052,2.052,0,0,0-.818.685,2.112,2.112,0,0,0-.266.552,2.109,2.109,0,0,0,.533,2.1l1.17,1.123a.147.147,0,0,1,.048.124L28.5,30.924a2.022,2.022,0,0,0,.818,2,2.058,2.058,0,0,0,2.179.162l1.446-.761a.21.21,0,0,1,.152,0l1.446.752A2.065,2.065,0,0,0,37.532,30.9l-.285-1.589a.145.145,0,0,1,.048-.133l1.161-1.132a1.9,1.9,0,0,0,.257-.3,2.044,2.044,0,0,0,.266-1.8Zm-1.846.742-1.17,1.132a2.053,2.053,0,0,0-.59,1.817l.285,1.589a.14.14,0,0,1-.067.143.144.144,0,0,1-.171.019l-1.446-.742a2.059,2.059,0,0,0-1.912,0l-1.446.761a.145.145,0,0,1-.171-.019.141.141,0,0,1-.067-.143l.276-1.589a2.031,2.031,0,0,0-.609-1.817l-1.161-1.123a.139.139,0,0,1,.086-.247l1.608-.238A2.075,2.075,0,0,0,32.127,25.1v-.01l.723-1.446a.148.148,0,0,1,.143-.086.142.142,0,0,1,.143.086l.076.152.485.951.171.343A2.057,2.057,0,0,0,35.42,26.2l1.618.228a.145.145,0,0,1,.133.1.185.185,0,0,1-.038.152Z" transform="translate(-26.669 -21.406)" fill="#96f" stroke="#fff" stroke-width="0.5"/>
-                                                                          </svg>
-                                                                          
-                                                                        <path id="Path_4421" data-name="Path 4421" d="M22.967,6.437a10.46,10.46,0,0,0-7.612,17.641v7.935a.948.948,0,0,0,.447.809.987.987,0,0,0,.932.048l2.731-1.37,3.111,1.389a1.009,1.009,0,0,0,.78,0L26.469,31.5,29.2,32.87a.987.987,0,0,0,.932-.048.951.951,0,0,0,.447-.809V24.078A10.46,10.46,0,0,0,22.968,6.437Zm5.709,24.035-1.76-.875a.961.961,0,0,0-.809-.019l-3.14,1.4-3.14-1.4a.912.912,0,0,0-.809.019l-1.76.875v-4.8a10.42,10.42,0,0,0,11.418,0Zm.951-8.2a7.947,7.947,0,0,1-.951,1.009,8.541,8.541,0,0,1-11.418,0,7.947,7.947,0,0,1-.951-1.009,8.11,8.11,0,0,1-.951-1.456A8.448,8.448,0,0,1,14.4,16.9a8.563,8.563,0,0,1,17.127,0,8.448,8.448,0,0,1-.951,3.911,8.108,8.108,0,0,1-.951,1.456Z" transform="translate(-12.251 -6.187)" fill="#96f" stroke="#fff" stroke-width="0.5"/>
-                                                                      </svg> -->
+                                                    <div class="col-md-12 col-12 mt-3" *ngIf="item?.rewardsPrograms">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
+                                                                                            alt=""> -->
+                                                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="21.433" height="27.037" viewBox="0 0 21.433 27.037">
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.671" height="12.197" viewBox="0 0 12.671 12.197">
+                                                                                                    <path id="Path_4420" data-name="Path 4420" d="M38.978,25.938a2.17,2.17,0,0,0-.266-.533,2.038,2.038,0,0,0-.761-.657,2.137,2.137,0,0,0-.647-.209l-1.618-.219a.184.184,0,0,1-.124-.086l-.723-1.446a2.041,2.041,0,0,0-1.846-1.132A2.063,2.063,0,0,0,31.138,22.8l-.019.048-.466.951-.228.457a.152.152,0,0,1-.124.086l-1.608.238a1.942,1.942,0,0,0-.58.171,2.052,2.052,0,0,0-.818.685,2.112,2.112,0,0,0-.266.552,2.109,2.109,0,0,0,.533,2.1l1.17,1.123a.147.147,0,0,1,.048.124L28.5,30.924a2.022,2.022,0,0,0,.818,2,2.058,2.058,0,0,0,2.179.162l1.446-.761a.21.21,0,0,1,.152,0l1.446.752A2.065,2.065,0,0,0,37.532,30.9l-.285-1.589a.145.145,0,0,1,.048-.133l1.161-1.132a1.9,1.9,0,0,0,.257-.3,2.044,2.044,0,0,0,.266-1.8Zm-1.846.742-1.17,1.132a2.053,2.053,0,0,0-.59,1.817l.285,1.589a.14.14,0,0,1-.067.143.144.144,0,0,1-.171.019l-1.446-.742a2.059,2.059,0,0,0-1.912,0l-1.446.761a.145.145,0,0,1-.171-.019.141.141,0,0,1-.067-.143l.276-1.589a2.031,2.031,0,0,0-.609-1.817l-1.161-1.123a.139.139,0,0,1,.086-.247l1.608-.238A2.075,2.075,0,0,0,32.127,25.1v-.01l.723-1.446a.148.148,0,0,1,.143-.086.142.142,0,0,1,.143.086l.076.152.485.951.171.343A2.057,2.057,0,0,0,35.42,26.2l1.618.228a.145.145,0,0,1,.133.1.185.185,0,0,1-.038.152Z" transform="translate(-26.669 -21.406)" fill="#96f" stroke="#fff" stroke-width="0.5"/>
+                                                                                                  </svg>
+                                                                                                  
+                                                                                                <path id="Path_4421" data-name="Path 4421" d="M22.967,6.437a10.46,10.46,0,0,0-7.612,17.641v7.935a.948.948,0,0,0,.447.809.987.987,0,0,0,.932.048l2.731-1.37,3.111,1.389a1.009,1.009,0,0,0,.78,0L26.469,31.5,29.2,32.87a.987.987,0,0,0,.932-.048.951.951,0,0,0,.447-.809V24.078A10.46,10.46,0,0,0,22.968,6.437Zm5.709,24.035-1.76-.875a.961.961,0,0,0-.809-.019l-3.14,1.4-3.14-1.4a.912.912,0,0,0-.809.019l-1.76.875v-4.8a10.42,10.42,0,0,0,11.418,0Zm.951-8.2a7.947,7.947,0,0,1-.951,1.009,8.541,8.541,0,0,1-11.418,0,7.947,7.947,0,0,1-.951-1.009,8.11,8.11,0,0,1-.951-1.456A8.448,8.448,0,0,1,14.4,16.9a8.563,8.563,0,0,1,17.127,0,8.448,8.448,0,0,1-.951,3.911,8.108,8.108,0,0,1-.951,1.456Z" transform="translate(-12.251 -6.187)" fill="#96f" stroke="#fff" stroke-width="0.5"/>
+                                                                                              </svg> -->
 
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="21.433"
-                                                                    height="27.037" viewBox="0 0 21.433 27.037">
-                                                                    <g id="np_featured_2858532_000000"
-                                                                        transform="translate(0.25 0.25)">
-                                                                        <path id="Path_4420" data-name="Path 4420"
-                                                                            d="M38.978,25.938a2.17,2.17,0,0,0-.266-.533,2.038,2.038,0,0,0-.761-.657,2.137,2.137,0,0,0-.647-.209l-1.618-.219a.184.184,0,0,1-.124-.086l-.723-1.446a2.041,2.041,0,0,0-1.846-1.132A2.063,2.063,0,0,0,31.138,22.8l-.019.048-.466.951-.228.457a.152.152,0,0,1-.124.086l-1.608.238a1.942,1.942,0,0,0-.58.171,2.052,2.052,0,0,0-.818.685,2.112,2.112,0,0,0-.266.552,2.109,2.109,0,0,0,.533,2.1l1.17,1.123a.147.147,0,0,1,.048.124L28.5,30.924a2.022,2.022,0,0,0,.818,2,2.058,2.058,0,0,0,2.179.162l1.446-.761a.21.21,0,0,1,.152,0l1.446.752A2.065,2.065,0,0,0,37.532,30.9l-.285-1.589a.145.145,0,0,1,.048-.133l1.161-1.132a1.9,1.9,0,0,0,.257-.3,2.044,2.044,0,0,0,.266-1.8Zm-1.846.742-1.17,1.132a2.053,2.053,0,0,0-.59,1.817l.285,1.589a.14.14,0,0,1-.067.143.144.144,0,0,1-.171.019l-1.446-.742a2.059,2.059,0,0,0-1.912,0l-1.446.761a.145.145,0,0,1-.171-.019.141.141,0,0,1-.067-.143l.276-1.589a2.031,2.031,0,0,0-.609-1.817l-1.161-1.123a.139.139,0,0,1,.086-.247l1.608-.238A2.075,2.075,0,0,0,32.127,25.1v-.01l.723-1.446a.148.148,0,0,1,.143-.086.142.142,0,0,1,.143.086l.076.152.485.951.171.343A2.057,2.057,0,0,0,35.42,26.2l1.618.228a.145.145,0,0,1,.133.1.185.185,0,0,1-.038.152Z"
-                                                                            transform="translate(-22.537 -17.022)"
-                                                                            fill="#96f" stroke="#fff"
-                                                                            stroke-width="0.5" />
-                                                                        <path id="Path_4421" data-name="Path 4421"
-                                                                            d="M22.967,6.437a10.46,10.46,0,0,0-7.612,17.641v7.935a.948.948,0,0,0,.447.809.987.987,0,0,0,.932.048l2.731-1.37,3.111,1.389a1.009,1.009,0,0,0,.78,0L26.469,31.5,29.2,32.87a.987.987,0,0,0,.932-.048.951.951,0,0,0,.447-.809V24.078A10.46,10.46,0,0,0,22.968,6.437Zm5.709,24.035-1.76-.875a.961.961,0,0,0-.809-.019l-3.14,1.4-3.14-1.4a.912.912,0,0,0-.809.019l-1.76.875v-4.8a10.42,10.42,0,0,0,11.418,0Zm.951-8.2a7.947,7.947,0,0,1-.951,1.009,8.541,8.541,0,0,1-11.418,0,7.947,7.947,0,0,1-.951-1.009,8.11,8.11,0,0,1-.951-1.456A8.448,8.448,0,0,1,14.4,16.9a8.563,8.563,0,0,1,17.127,0,8.448,8.448,0,0,1-.951,3.911,8.108,8.108,0,0,1-.951,1.456Z"
-                                                                            transform="translate(-12.501 -6.437)"
-                                                                            fill="#96f" stroke="#fff"
-                                                                            stroke-width="0.5" />
-                                                                    </g>
-                                                                </svg>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="21.433" height="27.037"
+                                                                        viewBox="0 0 21.433 27.037">
+                                                                        <g id="np_featured_2858532_000000"
+                                                                            transform="translate(0.25 0.25)">
+                                                                            <path id="Path_4420" data-name="Path 4420"
+                                                                                d="M38.978,25.938a2.17,2.17,0,0,0-.266-.533,2.038,2.038,0,0,0-.761-.657,2.137,2.137,0,0,0-.647-.209l-1.618-.219a.184.184,0,0,1-.124-.086l-.723-1.446a2.041,2.041,0,0,0-1.846-1.132A2.063,2.063,0,0,0,31.138,22.8l-.019.048-.466.951-.228.457a.152.152,0,0,1-.124.086l-1.608.238a1.942,1.942,0,0,0-.58.171,2.052,2.052,0,0,0-.818.685,2.112,2.112,0,0,0-.266.552,2.109,2.109,0,0,0,.533,2.1l1.17,1.123a.147.147,0,0,1,.048.124L28.5,30.924a2.022,2.022,0,0,0,.818,2,2.058,2.058,0,0,0,2.179.162l1.446-.761a.21.21,0,0,1,.152,0l1.446.752A2.065,2.065,0,0,0,37.532,30.9l-.285-1.589a.145.145,0,0,1,.048-.133l1.161-1.132a1.9,1.9,0,0,0,.257-.3,2.044,2.044,0,0,0,.266-1.8Zm-1.846.742-1.17,1.132a2.053,2.053,0,0,0-.59,1.817l.285,1.589a.14.14,0,0,1-.067.143.144.144,0,0,1-.171.019l-1.446-.742a2.059,2.059,0,0,0-1.912,0l-1.446.761a.145.145,0,0,1-.171-.019.141.141,0,0,1-.067-.143l.276-1.589a2.031,2.031,0,0,0-.609-1.817l-1.161-1.123a.139.139,0,0,1,.086-.247l1.608-.238A2.075,2.075,0,0,0,32.127,25.1v-.01l.723-1.446a.148.148,0,0,1,.143-.086.142.142,0,0,1,.143.086l.076.152.485.951.171.343A2.057,2.057,0,0,0,35.42,26.2l1.618.228a.145.145,0,0,1,.133.1.185.185,0,0,1-.038.152Z"
+                                                                                transform="translate(-22.537 -17.022)"
+                                                                                fill="#96f" stroke="#fff"
+                                                                                stroke-width="0.5" />
+                                                                            <path id="Path_4421" data-name="Path 4421"
+                                                                                d="M22.967,6.437a10.46,10.46,0,0,0-7.612,17.641v7.935a.948.948,0,0,0,.447.809.987.987,0,0,0,.932.048l2.731-1.37,3.111,1.389a1.009,1.009,0,0,0,.78,0L26.469,31.5,29.2,32.87a.987.987,0,0,0,.932-.048.951.951,0,0,0,.447-.809V24.078A10.46,10.46,0,0,0,22.968,6.437Zm5.709,24.035-1.76-.875a.961.961,0,0,0-.809-.019l-3.14,1.4-3.14-1.4a.912.912,0,0,0-.809.019l-1.76.875v-4.8a10.42,10.42,0,0,0,11.418,0Zm.951-8.2a7.947,7.947,0,0,1-.951,1.009,8.541,8.541,0,0,1-11.418,0,7.947,7.947,0,0,1-.951-1.009,8.11,8.11,0,0,1-.951-1.456A8.448,8.448,0,0,1,14.4,16.9a8.563,8.563,0,0,1,17.127,0,8.448,8.448,0,0,1-.951,3.911,8.108,8.108,0,0,1-.951,1.456Z"
+                                                                                transform="translate(-12.501 -6.437)"
+                                                                                fill="#96f" stroke="#fff"
+                                                                                stroke-width="0.5" />
+                                                                        </g>
+                                                                    </svg>
 
 
-                                                                <span>Reward Programs</span>
+                                                                    <span>Reward Programs</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-8 col-8">
-                                                            <ul class="card-details-list">
-                                                                <li *ngFor="let point of item?.rewardsPrograms">
-                                                                    <span
-                                                                        class="material-icons custom_check">check</span>
-                                                                    <span>{{point}}</span>
-                                                                </li>
-                                                            </ul>
+                                                            <div class="col-md-8 col-8">
+                                                                <ul class="card-details-list">
+                                                                    <li *ngFor="let point of item?.rewardsPrograms">
+                                                                        <span
+                                                                            class="material-icons custom_check">check</span>
+                                                                        <span>{{point}}</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 col-12 mt-3" *ngIf="item?.listOthers">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-4 col-4">
-                                                            <div class="inner-block-header">
-                                                                <img src="../../../assets/images/icons/Others_stars.png"
-                                                                    alt="">
-                                                                <span>Others</span>
+                                                    <div class="col-md-12 col-12 mt-3" *ngIf="item?.listOthers">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <img src="../../../assets/images/icons/Others_stars.png"
+                                                                        alt="">
+                                                                    <span>Others</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-8 col-8">
-                                                            <ul class="card-details-list">
-                                                                <li *ngFor="let point of item?.listOthers">
-                                                                    <span
-                                                                        class="material-icons custom_check">check</span>
-                                                                    <span>{{point}}</span>
-                                                                </li>
-                                                            </ul>
+                                                            <div class="col-md-8 col-8">
+                                                                <ul class="card-details-list">
+                                                                    <li *ngFor="let point of item?.listOthers">
+                                                                        <span
+                                                                            class="material-icons custom_check">check</span>
+                                                                        <span>{{point}}</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -476,7 +483,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </ng-container>
+
                     <div class="card custom-card d-none">
                         <div class="card-body">
                             <div class="visa_main_part">
@@ -489,8 +497,8 @@
                                 </div>
                                 <div class="share_and_compare">
                                     <div class="user_option mr-3">
-                                        <img  src="../../../assets/images/main_images/np_share.svg" alt="">
-                                        <span >Share</span>
+                                        <img src="../../../assets/images/main_images/np_share.svg" alt="">
+                                        <span>Share</span>
                                     </div>
                                     <div class="user_option">
                                         <img src="../../../assets/images/main_images/np_add.svg" alt="">
@@ -581,7 +589,7 @@
                             <div style="display: flex; justify-content: space-between;">
                                 <div style="flex-basis: 30%;">
                                     <ngx-skeleton-loader [theme]="{ height: '50px'}"></ngx-skeleton-loader>
-                
+
                                     <div style="width: 50%;">
                                         <ngx-skeleton-loader [theme]="{ height: '20px'}"></ngx-skeleton-loader>
                                     </div>
@@ -590,12 +598,12 @@
                                     <div class="user_option" style="flex-basis: 50%; padding-right: 30px;">
                                         <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                     </div>
-                
+
                                     <div class="user_option" style="flex-basis: 50%;">
                                         <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                     </div>
                                 </div>
-                
+
                             </div>
                             <div class="">
                                 <div class="row ">
@@ -604,18 +612,24 @@
                                     </div>
                                     <div class="col-md-3 col-6 ">
                                         <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
                                     </div>
                                     <div class="col-md-3 col-6 ">
                                         <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
                                     </div>
                                     <div class="col-md-3 col-6">
                                         <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
                                     </div>
                                 </div>
                             </div>
@@ -638,7 +652,7 @@
                                 <div class="col-md-3 col-6">
                                     <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                 </div>
-                
+
                             </div>
                         </div>
                     </div>
@@ -647,7 +661,7 @@
                             <div style="display: flex; justify-content: space-between;">
                                 <div style="flex-basis: 30%;">
                                     <ngx-skeleton-loader [theme]="{ height: '50px'}"></ngx-skeleton-loader>
-                    
+
                                     <div style="width: 50%;">
                                         <ngx-skeleton-loader [theme]="{ height: '20px'}"></ngx-skeleton-loader>
                                     </div>
@@ -656,12 +670,12 @@
                                     <div class="user_option" style="flex-basis: 50%; padding-right: 30px;">
                                         <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                     </div>
-                    
+
                                     <div class="user_option" style="flex-basis: 50%;">
                                         <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                     </div>
                                 </div>
-                    
+
                             </div>
                             <div class="">
                                 <div class="row ">
@@ -670,18 +684,24 @@
                                     </div>
                                     <div class="col-md-3 col-6 ">
                                         <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
                                     </div>
                                     <div class="col-md-3 col-6 ">
                                         <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
                                     </div>
                                     <div class="col-md-3 col-6">
                                         <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
                                     </div>
                                 </div>
                             </div>
@@ -704,7 +724,7 @@
                                 <div class="col-md-3 col-6">
                                     <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                 </div>
-                    
+
                             </div>
                         </div>
                     </div>
@@ -713,7 +733,7 @@
                             <div style="display: flex; justify-content: space-between;">
                                 <div style="flex-basis: 30%;">
                                     <ngx-skeleton-loader [theme]="{ height: '50px'}"></ngx-skeleton-loader>
-                    
+
                                     <div style="width: 50%;">
                                         <ngx-skeleton-loader [theme]="{ height: '20px'}"></ngx-skeleton-loader>
                                     </div>
@@ -722,12 +742,12 @@
                                     <div class="user_option" style="flex-basis: 50%; padding-right: 30px;">
                                         <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                     </div>
-                    
+
                                     <div class="user_option" style="flex-basis: 50%;">
                                         <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                     </div>
                                 </div>
-                    
+
                             </div>
                             <div class="">
                                 <div class="row ">
@@ -736,18 +756,24 @@
                                     </div>
                                     <div class="col-md-3 col-6 ">
                                         <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
                                     </div>
                                     <div class="col-md-3 col-6 ">
                                         <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
                                     </div>
                                     <div class="col-md-3 col-6">
                                         <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
+                                        <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                        </ngx-skeleton-loader>
                                     </div>
                                 </div>
                             </div>
@@ -770,7 +796,7 @@
                                 <div class="col-md-3 col-6">
                                     <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                 </div>
-                    
+
                             </div>
                         </div>
                     </div>

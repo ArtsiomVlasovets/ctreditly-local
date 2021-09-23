@@ -260,3 +260,11 @@ select:focus {
 .owl-carousel .owl-dots {
   display: block !important;
 }
+
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

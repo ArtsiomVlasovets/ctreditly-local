@@ -551,7 +551,8 @@
                         </div>
 
                         <div>
-                            <button class="btn btn-md compare-cards-btn" (click)="navigateToCardsCompare()">Compare<span>{{compareCard.length}}</span></button>
+                            <button class="btn btn-md compare-cards-btn"
+                                (click)="navigateToCardsCompare()">Compare<span>{{compareCard.length}}</span></button>
                         </div>
                         <div (click)="reset()">
                             Reset
@@ -587,108 +588,40 @@
                     </div>
                 </div>
                 <div>
-                    <div class="card custom-card" *ngFor="let product of financeProduct;let i=index;">
-                        <div class="card-body">
-                            <div class="visa_main_part">
-                                <div>
-                                    <h1>{{product?.name}}</h1>
-                                    <!-- <h6> {{product?.bank.name}} </h6> -->
-                                    <p *ngIf="product?.shariah_Compliant"><span><img
-                                                src="../../../assets/images/main_images/title.PNG" width="30px"
-                                                alt=""></span> &nbsp;<span>Shariah complaint</span>
-                                    </p>
+                    <ng-container *ngFor="let product of financeProduct;let i=index;">
+                        <div class="card custom-card" *ngIf="i < maxListProducts">
+                            <div class="card-body">
+                                <div class="visa_main_part">
+                                    <div>
+                                        <h1>{{product?.name}}</h1>
+                                        <!-- <h6> {{product?.bank.name}} </h6> -->
+                                        <p *ngIf="product?.shariah_Compliant"><span><img
+                                                    src="../../../assets/images/main_images/title.PNG" width="30px"
+                                                    alt=""></span> &nbsp;<span>Shariah complaint</span>
+                                        </p>
 
-                                </div>
-                                <div class="share_and_compare">
-                                    <!-- (click)="shareURL(product)"  *ngIf="product?.seo?.url" -->
-                                    <div class="user_option" *ngIf="product?.seo?.url">
-                                        <img (click)="shareURL(product)" src="../../../assets/images/main_images/np_share.svg" alt="">
-                                        <span (click)="shareURL(product)">Share</span>
                                     </div>
-                                    <span class="material-icons added" *ngIf="isCard(product?.id)">
-                                        check_box
-                                    </span>
-                                    <div class="user_option" (click)="addToCampare(product)">
-                                        <img *ngIf="!isCard(product?.id)"
-                                            src="../../../assets/images/main_images/np_add.svg" alt="">
+                                    <div class="share_and_compare">
+                                        <!-- (click)="shareURL(product)"  *ngIf="product?.seo?.url" -->
+                                        <div class="user_option" *ngIf="product?.seo?.url">
+                                            <img (click)="shareURL(product)"
+                                                src="../../../assets/images/main_images/np_share.svg" alt="">
+                                            <span (click)="shareURL(product)">Share</span>
+                                        </div>
+                                        <span class="material-icons added" *ngIf="isCard(product?.id)">
+                                            check_box
+                                        </span>
+                                        <div class="user_option" (click)="addToCampare(product)">
+                                            <img *ngIf="!isCard(product?.id)"
+                                                src="../../../assets/images/main_images/np_add.svg" alt="">
 
-                                        <span *ngIf="!isCard(product?.id)">Adds to compare</span>
-                                        <span *ngIf="isCard(product?.id)">Added to compare</span>
-                                    </div>
-                                </div>
-                                <div class="mobile_flight_text">
-                                    <div class="row text-center ">
-                                        <div *ngIf="product?.murabaha" class="col-md-4 col-6 refund_not">
-                                            <!-- <img src="../../../assets/images/main_images/np_airplane.svg" alt=""> -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20.233" height="20.249"
-                                                viewBox="0 0 20.233 20.249">
-                                                <path id="np_stock_3857220_000000"
-                                                    d="M23.726,21.582V39.2H41.339v2.128H21.606V21.582Zm17.613,2.274v.174l-5.668,7.13-.912,1.108-.2.254-.224.282-2.969-2.534-4.719,5.914-1.615-1.332L31.1,27.259l2.969,2.534,2.765-3.482-2.172-1.824.506-.63Z"
-                                                    transform="translate(-21.356 -21.332)" fill="#96f" stroke="#fff"
-                                                    stroke-width="0.5" />
-                                            </svg>
-
-                                            <span>Murabaha</span>
-                                        </div>
-                                        <div class="col-md-4 col-6 refund_not">
-                                            <!-- <img src="../../../assets/images/main_images/np_airplane.svg" alt="">
-                                            <span>Mrabaha</span> -->
-                                        </div>
-                                        <div class="col-md-4 col-6"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="row mt-3 align-items-center">
-                                    <div class="col-md-4">
-                                        <div class="visa_image">
-                                            <img src="{{product?.bank?.image}}" alt=""
-                                                onerror="this.onerror=null;this.src='../../../assets/images/main_images/Group_card_compare.svg';">
+                                            <span *ngIf="!isCard(product?.id)">Adds to compare</span>
+                                            <span *ngIf="isCard(product?.id)">Added to compare</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-8">
-                                        <div class="row amount_types">
-                                            <div class="col-md-4 col-6">
-                                                <div class="amount">
-                                                    <h1>{{product?.totalPayments}}</h1> <span>SAR</span>
-                                                </div>
-                                                <div class="amount_text">
-                                                    <p>All Payments Including Fees</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-6">
-                                                <div class="amount">
-                                                    <h1>{{product?.monthlyInstallment}}</h1> <span>SAR</span>
-                                                </div>
-                                                <div class="amount_text">
-                                                    <p>Monthly Installment</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-6">
-                                                <div class="amount">
-                                                    <h1>{{FilterValue(1,product?.fees)}}</h1> <span>%</span>
-                                                </div>
-                                                <div class="amount_text">
-                                                    <p>Management Fees</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mt-3 align-items-center">
-                                    <div class="col-md-4">
-                                        <div>
-                                            <button class="btn btn-md btn-block apply-btn"
-                                                (click)="applyForCreditCard(product)">Apply Now</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="row text-center">
-                                            <div class="col-md-4 col-6 refund_not">
-                                                <p>APR</p><span class="amount">{{product?.apr}} %</span>
-                                            </div>
-                                            <div class="col-md-4 col-6 refund_not web_flight_text d-none d-md-block"
-                                                *ngIf="product?.murabaha">
+                                    <div class="mobile_flight_text">
+                                        <div class="row text-center ">
+                                            <div *ngIf="product?.murabaha" class="col-md-4 col-6 refund_not">
                                                 <!-- <img src="../../../assets/images/main_images/np_airplane.svg" alt=""> -->
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20.233" height="20.249"
                                                     viewBox="0 0 20.233 20.249">
@@ -700,141 +633,218 @@
 
                                                 <span>Murabaha</span>
                                             </div>
+                                            <div class="col-md-4 col-6 refund_not">
+                                                <!-- <img src="../../../assets/images/main_images/np_airplane.svg" alt="">
+                                            <span>Mrabaha</span> -->
+                                            </div>
+                                            <div class="col-md-4 col-6"></div>
                                         </div>
-                                        <div class="share_and_compare_mobile">
-                                            <div class=" row">
-                                                <div class="user_option">
-                                                    <img src="../../../assets/images/main_images/np_share.svg" alt="">
-                                                    <span>Share</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row mt-3 align-items-center">
+                                        <div class="col-md-4">
+                                            <div class="visa_image">
+                                                <img src="{{product?.bank?.image}}" alt=""
+                                                    onerror="this.onerror=null;this.src='../../../assets/images/main_images/Group_card_compare.svg';">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row amount_types">
+                                                <div class="col-md-4 col-6">
+                                                    <div class="amount">
+                                                        <h1>{{product?.totalPayments}}</h1> <span>SAR</span>
+                                                    </div>
+                                                    <div class="amount_text">
+                                                        <p>All Payments Including Fees</p>
+                                                    </div>
                                                 </div>
-                                                <span class="material-icons added" *ngIf="isCard(product?.id)">
-                                                    check_box
-                                                </span>
-                                                <div class="user_option" (click)="addToCampare(product)">
-                                                    <img *ngIf="!isCard(product?.id)"
-                                                        src="../../../assets/images/main_images/np_add.svg" alt="">
-
-                                                    <span *ngIf="!isCard(product?.id)">Add to compare</span>
-                                                    <span *ngIf="isCard(product?.id)">Added to compare</span>
+                                                <div class="col-md-4 col-6">
+                                                    <div class="amount">
+                                                        <h1>{{product?.monthlyInstallment}}</h1> <span>SAR</span>
+                                                    </div>
+                                                    <div class="amount_text">
+                                                        <p>Monthly Installment</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-6">
+                                                    <div class="amount">
+                                                        <h1>{{FilterValue(1,product?.fees)}}</h1> <span>%</span>
+                                                    </div>
+                                                    <div class="amount_text">
+                                                        <p>Management Fees</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <hr>
-                                <div>
-                                    <div class="goto_details">
-                                        <div>
-                                            <div *ngIf="showCardDetailsFlag!=i" (click)="showCardDetails(i+'')">
-                                                <img src="../../../assets/images/footer-images/up-arrow.svg" alt="">
-                                                <span>More Details</span>
+                                    <div class="row mt-3 align-items-center">
+                                        <div class="col-md-4">
+                                            <div>
+                                                <button class="btn btn-md btn-block apply-btn"
+                                                    (click)="applyForCreditCard(product)">Apply Now</button>
                                             </div>
-                                            <div *ngIf="showCardDetailsFlag==i" (click)="showCardDetails(i+'-')">
-                                                <img src="../../../assets/images/main_images/Group_downarrow.svg"
-                                                    alt="">
-                                                <span>Hide Details</span>
-                                            </div>
-
                                         </div>
-                                        <!-- <div>
+                                        <div class="col-md-8">
+                                            <div class="row text-center">
+                                                <div class="col-md-4 col-6 refund_not">
+                                                    <p>APR</p><span class="amount">{{product?.apr}} %</span>
+                                                </div>
+                                                <div class="col-md-4 col-6 refund_not web_flight_text d-none d-md-block"
+                                                    *ngIf="product?.murabaha">
+                                                    <!-- <img src="../../../assets/images/main_images/np_airplane.svg" alt=""> -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20.233"
+                                                        height="20.249" viewBox="0 0 20.233 20.249">
+                                                        <path id="np_stock_3857220_000000"
+                                                            d="M23.726,21.582V39.2H41.339v2.128H21.606V21.582Zm17.613,2.274v.174l-5.668,7.13-.912,1.108-.2.254-.224.282-2.969-2.534-4.719,5.914-1.615-1.332L31.1,27.259l2.969,2.534,2.765-3.482-2.172-1.824.506-.63Z"
+                                                            transform="translate(-21.356 -21.332)" fill="#96f"
+                                                            stroke="#fff" stroke-width="0.5" />
+                                                    </svg>
+
+                                                    <span>Murabaha</span>
+                                                </div>
+                                            </div>
+                                            <div class="share_and_compare_mobile">
+                                                <div class=" row">
+                                                    <div class="user_option">
+                                                        <img src="../../../assets/images/main_images/np_share.svg"
+                                                            alt="">
+                                                        <span>Share</span>
+                                                    </div>
+                                                    <span class="material-icons added" *ngIf="isCard(product?.id)">
+                                                        check_box
+                                                    </span>
+                                                    <div class="user_option" (click)="addToCampare(product)">
+                                                        <img *ngIf="!isCard(product?.id)"
+                                                            src="../../../assets/images/main_images/np_add.svg" alt="">
+
+                                                        <span *ngIf="!isCard(product?.id)">Add to compare</span>
+                                                        <span *ngIf="isCard(product?.id)">Added to compare</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <div class="goto_details">
+                                            <div>
+                                                <div *ngIf="showCardDetailsFlag!=i" (click)="showCardDetails(i+'')">
+                                                    <img src="../../../assets/images/footer-images/up-arrow.svg" alt="">
+                                                    <span>More Details</span>
+                                                </div>
+                                                <div *ngIf="showCardDetailsFlag==i" (click)="showCardDetails(i+'-')">
+                                                    <img src="../../../assets/images/main_images/Group_downarrow.svg"
+                                                        alt="">
+                                                    <span>Hide Details</span>
+                                                </div>
+
+                                            </div>
+                                            <!-- <div>
                                                 <img src="../../../assets/images/main_images/Group_instant_approval.svg"
                                                     alt="">
                                                 <span>Instant approval</span>
                                             </div> -->
-                                    </div>
-                                    <div *ngIf="showCardDetailsFlag==i">
-                                        <div class="card_details_starts">
-                                            <div class="row">
-                                                <div class="col-md-12 col-12 mt-3">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-4 col-4">
-                                                            <div class="inner-block-header">
-                                                                <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
+                                        </div>
+                                        <div *ngIf="showCardDetailsFlag==i">
+                                            <div class="card_details_starts">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-12 mt-3">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
                                                                     alt=""> -->
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="21.727"
-                                                                    height="21.72" viewBox="0 0 21.727 21.72">
-                                                                    <path id="np_free_338463_000000"
-                                                                        d="M21.128,18.12a.944.944,0,1,0-.944-.944A.946.946,0,0,0,21.128,18.12Zm4.451,1.114H20.226l-1.835-2.058,1.835-2.059h5.353Zm.574-5.264H25.77V9.279A.575.575,0,0,0,25.2,8.7H24.1V6.647a.575.575,0,0,0-.574-.574H20.845a.574.574,0,0,0,0,1.149h2.1V8.7H19.736a.574.574,0,0,0,0,1.149h4.886V13.97H19.969a.572.572,0,0,0-.428.191l-2.348,2.632a.575.575,0,0,0,0,.765l2.348,2.632a.572.572,0,0,0,.428.192h4.653V24.5H13.082a.574.574,0,0,0,0,1.149H25.2a.575.575,0,0,0,.574-.574v-4.69h.383a.575.575,0,0,0,.574-.574V14.543a.575.575,0,0,0-.574-.573Zm-6.69-8.925a.574.574,0,0,0-.753.306l-8.666,20.57a.564.564,0,0,0,0,.439.574.574,0,0,0,1.061.007L19.769,5.8a.575.575,0,0,0-.306-.753ZM8.968,24.5h-1a1.82,1.82,0,0,1-1.818-1.818V9.706a1.894,1.894,0,0,0,.731.147h8.742a.574.574,0,1,0,0-1.149H6.878a.73.73,0,0,1-.729-.729V7.952a.731.731,0,0,1,.731-.73h9.852a.574.574,0,0,0,0-1.149H6.88A1.878,1.878,0,0,0,5,7.949V22.68a2.97,2.97,0,0,0,2.967,2.967h1a.574.574,0,0,0,0-1.149Z"
-                                                                        transform="translate(-5 -5)" fill="#96f"
-                                                                        fill-rule="evenodd" />
-                                                                </svg>
-                                                                <span>Fees</span>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="21.727" height="21.72"
+                                                                        viewBox="0 0 21.727 21.72">
+                                                                        <path id="np_free_338463_000000"
+                                                                            d="M21.128,18.12a.944.944,0,1,0-.944-.944A.946.946,0,0,0,21.128,18.12Zm4.451,1.114H20.226l-1.835-2.058,1.835-2.059h5.353Zm.574-5.264H25.77V9.279A.575.575,0,0,0,25.2,8.7H24.1V6.647a.575.575,0,0,0-.574-.574H20.845a.574.574,0,0,0,0,1.149h2.1V8.7H19.736a.574.574,0,0,0,0,1.149h4.886V13.97H19.969a.572.572,0,0,0-.428.191l-2.348,2.632a.575.575,0,0,0,0,.765l2.348,2.632a.572.572,0,0,0,.428.192h4.653V24.5H13.082a.574.574,0,0,0,0,1.149H25.2a.575.575,0,0,0,.574-.574v-4.69h.383a.575.575,0,0,0,.574-.574V14.543a.575.575,0,0,0-.574-.573Zm-6.69-8.925a.574.574,0,0,0-.753.306l-8.666,20.57a.564.564,0,0,0,0,.439.574.574,0,0,0,1.061.007L19.769,5.8a.575.575,0,0,0-.306-.753ZM8.968,24.5h-1a1.82,1.82,0,0,1-1.818-1.818V9.706a1.894,1.894,0,0,0,.731.147h8.742a.574.574,0,1,0,0-1.149H6.878a.73.73,0,0,1-.729-.729V7.952a.731.731,0,0,1,.731-.73h9.852a.574.574,0,0,0,0-1.149H6.88A1.878,1.878,0,0,0,5,7.949V22.68a2.97,2.97,0,0,0,2.967,2.967h1a.574.574,0,0,0,0-1.149Z"
+                                                                            transform="translate(-5 -5)" fill="#96f"
+                                                                            fill-rule="evenodd" />
+                                                                    </svg>
+                                                                    <span>Fees</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-8 col-8">
-                                                            <div class="row">
-                                                                <div class="col-md-4 col-4">
-                                                                    <div class="fees-block">
-                                                                        <p>Loan amount</p>
-                                                                        <span>SAR {{product?.actualLoanAmount}}</span>
+                                                            <div class="col-md-8 col-8">
+                                                                <div class="row">
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Loan amount</p>
+                                                                            <span>SAR
+                                                                                {{product?.actualLoanAmount}}</span>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-md-4 col-4">
-                                                                    <div class="fees-block">
-                                                                        <p>Max financing amount</p>
-                                                                        <span>SAR {{product?.loanMaximumValue}}</span>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Max financing amount</p>
+                                                                            <span>SAR
+                                                                                {{product?.loanMaximumValue}}</span>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-md-4 col-4">
-                                                                    <div class="fees-block">
-                                                                        <p>Early Settelement Fees</p>
-                                                                        <span>{{FilterValue2(2,product?.fees)}}
-                                                                            Months</span>
+                                                                    <div class="col-md-4 col-4">
+                                                                        <div class="fees-block">
+                                                                            <p>Early Settelement Fees</p>
+                                                                            <span>{{FilterValue2(2,product?.fees)}}
+                                                                                Months</span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 col-12 mt-3" *ngIf="product?.featuresList">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-4 col-4">
-                                                            <div class="inner-block-header">
-                                                                <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
+                                                    <div class="col-md-12 col-12 mt-3" *ngIf="product?.featuresList">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
                                                                     alt=""> -->
-                                                                <img src="../../../assets/images/icons/Others_stars.png"
-                                                                    alt="">
-                                                                <span>Features</span>
+                                                                    <img src="../../../assets/images/icons/Others_stars.png"
+                                                                        alt="">
+                                                                    <span>Features</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-8 col-8">
+                                                                <ul class="card-details-list">
+                                                                    <li *ngFor="let val of product?.featuresList">
+                                                                        <span
+                                                                            class="material-icons custom_check">check</span>
+                                                                        <span>{{val}}</span>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-8 col-8">
-                                                            <ul class="card-details-list">
-                                                                <li *ngFor="let val of product?.featuresList">
-                                                                    <span
-                                                                        class="material-icons custom_check">check</span>
-                                                                    <span>{{val}}</span>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 col-12 mt-3"
-                                                    *ngIf="product?.eligibilityCriteriaList">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-4 col-4">
-                                                            <div class="inner-block-header">
-                                                                <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
+                                                    <div class="col-md-12 col-12 mt-3"
+                                                        *ngIf="product?.eligibilityCriteriaList">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4 col-4">
+                                                                <div class="inner-block-header">
+                                                                    <!-- <img src="../../../assets/images/main_images/np_airplane.svg"
                                                                     alt=""> -->
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="27.019"
-                                                                    height="22.284" viewBox="0 0 27.019 22.284">
-                                                                    <path id="np_pass_1384907_000000"
-                                                                        d="M37.291,21.618a.28.28,0,0,0-.393,0L23.99,34.524l-4.538-4.538a.288.288,0,0,0-.393,0l-3.788,3.788a.28.28,0,0,0,0,.393L23.8,42.693a.278.278,0,0,0,.393,0L41.081,25.8a.278.278,0,0,0,0-.393ZM23.99,42.1,15.859,33.97l3.4-3.4,4.538,4.538a.277.277,0,0,0,.393,0L37.093,22.206l3.4,3.4Z"
-                                                                        transform="translate(-14.644 -20.991)"
-                                                                        fill="#96f" stroke="#96f" stroke-width="1" />
-                                                                </svg>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="27.019" height="22.284"
+                                                                        viewBox="0 0 27.019 22.284">
+                                                                        <path id="np_pass_1384907_000000"
+                                                                            d="M37.291,21.618a.28.28,0,0,0-.393,0L23.99,34.524l-4.538-4.538a.288.288,0,0,0-.393,0l-3.788,3.788a.28.28,0,0,0,0,.393L23.8,42.693a.278.278,0,0,0,.393,0L41.081,25.8a.278.278,0,0,0,0-.393ZM23.99,42.1,15.859,33.97l3.4-3.4,4.538,4.538a.277.277,0,0,0,.393,0L37.093,22.206l3.4,3.4Z"
+                                                                            transform="translate(-14.644 -20.991)"
+                                                                            fill="#96f" stroke="#96f"
+                                                                            stroke-width="1" />
+                                                                    </svg>
 
-                                                                <span>Eligibility criteria</span>
+                                                                    <span>Eligibility criteria</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-8 col-8">
-                                                            <ul class="card-details-list">
-                                                                <li
-                                                                    *ngFor="let val of product?.eligibilityCriteriaList">
-                                                                    <span
-                                                                        class="material-icons custom_check">check</span>
-                                                                    {{val}}
-                                                                </li>
-                                                            </ul>
+                                                            <div class="col-md-8 col-8">
+                                                                <ul class="card-details-list">
+                                                                    <li
+                                                                        *ngFor="let val of product?.eligibilityCriteriaList">
+                                                                        <span
+                                                                            class="material-icons custom_check">check</span>
+                                                                        {{val}}
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -844,20 +854,21 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </ng-container>
+
                     <div *ngIf="financeProduct?.length==0" class="noDataFound">
                         {{finding ? " ": "No Finance Product Found For Given Data"}}
                     </div>
-                    
 
-                       
+
+
                     <div class="gradual-loading-img" *ngIf="financeProduct?.length==0">
                         <div class="card custom-card">
                             <div class="card-body">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex-basis: 30%;">
                                         <ngx-skeleton-loader [theme]="{ height: '50px'}"></ngx-skeleton-loader>
-                    
+
                                         <div style="width: 50%;">
                                             <ngx-skeleton-loader [theme]="{ height: '20px'}"></ngx-skeleton-loader>
                                         </div>
@@ -866,12 +877,12 @@
                                         <div class="user_option" style="flex-basis: 50%; padding-right: 30px;">
                                             <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                         </div>
-                    
+
                                         <div class="user_option" style="flex-basis: 50%;">
                                             <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                         </div>
                                     </div>
-                    
+
                                 </div>
                                 <div class="">
                                     <div class="row ">
@@ -880,18 +891,24 @@
                                         </div>
                                         <div class="col-md-3 col-6 ">
                                             <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
                                         </div>
                                         <div class="col-md-3 col-6 ">
                                             <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
                                         </div>
                                         <div class="col-md-3 col-6">
                                             <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
                                         </div>
                                     </div>
                                 </div>
@@ -914,7 +931,7 @@
                                     <div class="col-md-3 col-6">
                                         <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                     </div>
-                    
+
                                 </div>
                             </div>
                         </div>
@@ -923,7 +940,7 @@
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex-basis: 30%;">
                                         <ngx-skeleton-loader [theme]="{ height: '50px'}"></ngx-skeleton-loader>
-                    
+
                                         <div style="width: 50%;">
                                             <ngx-skeleton-loader [theme]="{ height: '20px'}"></ngx-skeleton-loader>
                                         </div>
@@ -932,12 +949,12 @@
                                         <div class="user_option" style="flex-basis: 50%; padding-right: 30px;">
                                             <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                         </div>
-                    
+
                                         <div class="user_option" style="flex-basis: 50%;">
                                             <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                         </div>
                                     </div>
-                    
+
                                 </div>
                                 <div class="">
                                     <div class="row ">
@@ -946,18 +963,24 @@
                                         </div>
                                         <div class="col-md-3 col-6 ">
                                             <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
                                         </div>
                                         <div class="col-md-3 col-6 ">
                                             <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
                                         </div>
                                         <div class="col-md-3 col-6">
                                             <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
                                         </div>
                                     </div>
                                 </div>
@@ -980,7 +1003,7 @@
                                     <div class="col-md-3 col-6">
                                         <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                     </div>
-                    
+
                                 </div>
                             </div>
                         </div>
@@ -989,7 +1012,7 @@
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="flex-basis: 30%;">
                                         <ngx-skeleton-loader [theme]="{ height: '50px'}"></ngx-skeleton-loader>
-                    
+
                                         <div style="width: 50%;">
                                             <ngx-skeleton-loader [theme]="{ height: '20px'}"></ngx-skeleton-loader>
                                         </div>
@@ -998,12 +1021,12 @@
                                         <div class="user_option" style="flex-basis: 50%; padding-right: 30px;">
                                             <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                         </div>
-                    
+
                                         <div class="user_option" style="flex-basis: 50%;">
                                             <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                         </div>
                                     </div>
-                    
+
                                 </div>
                                 <div class="">
                                     <div class="row ">
@@ -1012,18 +1035,24 @@
                                         </div>
                                         <div class="col-md-3 col-6 ">
                                             <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
                                         </div>
                                         <div class="col-md-3 col-6 ">
                                             <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
                                         </div>
                                         <div class="col-md-3 col-6">
                                             <ngx-skeleton-loader [theme]="{ height: '40px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
-                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}"></ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
+                                            <ngx-skeleton-loader [theme]="{ height: '20px', width: '200px'}">
+                                            </ngx-skeleton-loader>
                                         </div>
                                     </div>
                                 </div>
@@ -1046,7 +1075,7 @@
                                     <div class="col-md-3 col-6">
                                         <ngx-skeleton-loader [theme]="{ height: '30px'}"></ngx-skeleton-loader>
                                     </div>
-                    
+
                                 </div>
                             </div>
                         </div>

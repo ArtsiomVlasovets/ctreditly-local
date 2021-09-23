@@ -1,5 +1,5 @@
 import { Options } from '@angular-slider/ngx-slider';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgNavigatorShareService } from 'ng-navigator-share';
@@ -336,6 +336,23 @@ export class AutoLeaseFinanceComponent implements OnInit {
     })
   }
 
-  /* For share Product */
+ 
+
+  
+   isLoading = false;
+  maxListProducts = 10;
+  @HostListener("window:scroll", ["$event"])
+  getScrollHeight(): void {
+    if ((window.innerHeight + window.scrollY >= (document.body.offsetHeight -700))) {
+      console.log("bottom of the page");
+      
+      this.isLoading = true;
+      if (this.autoLoansList.length > 10) {
+            this.maxListProducts += 10
+      }
+          
+             
+    }
+  }
 
 }

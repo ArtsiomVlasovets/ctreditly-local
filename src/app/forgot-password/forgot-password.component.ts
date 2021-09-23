@@ -10,26 +10,32 @@ import { CreditlyServicesService } from '../creditly-services.service';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  formGroup: FormGroup;
+  sendOTPForm: FormGroup;
+  sendOTpisSubmitted = false;
   sessionResp: any;
-  loginFormValidationFlag: boolean = false;
-  submit: boolean = false;
-  showForgotPwdFlag: boolean = false;
-  innerForgotPwdFlag: boolean = false;
-  forgotIqmaId: any;
-  validIqamaForgotFlag: boolean;
+   maxTime = 30;
+ 
+  verifyOTPForm: FormGroup;
   updatePasswordForm: FormGroup;
-  updatePwdFormFlag: boolean = false;
-  sendOTPFlag: boolean = false;
-  updatePwdSubmitFlag: boolean = false;
-  OTPExpireTime: number = 120;
-  interval;
   constructor(private router: Router, private creditlyServices: CreditlyServicesService,
-    private fb: FormBuilder, private _el: ElementRef) { }
+    private fb: FormBuilder, private _el: ElementRef) {
+    this.sendOTPForm = this.fb.group({
+      phone: ['', Validators.required]
+    });
+
+    this.verifyOTPForm = this.fb.group({
+      otp: ['', Validators.required]
+    });
+
+    this.updatePasswordForm = this.fb.group({
+      password: ['', Validators.required],
+      confirmpassword: ['', Validators.required],
+    });
+
+     }
 
   ngOnInit(): void {
-    this.initForm();
-    this.loadUpdatePwdForm();
+
   }
 
   @HostListener('keyup', ['$event']) onKeyDown(e: any) {
@@ -61,102 +67,76 @@ export class ForgotPasswordComponent implements OnInit {
 }
 
 
-  initForm() {
-    this.formGroup = new FormGroup({
-      Mobile: new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)]),
-      password: new FormControl('', [Validators.required])
-    });
+   sendOTP(curr, next): void {
+    let form = this.sendOTPForm.value;
+     this.sendOTpisSubmitted = true;
+       curr.className = 'hiddenBoxes';
+        next.className = 'forgotpass2';
+    // if (this.sendOTPForm.valid) {
+    //   this.creditlyServices.forgotPassword({ phone: form.phone }).subscribe((resp) => {
+    //      this.creditlyServices.notify(resp.message, 'success');
+    //       this.maxTime = 30;
+    //     this.StartTimer();
+    //     curr.className = 'hiddenBoxes';
+    //     next.className = 'forgotpass2';
+    //   }, err => {
+         
+    //       this.creditlyServices.notify(err.message, 'error');
+    //   })
+    // } else {
+      
+    //   this.creditlyServices.notify("Please enter Phone number", 'error');
+    // }
   }
 
-  public loadUpdatePwdForm(): void {
-    this.updatePasswordForm = this.fb.group({
-      otp: ['', Validators.required],
-      newPwd: ['', Validators.required],
-      confirmPwd: ['', Validators.required]
-    })
+   StartTimer() {
+
+    setTimeout(x => {
+          if (this.maxTime <= 0) { }
+             this.maxTime -= 1;
+
+          if (this.maxTime > 0) {
+           
+            this.StartTimer();
+          } 
+
+      }, 1000);
   }
 
-  public sendOTP(): void {
-    console.log("forgotIqmaId", this.forgotIqmaId)
+   resendOTP(): void {
 
-    this.sendOTPFlag = true;
-    if (this.forgotIqmaId) {
-      this.creditlyServices.forgotPassword(this.forgotIqmaId).subscribe((resp) => {
-        console.log("forgotPassword resp", resp);
-        if (resp.status == true) {
-          this.sendOTPFlag = false;
-          this.forgotIqmaId = null;
-          this.creditlyServices.notify(resp.message, 'success');
-          this.validIqamaForgotFlag = false;
-          this.innerForgotPwdFlag = true;
-          this.OTPExpireTime = 10;
-          this.startOTPCountdown();
-        } else {
-          this.sendOTPFlag = false;
-          this.creditlyServices.notify(resp.message, 'error');
-        }
-      })
-    } else {
-      this.validIqamaForgotFlag = true
-      this.sendOTPFlag = false;
-      this.creditlyServices.notify("Please enter Phone number", 'error');
-    }
+   }
+  
+  verifyOTP(curr, next) {
+        curr.className = 'hiddenBoxes';
+        next.className = 'forgotpass3';
   }
 
-  public startOTPCountdown(): void {
-
-    this.interval = setInterval(() => {
-      if (this.OTPExpireTime > 0) {
-        this.OTPExpireTime--;
-      }else if(this.OTPExpireTime == 0) {
-        this.resendOTP();
-      } else {
-        this.pauseTimer();
-      }
-    }, 1000)
-  }
-
-  pauseTimer() {
-    clearInterval(this.interval);
-  }
-
-  public resendOTP(): void {
-    this.sendOTPFlag = false;
-    this.validIqamaForgotFlag = false;
-    this.innerForgotPwdFlag = false;
-  }
-
-  public updatePassword(): void {
+   updatePassword(curr): void {
     /* this.showForgotPwdFlag= false;
     this.innerForgotPwdFlag = false; */
-    this.updatePwdSubmitFlag = true;
-    this.updatePwdFormFlag = this.updatePasswordForm.invalid ? true : false;
-    if (!this.updatePwdFormFlag) {
-      let req = {
-        OTP: this.updatePasswordForm.value.otp,
-        Password: this.updatePasswordForm.value.newPwd,
-        ConfirmPassword: this.updatePasswordForm.value.confirmPwd
-      }
-      console.log("req", req);
-      this.creditlyServices.updatePassword(req).subscribe((resp) => {
+   
+    if (true) {
+     
+     let form ={}
+      this.creditlyServices.updatePassword(form).subscribe((resp) => {
         console.log("updatePassword resp", resp);
         if (resp.status == true) {
-          this.updatePwdSubmitFlag = false;
-          this.updatePasswordForm.reset();
-          this.showForgotPwdFlag = false;
-          this.innerForgotPwdFlag = false;
+          
           this.creditlyServices.notify(resp.message, "success");
         } else {
-          this.updatePwdSubmitFlag = false;
+         
           this.creditlyServices.notify(resp.message, "error");
         }
 
       })
     } else {
-      this.updatePwdSubmitFlag = false;
+     
       this.creditlyServices.notify("Please enter all fields", "error");
     }
-  }
+   }
+  
+  
 
 
 

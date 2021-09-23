@@ -1,5 +1,5 @@
 import { Options } from '@angular-slider/ngx-slider';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, UrlSerializer } from '@angular/router';
 import { NgNavigatorShareService } from 'ng-navigator-share';
@@ -249,7 +249,7 @@ export class PersonalFinanceComponent implements OnInit {
 
     this.finding = true;
     this.FormValidationFlag = false;
-    this.financeProduct = [];
+    // this.financeProduct = [];
     this.apiService.financeList(data).subscribe(
       (val) => {
         this.financeProduct = val?.products ? val?.products : [];
@@ -327,5 +327,20 @@ export class PersonalFinanceComponent implements OnInit {
     })
   }
 
-  /* For share Product URL */
+
+   isLoading = false;
+  maxListProducts = 10;
+  @HostListener("window:scroll", ["$event"])
+  getScrollHeight(): void {
+    if ((window.innerHeight + window.scrollY >= (document.body.offsetHeight -700))) {
+      console.log("bottom of the page");
+      
+      this.isLoading = true;
+      if (this.financeProduct.length > 10) {
+            this.maxListProducts += 10
+      }
+          
+             
+    }
+  }
 }
