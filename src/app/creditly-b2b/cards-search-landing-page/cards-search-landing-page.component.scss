@@ -361,6 +361,8 @@ input[type="radio"]:checked {
     }
   }
   .main_three_blocks {
+    position: relative;
+    z-index: 1;
     @include mobile {
       flex-direction: column;
       justify-content: center;
@@ -382,6 +384,8 @@ input[type="radio"]:checked {
     }
   }
   .get_most {
+    position: relative;
+    z-index: 1;
     color: #fff;
     max-width: 450px;
     margin: 60px auto 0px auto;
