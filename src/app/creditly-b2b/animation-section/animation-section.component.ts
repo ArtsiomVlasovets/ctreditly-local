@@ -41,7 +41,7 @@ contents = `
 				<g>
 					<g id="crM1">
 						<g transform="translate(454.723 1541.873)">
-							<g opacity="0.4">
+							<g autoAlpha="0.4">
 								<g transform="translate(125.113 115.448)">
 									<g transform="translate(0 0)">
 										<path fill="none" stroke="#00FFFF" stroke-width="0.1" stroke-linecap="round" stroke-miterlimit="10" d="M-412.9-1349.6
@@ -776,7 +776,7 @@ contents = `
 				<g>
 					<g id="crM2">
 						<g transform="translate(454.723 1541.873)">
-							<g opacity="0.4">
+							<g autoAlpha="0.4">
 								<g transform="translate(125.113 115.448)">
 									<g transform="translate(0 0)">
 										<path fill="none" stroke="#00FFFF" stroke-width="0.1" stroke-linecap="round" stroke-miterlimit="10" d="M-162.8-1503.4
@@ -1511,7 +1511,7 @@ contents = `
 				<g>
 					<g id="crM3">
 						<g transform="translate(454.723 1541.873)">
-							<g opacity="0.4">
+							<g autoAlpha="0.4">
 								<g transform="translate(125.113 115.448)">
 									<g transform="translate(0 0)">
 										<path fill="none" stroke="#00FFFF" stroke-width="0.1" stroke-linecap="round" stroke-miterlimit="10" d="M87.4-1349.6
@@ -2244,7 +2244,7 @@ contents = `
 			</g>
 			<g>
 				<g>
-					<g transform="translate(454.723 1541.873)" opacity="0.403">
+					<g transform="translate(454.723 1541.873)" autoAlpha="0.403">
 						<g transform="translate(125.113 115.448)">
 							<g transform="translate(0 0)">
 								<path fill="none" stroke="#00FFFF" stroke-width="0.1" stroke-linecap="round" stroke-miterlimit="10" d="M-162.9-1195.6
@@ -3004,7 +3004,7 @@ gsapAnim()
 {
     this.animId = document.querySelector("#animation_wrapper svg").getAttribute('id')
     this.animId = "#" + this.animId + " "
-    gsap.set("#animation_wrapper", { opacity: 1 })
+    gsap.set("#animation_wrapper", { autoAlpha: 1 })
 
     gsap.registerPlugin(ScrollTrigger)
 
