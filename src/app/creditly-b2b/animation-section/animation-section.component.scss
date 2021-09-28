@@ -1,48 +1,55 @@
 @import "../../../variable_styles.scss";
 
-.CLIENT {
-  position: relative;
-  #animation_wrapper {
-    display: flex;
-    height: 95vh;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
-    padding-bottom: 12%;
-    margin-top: -230px;
-  
-    @include desktop {
-      height: 62vh;
-      padding-bottom: 4%;
-      margin-top: -110px;
-    }
-    @include tab {
-      height: 60vh;
-      padding-bottom: 0%;
-    }
-    @include mobile {
-      height: 43vh;
-      padding-bottom: 0%;
-    }
-  
-    @include extrasmall {
-      height: 226px;
-      margin-top: 0;
-      padding-bottom: 0;
-    }
+// // .CLIENT {
+// //   // position: relative;
+// // }
+
+#animation_wrapper {
+  // z-index: 99999;
+  // display: flex;
+  // height: 95vh;
+  // width: 100%;
+  // justify-content: center;
+  // align-items: center;
+  // margin: 0px;
+  // padding-bottom: 12%;
+  // margin-top: -230px;
+
+  @include desktop {
+    height: 62vh;
+    padding-bottom: 4%;
+    margin-top: -110px;
+  }
+  @include tab {
+    height: 60vh;
+    padding-bottom: 0%;
+  }
+  @include mobile {
+    height: 43vh;
+    padding-bottom: 0%;
+  }
+
+  @include extrasmall {
+    height: 226px;
+    margin-top: 0;
+    padding-bottom: 0;
   }
 }
-.CLIENT .container {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
 
-.CLIENT .layout-container {
-  height: 100%;
+// // .CLIENT .container {
+// //   position: absolute;
+// //   top: 0;
+// //   height: 100%;
+// //   width: 100%;
+// //   left: 0;
+// //   right: 0;
+// //   margin: auto;
+// // }
+
+// // .CLIENT .layout-container {
+// //   height: 100%;
+// // }
+
+#animation_wrapper {
+  margin-top: -250px;
 }
